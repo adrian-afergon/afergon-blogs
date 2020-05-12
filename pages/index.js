@@ -31,6 +31,7 @@ const Home = () => (
 
     <footer>
       <a
+        target="_blank"
         href="mailto:adrian.afergon@gmail.com"
       >
         Contact with me

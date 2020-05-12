@@ -1,5 +1,7 @@
 import Head from 'next/head'
 
+import { posts } from '../data.json';
+
 const Home = () => (
   <div className="container">
     <Head>
@@ -15,6 +17,16 @@ const Home = () => (
       <p className="description">
         We will be up soon!!
       </p>
+
+      <p className="description">
+        Temporary you can read my current posts in the following links:
+      </p>
+      <ul>
+        {posts.map((post) =>
+          <li>
+            <a href={post.link} key={post.date} >{post.title}</a>
+          </li>)}
+      </ul>
     </main>
 
     <footer>

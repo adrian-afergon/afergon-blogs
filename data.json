@@ -1,0 +1,68 @@
+{
+  "posts":[
+    {
+      "title": "Estructurando Datos en Cloud Firestore",
+      "intro": "",
+      "date": "Jun 16, 2018",
+      "locale": "spanish",
+      "link": "https://medium.com/canariasjs/estructurando-datos-en-cloud-firestore-3dce2cb1ceae",
+      "external": true
+    },    {
+      "title": "Cómo actualizar a Angular 6 y no morir en el intento",
+      "intro": "",
+      "date": "Jun 2, 2018",
+      "locale": "spanish",
+      "link": "https://medium.com/@Afergon/c%C3%B3mo-actualizar-a-angular-6-y-no-morir-en-el-intento-37e63e31bc94",
+      "external": true
+    },    {
+      "title": "TDD: El bueno, el malo y el testeado",
+      "intro": "",
+      "date": "Jun 17, 2018",
+      "locale": "spanish",
+      "link": "https://medium.com/lean-mind/tdd-el-bueno-el-malo-y-el-testeado-be5b7202e915",
+      "external": true
+    },    {
+      "title": "Creando React Native Apps con Enzyme",
+      "intro": "",
+      "date": "Sep 4, 2018",
+      "locale": "spanish",
+      "link": "https://medium.com/lean-mind/creando-react-native-apps-con-enzyme-f29d8518b2c4",
+      "external": true
+    },    {
+      "title": "Why Typescript?",
+      "intro": "",
+      "date": "Mar 25, 2019",
+      "locale": "spanish",
+      "link": "https://medium.com/lean-mind/why-typescript-83e5b29d5120",
+      "external": true
+    },    {
+      "title": "Make more human-readeable test",
+      "intro": "",
+      "date": "Apr 21, 2019",
+      "locale": "english",
+      "link": "https://medium.com/lean-mind/make-more-human-readeable-test-14d4230898c",
+      "external": true
+    },    {
+      "title": "Argumentos en docker, cómo parametrizar contenededores",
+      "intro": "",
+      "date": "Mar 6, 2019",
+      "locale": "spanish",
+      "link": "https://leanmind.es/es/blog/parametrizando-contenedores-docker/",
+      "external": true
+    },    {
+      "title": "React custom hooks: diseño y testing",
+      "intro": "",
+      "date": "Apr 20, 2020",
+      "locale": "spanish",
+      "link": "https://leanmind.es/es/blog/testing_react_custom_hooks/",
+      "external": true
+    },    {
+      "title": "Live coding: diseñando componentes React con TDD",
+      "intro": "",
+      "date": "Apr 27, 2020",
+      "locale": "spanish",
+      "link": "https://leanmind.es/es/blog/desarrollando-componentes-react-con-tdd/",
+      "external": true
+    }
+  ]
+}

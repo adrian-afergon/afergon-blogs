@@ -1,5 +1,7 @@
+import * as React from 'react';
 import Head from 'next/head'
 
+// @ts-ignore
 import { posts } from '../data.json';
 
 const Home = () => (
@@ -38,7 +40,7 @@ const Home = () => (
       </a>
     </footer>
 
-    <style jsx>{`
+    <style>{`
       .container {
         min-height: 100vh;
         padding: 0 0.5rem;
@@ -165,7 +167,7 @@ const Home = () => (
       }
     `}</style>
 
-    <style jsx global>{`
+    <style>{`
       html,
       body {
         padding: 0;
@@ -181,4 +183,5 @@ const Home = () => (
   </div>
 )
 
-export default Home
+// @ts-ignore
+export default Home;

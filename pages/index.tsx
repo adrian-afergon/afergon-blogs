@@ -32,14 +32,11 @@ const Home = () => (
     </main>
 
     <footer>
-      <a
-
-        href="mailto:adrian.afergon@gmail.com"
-      >
-        Contact with me
-      </a>
-      <a target="_blank" href="https://twitter.com/AdrianFerrera91">Twiter</a>
-      <a target="_blank" href="https://www.linkedin.com/in/afergon/">LinkedIn</a>
+      <ul>
+        <li><a href="mailto:adrian.afergon@gmail.com">Contact with me</a></li>
+        <li><a target="_blank" href="https://twitter.com/AdrianFerrera91">Twiter</a></li>
+        <li><a target="_blank" href="https://www.linkedin.com/in/afergon/">LinkedIn</a></li>
+      </ul>
     </footer>
 
     <style>{`
@@ -72,6 +69,10 @@ const Home = () => (
 
       footer img {
         margin-left: 0.5rem;
+      }
+
+      footer ul {
+        list-style-type: none;
       }
 
       footer a {

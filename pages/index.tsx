@@ -26,18 +26,20 @@ const Home = () => (
       <ul>
         {posts.map((post) =>
           <li>
-            <a href={post.link} key={post.date} >{post.title}</a>
+            <a href={post.link} key={post.date} target="_blank">{post.title}</a>
           </li>)}
       </ul>
     </main>
 
     <footer>
       <a
-        target="_blank"
+
         href="mailto:adrian.afergon@gmail.com"
       >
         Contact with me
       </a>
+      <a target="_blank" href="https://twitter.com/AdrianFerrera91">Twiter</a>
+      <a target="_blank" href="https://www.linkedin.com/in/afergon/">LinkedIn</a>
     </footer>
 
     <style>{`

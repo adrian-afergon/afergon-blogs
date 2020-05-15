@@ -1,8 +1,10 @@
 import * as React from 'react';
-import Head from 'next/head'
-
+import Head from 'next/head';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faEnvelope, faExternalLinkAlt} from '@fortawesome/free-solid-svg-icons'
 // @ts-ignore
 import { posts } from '../data.json';
+import {faLinkedinIn, faTwitter} from "@fortawesome/free-brands-svg-icons";
 
 const Home = () => (
   <div className="container">
@@ -26,16 +28,16 @@ const Home = () => (
       <ul>
         {posts.map((post) =>
           <li>
-            <a href={post.link} key={post.date} target="_blank">{post.title}</a>
+            <a href={post.link} key={post.date} target="_blank">{post.title} {post.external && <FontAwesomeIcon icon={faExternalLinkAlt} size="xs"/>}</a>
           </li>)}
       </ul>
     </main>
 
     <footer>
       <ul>
-        <li><a href="mailto:adrian.afergon@gmail.com">Contact with me</a></li>
-        <li><a target="_blank" href="https://twitter.com/AdrianFerrera91">Twiter</a></li>
-        <li><a target="_blank" href="https://www.linkedin.com/in/afergon/">LinkedIn</a></li>
+        <li><a href="mailto:adrian.afergon@gmail.com"><FontAwesomeIcon icon={faEnvelope} size="sm"/>Contact with me</a></li>
+        <li><a target="_blank" href="https://twitter.com/AdrianFerrera91"><FontAwesomeIcon icon={faTwitter} size="sm"/> Twiter</a></li>
+        <li><a target="_blank" href="https://www.linkedin.com/in/afergon/"><FontAwesomeIcon icon={faLinkedinIn} size="sm"/> LinkedIn</a></li>
       </ul>
     </footer>
 

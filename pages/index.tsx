@@ -1,12 +1,12 @@
 import * as React from 'react';
 import Head from 'next/head';
+import { posts, talks } from '../data.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faEnvelope,
   faExternalLinkAlt,
   faPhotoVideo,
 } from '@fortawesome/free-solid-svg-icons';
-import { posts, talks } from '../data.json';
 import {
   faLinkedinIn,
   faTwitter,

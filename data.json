@@ -67,12 +67,72 @@
   ],
   "talks": [
     {
-      "title": "",
+      "title": "NgRx: A reactive state for Angular",
       "intro": "",
-      "place": "",
-      "date": "",
-      "locale": "",
-      "slides": "",
+      "places": "JsDayCan 2018",
+      "date": "Nov 10, 2018",
+      "locale": "spanish",
+      "slides": "https://slides.com/afergon/deck#/",
+      "video": "",
+      "external": true
+    },
+    {
+      "title": "Redux on a leash",
+      "intro": "",
+      "places":["TLP Winter", "GDG Gran Canaria"],
+      "date": "Feb, 2019",
+      "locale": "spanish",
+      "slides": "https://slides.com/afergon/redux-on-a-leach-2",
+      "video": "",
+      "external": true
+    },
+    {
+      "title": "La programación es el presente",
+      "intro": "",
+      "places": ["CIFP César Manríque"],
+      "date": "Feb, 2019",
+      "locale": "spanish",
+      "slides": "https://slides.com/afergon/deck-3#/",
+      "video": "",
+      "external": true
+    },
+    {
+      "title": "Test Driven Development",
+      "intro": "",
+      "places": ["TLP Summer 2019"],
+      "date": "Jul, 2019",
+      "locale": "spanish",
+      "slides": "https://slides.com/afergon/test-driven-development#/",
+      "video": "",
+      "external": true
+    },
+    {
+      "title": "Conceptos de arquitectura",
+      "intro": "",
+      "places": ["CIFP César Manrique 2019"],
+      "date": "Nov, 2019",
+      "locale": "spanish",
+      "slides": "https://slides.com/afergon/architecture#/",
+      "video": "",
+      "external": true
+    },
+    {
+      "title": "Fireproof Components",
+      "intro": "",
+      "places": ["JSDay Can 2019"],
+      "date": "Nov 10, 2019",
+      "locale": "spanish",
+      "slides": "https://slides.com/afergon/fireproof-components#/",
+      "video": "https://www.youtube.com/watch?v=cu8eGBuP2pU",
+      "external": true
+    },
+    {
+      "title": "Let's test",
+      "intro": "",
+      "places": ["Secuoyas"],
+      "date": "Nov, 2019",
+      "locale": "spanish",
+      "slides": "https://slides.com/afergon/lets-test#/",
       "video": "",
       "external": true
     }

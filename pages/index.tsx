@@ -4,9 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faEnvelope,
   faExternalLinkAlt,
+  faPhotoVideo,
 } from '@fortawesome/free-solid-svg-icons';
-import { posts } from '../data.json';
-import { faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { posts, talks } from '../data.json';
+import {
+  faLinkedinIn,
+  faTwitter,
+  faYoutube,
+} from '@fortawesome/free-brands-svg-icons';
 
 const Home: React.FC = () => (
   <div className="container">
@@ -38,6 +43,24 @@ const Home: React.FC = () => (
               {post.external && (
                 <FontAwesomeIcon icon={faExternalLinkAlt} size="xs" />
               )}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p className="description">Or you can check my talks :</p>
+      <ul>
+        {talks.map((talk) => (
+          <li key={talk.title}>
+            <a
+              href={talk.video ? talk.video : talk.slides}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {talk.title}
+              <FontAwesomeIcon
+                icon={talk.video ? faYoutube : faPhotoVideo}
+                size="xs"
+              />
             </a>
           </li>
         ))}

@@ -1,12 +1,14 @@
 import * as React from 'react';
 import Head from 'next/head';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faEnvelope, faExternalLinkAlt} from '@fortawesome/free-solid-svg-icons'
-// @ts-ignore
+import {
+  faEnvelope,
+  faExternalLinkAlt,
+} from '@fortawesome/free-solid-svg-icons';
 import { posts } from '../data.json';
-import {faLinkedinIn, faTwitter} from "@fortawesome/free-brands-svg-icons";
+import { faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
-const Home = () => (
+const Home: React.FC = () => (
   <div className="container">
     <Head>
       <title>Adrián Ferrera</title>
@@ -15,29 +17,59 @@ const Home = () => (
 
     <main>
       <h1 className="title">
-        I'm working to give you access to the content early as possible
+        I&#39;m working to give you access to the content early as possible
       </h1>
 
-      <p className="description">
-        We will be up soon!!
-      </p>
+      <p className="description">We will be up soon!!</p>
 
       <p className="description">
         Temporary you can read my current posts in the following links:
       </p>
       <ul>
-        {posts.map((post) =>
-          <li>
-            <a href={post.link} key={post.date} target="_blank">{post.title} {post.external && <FontAwesomeIcon icon={faExternalLinkAlt} size="xs"/>}</a>
-          </li>)}
+        {posts.map((post) => (
+          <li key={post.title}>
+            <a
+              href={post.link}
+              key={post.date}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {post.title}{' '}
+              {post.external && (
+                <FontAwesomeIcon icon={faExternalLinkAlt} size="xs" />
+              )}
+            </a>
+          </li>
+        ))}
       </ul>
     </main>
 
     <footer>
       <ul>
-        <li><a href="mailto:adrian.afergon@gmail.com"><FontAwesomeIcon icon={faEnvelope} size="sm"/>Contact with me</a></li>
-        <li><a target="_blank" href="https://twitter.com/AdrianFerrera91"><FontAwesomeIcon icon={faTwitter} size="sm"/> Twiter</a></li>
-        <li><a target="_blank" href="https://www.linkedin.com/in/afergon/"><FontAwesomeIcon icon={faLinkedinIn} size="sm"/> LinkedIn</a></li>
+        <li>
+          <a href="mailto:adrian.afergon@gmail.com">
+            <FontAwesomeIcon icon={faEnvelope} size="sm" />
+            Contact with me
+          </a>
+        </li>
+        <li>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://twitter.com/AdrianFerrera91"
+          >
+            <FontAwesomeIcon icon={faTwitter} size="sm" /> Twiter
+          </a>
+        </li>
+        <li>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://www.linkedin.com/in/afergon/"
+          >
+            <FontAwesomeIcon icon={faLinkedinIn} size="sm" /> LinkedIn
+          </a>
+        </li>
       </ul>
     </footer>
 
@@ -186,7 +218,6 @@ const Home = () => (
       }
     `}</style>
   </div>
-)
+);
 
-// @ts-ignore
 export default Home;

@@ -64,5 +64,17 @@
       "link": "https://leanmind.es/es/blog/desarrollando-componentes-react-con-tdd/",
       "external": true
     }
+  ],
+  "talks": [
+    {
+      "title": "",
+      "intro": "",
+      "place": "",
+      "date": "",
+      "locale": "",
+      "slides": "",
+      "video": "",
+      "external": true
+    }
   ]
 }

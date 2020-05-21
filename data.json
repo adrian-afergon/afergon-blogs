@@ -135,6 +135,16 @@
       "slides": "https://slides.com/afergon/lets-test#/",
       "video": "",
       "external": true
+    },
+    {
+      "title": "Testing custom hooks in React",
+      "intro": "",
+      "places": ["Guide Smiths"],
+      "date": "May, 2020",
+      "locale": "spanish",
+      "slides": "https://slides.com/afergon/test-custom-hooks#/",
+      "video": "",
+      "external": true
     }
   ]
 }

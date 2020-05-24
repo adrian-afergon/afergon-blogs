@@ -1,5 +1,5 @@
 ---
-to: src/<%= path %>/<%= name %>/<%= name %>.spec.tsx
+to: <%= path %>/<%= name %>/<%= name %>.spec.tsx
 ---
 import * as React from 'react';
 import { render, RenderResult } from '@testing-library/react';

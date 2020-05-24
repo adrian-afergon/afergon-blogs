@@ -1,5 +1,5 @@
 ---
-to: src/<%= path %>/<%= name %>/<%= name %>.tsx
+to: <%= path %>/<%= name %>/<%= name %>.tsx
 ---
 import * as React from 'react';
 import './<%= name %>.scss';
@@ -9,5 +9,3 @@ export const <%= name %>: React.FC<{}> = () => (
     Hello from <%= name %>!
   </div>
 );
-
-<%= name %>.displayName = '<%= name %>';

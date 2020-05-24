@@ -1,10 +1,10 @@
 ---
-to: src/<%= path %>/<%= name %>/<%= name %>.stories.tsx
+to: <%= path %>/<%= name %>/<%= name %>.stories.tsx
 ---
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text, withKnobs } from '@storybook/addon-knobs';
-import { <%= name %> } from './ConfirmationPanel';
+import { <%= name %> } from './<%= name %>'
 
 const stories = storiesOf('<%= name %>', module);
 stories.addDecorator(withKnobs);

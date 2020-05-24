@@ -14,7 +14,6 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint:fix",
       "pre-push": "npm run test"
     }
   },
@@ -23,7 +22,9 @@
     "@fortawesome/free-brands-svg-icons": "^5.13.0",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.9",
+    "@zeit/next-sass": "^1.0.1",
     "next": "9.3.6",
+    "node-sass": "^4.14.1",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },

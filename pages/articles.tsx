@@ -4,8 +4,8 @@ import { posts, talks } from '../data.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faExternalLinkAlt,
-  faPhotoVideo,
-} from '@fortawesome/free-solid-svg-icons';
+  faPhotoVideo, faSearch
+} from "@fortawesome/free-solid-svg-icons";
 import {
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
@@ -19,14 +19,13 @@ const Home: React.FC = () => (
       <title>Adrián Ferrera</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
+
     <Header />
+    <div>
+      <input name="Filter" placeholder="filter"/>
+      <button><FontAwesomeIcon icon={faSearch} /></button>
+    </div>
     <main>
-      <h1 className="title">
-        I&#39;m working to give you access to the content early as possible
-      </h1>
-
-      <p className="description">We will be up soon!!</p>
-
       <p className="description">
         Temporary you can read my current posts in the following links:
       </p>

@@ -1,3 +1,64 @@
+@import 'pages/variables';
 .Header{
+  position: fixed;
+  top: 0;
+  width: 100%;
 
+  .scrolled {
+    @media (prefers-color-scheme: light) {
+      background-color: $color-white;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      background-color: $color-black;
+    }
+  }
+
+  a{
+    text-decoration: none;
+  }
+  button {
+    cursor: pointer;
+    float: right;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0;
+    transition: .5s;
+    @media (prefers-color-scheme: light) {
+      background-color: $color-white;
+      color: $color-black;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      background-color: $color-black;
+      color: $color-white;
+    }
+
+  }
+  button:hover, button:focus {
+    outline: none;
+  }
+
+  button:hover, button.active {
+    @media (prefers-color-scheme: light) {
+      background-color: $color-white-broken;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      background-color: $color-black-broken;
+    }
+  }
+
+  ul {
+    width: 100%;
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    background-color: $color-black-broken;
+    @media (min-width: $size-limit-medium) {
+      background-color: transparent;
+      float: right;
+      width: auto;
+    }
+  }
 }

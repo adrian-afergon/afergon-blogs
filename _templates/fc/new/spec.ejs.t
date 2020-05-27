@@ -7,9 +7,9 @@ import { <%= name %>} from './<% name %>';
 
 describe('<%= name %>', () => {
   it('should display the default message', () => {
-    const renderResult: RenderResult = render(
+    const view: RenderResult = render(
       <<%= name %>/>,
     );
-    expect(renderResult.queryByText('Hello from <%= name %>!')).toBeTruthy();
+    expect(view.queryByText('Hello from <%= name %>!')).toBeTruthy();
   });
 });

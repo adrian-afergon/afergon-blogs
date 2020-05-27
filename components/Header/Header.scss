@@ -23,7 +23,7 @@
     width: 2.5rem;
     height: 2.5rem;
     border: 0;
-    transition: .5s;
+    transition: $time-transition;
     @media (prefers-color-scheme: light) {
       background-color: $color-white;
       color: $color-black;

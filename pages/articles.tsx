@@ -20,7 +20,7 @@ const Home: React.FC = () => (
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <Header />
+    <Header title={'Adrián Ferrera'}/>
     <div>
       <input name="Filter" placeholder="filter"/>
       <button><FontAwesomeIcon icon={faSearch} /></button>

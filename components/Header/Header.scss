@@ -54,11 +54,38 @@
     margin: 0;
     list-style: none;
     padding: 0;
-    background-color: $color-black-broken;
+    @media (prefers-color-scheme: light) {
+      background-color: $color-white-broken;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      background-color: $color-black-broken;
+    }
+
     @media (min-width: $size-limit-medium) {
       background-color: transparent;
       float: right;
       width: auto;
+    }
+
+    li:hover {
+      @media (prefers-color-scheme: light) {
+        background-color: $color-white;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        background-color: $color-black;
+      }
+    }
+
+    a {
+      @media (prefers-color-scheme: light) {
+        color: $color-black-broken;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        color: $color-white-broken;
+      }
     }
   }
 }

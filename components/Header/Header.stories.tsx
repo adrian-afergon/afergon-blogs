@@ -7,6 +7,6 @@ const stories = storiesOf('Header', module);
 stories.addDecorator(withKnobs);
 
 stories.add('with message', () => {
-  const value = text('Text value', 'Hello from Header!!');
-  return <Header>{value}</Header>;
+  const title = text('Title', 'Adrián Ferrera');
+  return <Header title={title} />;
 });

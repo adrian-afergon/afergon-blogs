@@ -6,13 +6,17 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useMedia } from "../../hooks/useMedia";
 import { useScroll } from "../../hooks/useScroll";
 
-export const Header: React.FC<{}> = () => {
+interface HeaderProps {
+  title: String
+}
+
+export const Header: React.FC<HeaderProps> = ({title}) => {
   const [toggled, setToggled] = React.useState(false)
   const { isTop } = useScroll();
   const { isLargeScreen } = useMedia();
   return (
     <header className={`Header ${isTop ? '' : 'scrolled'}`}>
-      <Link href="/">Logo</Link>
+      <Link href="/">{title}</Link>
       {!isLargeScreen && <button onClick={() => setToggled(!toggled)} className={`${toggled ? 'active' : '' }`}>
         <FontAwesomeIcon icon={faBars} size="xs" />
       </button>}

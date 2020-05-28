@@ -1,5 +1,51 @@
 @import './variables';
 
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  z-index: 0;
+  position: fixed;
+  top: 2rem;
+  padding: .4rem;
+  @media (prefers-color-scheme: light) {
+    background-color: $color-white-broken;
+    color: $color-black-broken;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background-color: $color-black-broken;
+    color: $color-white-broken;
+  }
+  input {
+    &:focus {
+      outline: none;
+    }
+    @media (prefers-color-scheme: light) {
+      background-color: $color-white;
+      color: $color-black;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      background-color: $color-black;
+      color: $color-white;
+    }
+  }
+  button {
+    border: 0;
+    outline: none;
+    color: $color-white;
+    @media (prefers-color-scheme: light) {
+      background-color: $color-blue;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      background-color: $color-pink;
+    }
+  }
+}
+
 .container {
   min-height: 100vh;
   padding: 0 0.5rem;

@@ -7,21 +7,24 @@
       "locale": "spanish",
       "link": "https://medium.com/canariasjs/estructurando-datos-en-cloud-firestore-3dce2cb1ceae",
       "external": true
-    },    {
+    },
+    {
       "title": "Cómo actualizar a Angular 6 y no morir en el intento",
       "intro": "",
       "date": "Jun 2, 2018",
       "locale": "spanish",
       "link": "https://medium.com/@Afergon/c%C3%B3mo-actualizar-a-angular-6-y-no-morir-en-el-intento-37e63e31bc94",
       "external": true
-    },    {
+    },
+    {
       "title": "TDD: El bueno, el malo y el testeado",
       "intro": "",
       "date": "Jun 17, 2018",
       "locale": "spanish",
       "link": "https://medium.com/lean-mind/tdd-el-bueno-el-malo-y-el-testeado-be5b7202e915",
       "external": true
-    },    {
+    },
+    {
       "title": "Creando React Native Apps con Enzyme",
       "intro": "",
       "date": "Sep 4, 2018",
@@ -69,7 +72,7 @@
     {
       "title": "NgRx: A reactive state for Angular",
       "intro": "",
-      "places": "JsDayCan 2018",
+      "places": ["JsDayCan 2018"],
       "date": "Nov 10, 2018",
       "locale": "spanish",
       "slides": "https://slides.com/afergon/deck#/",

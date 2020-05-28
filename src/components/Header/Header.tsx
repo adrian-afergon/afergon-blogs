@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useMedia } from "../../hooks/useMedia";
 import { useScroll } from "../../hooks/useScroll";
-import { ApplicationRoutes } from "../../lib/ApplicationRoutes";
+import { ApplicationRoutes } from "../../ApplicationRoutes";
 
 interface HeaderProps {
   title: string

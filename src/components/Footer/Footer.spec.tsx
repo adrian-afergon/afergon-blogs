@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render, RenderResult } from '@testing-library/react';
-import { Footer} from './';
+import { Footer} from './index';
 
 describe('Footer', () => {
   xit('should display the default message', () => {

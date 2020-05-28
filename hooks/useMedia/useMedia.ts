@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { MediaSizes } from "./media-sizes";
 
 export const useMedia = () => {
   const [isExtraLargeScreen, setIsExtraLargeScreen] = useState(false);
@@ -9,25 +10,25 @@ export const useMedia = () => {
   const onResize = () => {
     const screenWidth = window.innerWidth;
     switch (true) {
-    case screenWidth >= 1200:
+    case screenWidth >= MediaSizes.maxExtraLarge:
       setIsExtraLargeScreen(true);
       setIsLargeScreen(true);
       setIsMediumScreen(true);
       setIsSmallScreen(true);
       break;
-    case screenWidth >= 992:
+    case screenWidth >= MediaSizes.maxLarge:
       setIsExtraLargeScreen(false);
       setIsLargeScreen(true);
       setIsMediumScreen(true);
       setIsSmallScreen(true);
       break;
-    case screenWidth >= 768:
+    case screenWidth >= MediaSizes.maxMedium:
       setIsExtraLargeScreen(false);
       setIsLargeScreen(false);
       setIsMediumScreen(true);
       setIsSmallScreen(true);
       break;
-    case screenWidth >= 576:
+    case screenWidth >= MediaSizes.maxSmall:
       setIsExtraLargeScreen(false);
       setIsLargeScreen(false);
       setIsMediumScreen(false);

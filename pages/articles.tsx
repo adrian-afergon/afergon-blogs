@@ -32,8 +32,8 @@ const Home: React.FC = () => {
   }, []);
 
   React.useEffect(() => {
-    setFilteredPosts(posts.filter(post => post.title.includes(filter)))
-    setFilteredTalks(talks.filter(talks => talks.title.includes(filter)))
+    setFilteredPosts(posts.filter(post => post.title.toLocaleLowerCase().includes(filter.toLocaleLowerCase())))
+    setFilteredTalks(talks.filter(talk => talk.title.toLocaleLowerCase().includes(filter.toLocaleLowerCase())))
   }, [filter]);
 
   return (

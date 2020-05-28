@@ -4,7 +4,7 @@
   top: 0;
   width: 100%;
 
-  .scrolled {
+  &.scrolled {
     @media (prefers-color-scheme: light) {
       background-color: $color-white;
     }

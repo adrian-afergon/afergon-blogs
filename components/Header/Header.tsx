@@ -25,7 +25,7 @@ export const Header: React.FC<HeaderProps> = ({title}) => {
         <FontAwesomeIcon icon={faBars} size="xs" />
       </button>}
       {(toggled || isLargeScreen) && <ul role="navigation">
-        <li><Link href={ApplicationRoutes.articles}>Articles</Link></li>
+        <li><Link href={ApplicationRoutes.articles}><a href={ApplicationRoutes.articles}>Articles</a></Link></li>
       </ul>}
 
     </header>

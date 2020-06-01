@@ -23,7 +23,7 @@ describe('Header', () => {
   });
 
   it("display the menu-button when is an small screen", () => {
-    window.resizeTo(MediaSizes.maxMedium, MediaSizes.maxMedium);
+    window.resizeTo(MediaSizes.maxMedium -1, MediaSizes.maxMedium);
     const view = render(<Header title={title} />);
     expect(view.queryByLabelText('menu')).toBeInTheDocument();
   });
@@ -35,7 +35,7 @@ describe('Header', () => {
   });
 
   it("shows the navigation bar when is hided and menu-button is clicked", () => {
-    window.resizeTo(MediaSizes.maxMedium, MediaSizes.maxMedium);
+    window.resizeTo(MediaSizes.maxMedium -1, MediaSizes.maxMedium);
     const view = render(<Header title={title} />);
     const menuButton = view.getByLabelText('menu');
     fireEvent.click(menuButton);
@@ -44,7 +44,7 @@ describe('Header', () => {
   });
 
   it("hides the navigation bar when is showed menu-button is clicked", () => {
-    window.resizeTo(MediaSizes.maxMedium, MediaSizes.maxMedium);
+    window.resizeTo(MediaSizes.maxMedium -1, MediaSizes.maxMedium);
     const view = render(<Header title={title} />);
     const menuButton = view.getByLabelText('menu');
     fireEvent.click(menuButton); // display

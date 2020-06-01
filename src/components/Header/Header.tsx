@@ -14,18 +14,22 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({title}) => {
   const [toggled, setToggled] = React.useState(false)
   const { isTop } = useScroll();
-  const { isLargeScreen } = useMedia();
+  const { isMediumScreen } = useMedia();
+  const handleToggle = () => setToggled(!toggled);
+
   return (
     <header className={`Header ${isTop ? '' : 'scrolled'}`}>
       <Link href={ApplicationRoutes.root}>{title}</Link>
-      {!isLargeScreen && <button
-        onClick={() => setToggled(!toggled)}
+      {!isMediumScreen && <button
+        onClick={handleToggle}
         className={`${toggled ? 'active' : '' }`}
         aria-label="menu">
         <FontAwesomeIcon icon={faBars} size="xs" />
       </button>}
-      {(toggled || isLargeScreen) && <ul role="navigation">
+      {(toggled || isMediumScreen) && <ul role="navigation" onClick={handleToggle}>
         <li><Link href={ApplicationRoutes.articles}><a href={ApplicationRoutes.articles}>Articles</a></Link></li>
+        <li><Link href={ApplicationRoutes.articles}><a href={ApplicationRoutes.articles}>Career</a></Link></li>
+        <li><Link href={ApplicationRoutes.articles}><a href={ApplicationRoutes.articles}>Calendar</a></Link></li>
       </ul>}
 
     </header>

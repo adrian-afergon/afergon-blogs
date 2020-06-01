@@ -3,6 +3,8 @@
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 1;
+  height: 2.4rem;
 
   &.scrolled {
     @media (prefers-color-scheme: light) {
@@ -15,22 +17,24 @@
   }
 
   a{
+    display: inline-block;
     text-decoration: none;
+    padding: .4rem .8rem;
+    font-style: italic;
   }
   button {
     cursor: pointer;
     float: right;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.4rem;
+    height: 2.4rem;
     border: 0;
     transition: $time-transition;
+    background-color: transparent;
     @media (prefers-color-scheme: light) {
-      background-color: $color-white;
       color: $color-black;
     }
 
     @media (prefers-color-scheme: dark) {
-      background-color: $color-black;
       color: $color-white;
     }
 
@@ -38,7 +42,6 @@
   button:hover, button:focus {
     outline: none;
   }
-
   button:hover, button.active {
     @media (prefers-color-scheme: light) {
       background-color: $color-white-broken;
@@ -54,31 +57,66 @@
     margin: 0;
     list-style: none;
     padding: 0;
+    top: 2.4rem;
+    position: absolute;
+    height: 100vh;
     @media (prefers-color-scheme: light) {
-      background-color: $color-white-broken;
+      background-color: $color-white-alpha;
     }
 
     @media (prefers-color-scheme: dark) {
-      background-color: $color-black-broken;
+      background-color: $color-black-alpha;
     }
 
     @media (min-width: $size-limit-medium) {
       background-color: transparent;
+      position: relative;
       float: right;
       width: auto;
+      height: auto;
+      display: flex;
+      top: 0;
     }
 
-    li:hover {
+    li{
       @media (prefers-color-scheme: light) {
-        background-color: $color-white;
+        background-color: $color-white-broken;
       }
 
       @media (prefers-color-scheme: dark) {
-        background-color: $color-black;
+        background-color: $color-black-broken;
+      }
+
+      @media (min-width: $size-limit-medium) {
+        background-color: transparent;
+      }
+
+
+      &:hover {
+        @media (prefers-color-scheme: light) {
+          background-color: $color-white;
+        }
+
+        @media (prefers-color-scheme: dark) {
+          background-color: $color-black;
+        }
+
+        @media (min-width: $size-limit-medium) {
+          @media (prefers-color-scheme: light) {
+            background-color: $color-white-broken;
+          }
+
+          @media (prefers-color-scheme: dark) {
+            background-color: $color-black-broken;
+          }
+        }
+
       }
     }
 
     a {
+      font-style: normal;
+      width: 100%;
       @media (prefers-color-scheme: light) {
         color: $color-black-broken;
       }

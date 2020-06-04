@@ -2,19 +2,20 @@ import * as React from 'react';
 import Head from 'next/head';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faExternalLinkAlt,
-  faPhotoVideo, faSearch
+  faPhotoVideo,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
-import './styles.scss';
+import './articles.scss';
 import { Header } from "../src/components/Header";
 import { Footer } from "../src/components/Footer";
 import { Post } from "../src/models/post";
 import { Talk } from "../src/models/talk";
 import { postsRepository } from "../src/repositories/posts-repository";
 import { talksRepository } from "../src/repositories/talks.repository";
+import { SearchBar } from "../src/components/SearchBar";
+import { ArticleCard } from "../src/components/ArticleCard";
 
 const Home: React.FC = () => {
   const [talks, setTalks] = React.useState<Talk[]>([]);
@@ -22,6 +23,7 @@ const Home: React.FC = () => {
   const [filteredTalks, setFilteredTalks] = React.useState<Talk[]>([]);
   const [filteredPosts, setFilteredPosts] = React.useState<Post[]>([]);
   const [filter, setFilter] = React.useState<string>('');
+  const [selectedTypes, setSelectedTypes] = React.useState<string[]>([]);
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFilter(event.target.value)
   }
@@ -44,11 +46,9 @@ const Home: React.FC = () => {
       </Head>
 
       <Header title={"Adrián Ferrera"}/>
-      <section className="search-bar">
-        <input type="text" name="Filter" placeholder="Filter" onChange={handleFilterChange}/>
-        <button><FontAwesomeIcon icon={faSearch}/></button>
-      </section>
+      <SearchBar types={['Posts', 'Talks']} onChangeSelectedTypes={setSelectedTypes} onChangeFilter={handleFilterChange} />
       <main>
+        <section className="posts">
         <p className="description">
           Temporary you can read my current posts in the following links:
         </p>
@@ -60,14 +60,12 @@ const Home: React.FC = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                {post.title}{" "}
-                {post.external && (
-                  <FontAwesomeIcon icon={faExternalLinkAlt} size="xs"/>
-                )}
+                <ArticleCard item={post} />
               </a>
             </li>
           ))}
         </ul>
+        </section>
         <p className="description">Or you can check my talks :</p>
         <ul>
           {filteredTalks.map((talk) => (

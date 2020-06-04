@@ -144,6 +144,9 @@ body {
     background-color: $color-black;
     color: $color-white;
   }
+
+  //background-color: #328cf5 !important;
+
 }
 
 * {
@@ -173,3 +176,26 @@ body {
     }
   }
 }
+
+.posts {
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+
+    @media (min-width: $size-limit-medium){
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+
+
+    li {
+      margin: .4rem;
+      //flex-flow: column nowrap;
+    }
+  }
+}
+

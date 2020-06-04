@@ -1,0 +1,168 @@
+@import 'pages/variables';
+
+.SearchBar{
+  display: flex;
+  width: 100%;
+  z-index: 0;
+  position: fixed;
+  top: 2.4rem;
+  font-size: 1.2rem;
+  box-shadow: $box-shadow;
+
+  @media (prefers-color-scheme: light) {
+    background-color: $color-white-broken;
+    color: $color-black-broken;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background-color: $color-black-broken;
+    color: $color-white-broken;
+  }
+
+  button {
+    border: 0;
+    outline: none;
+    color: $color-white;
+    padding: .4rem;
+    font-size: inherit;
+    cursor: pointer;
+    width:100%;
+    @media (prefers-color-scheme: light) {
+      background-color: $color-blue;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      background-color: $color-pink;
+    }
+  }
+
+  .type-filter{
+    position: relative;
+    width: 7rem;
+    ul {
+      border-radius: 0 0 5px 0;
+      list-style: none;
+      width: 210px;
+      padding: 1rem;
+      margin: 0;
+      position: absolute;
+      top: 2.4rem;
+      left: 0;
+      box-shadow: $box-shadow;
+      font-size: 1rem;
+      &::before {
+        content: "";
+        width: 100%;
+        height: .2rem;
+        position: absolute;
+        top: -.21rem;
+        left:0;
+        @media (prefers-color-scheme: light) {
+          background-color: $color-blue;
+        }
+        @media (prefers-color-scheme: dark) {
+          background-color: $color-pink;
+          }
+      }
+
+      @media (prefers-color-scheme: light) {
+        background-color: $color-white-broken;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        background-color: $color-black-broken;
+      }
+
+      h3{
+        font-weight: lighter;
+        margin: 0 0 .8rem 0;
+      }
+
+      li{
+        margin: .4rem 0;
+      }
+
+      label {
+        position: relative;
+        display: flex;
+        input {
+          display: none;
+          &:checked + .checkbox {
+            @media (prefers-color-scheme: light) {
+              background-color: $color-blue;
+            }
+
+            @media (prefers-color-scheme: dark) {
+              background-color: $color-pink;
+            }
+            svg {
+              opacity: 1;
+            }
+          }
+        }
+
+        .checkbox {
+          display:inline-block;
+          width: 1rem;
+          height: 1rem;
+          @media (prefers-color-scheme: light) {
+            background-color: $color-white;
+          }
+
+          @media (prefers-color-scheme: dark) {
+            background-color: $color-black;
+          }
+          transition: $time-transition background-color;
+          margin: .2rem .8rem .2rem .2rem;
+
+          svg {
+            opacity: 0;
+            position: absolute;
+            transition: $time-transition opacity;
+          }
+        }
+      }
+    }
+  }
+  .text-filter {
+    input {
+      padding: .4rem .8rem;
+
+      background-color: transparent;
+      color: inherit;
+      border: 0;
+      width: 100%;
+      font-size: inherit;
+      &:focus {
+        outline: none;
+      }
+      &::placeholder{
+        font-style: italic;
+      }
+
+      &:-webkit-autofill,
+      &:-webkit-autofill:hover,
+      &:-webkit-autofill:focus,
+      &:-webkit-autofill:active  {
+
+        @media (prefers-color-scheme: light) {
+          -webkit-text-fill-color: $color-black-broken;
+          -webkit-box-shadow: 0 0 0px 1000px $color-white-broken inset;
+        }
+
+        @media (prefers-color-scheme: dark) {
+          -webkit-text-fill-color: $color-white-broken;
+          -webkit-box-shadow: 0 0 0px 1000px $color-black-broken inset;
+        }
+      }
+
+    }
+
+    width: 100%;
+    display: flex;
+    svg {
+      margin: .4rem .8rem;
+      display: block;
+    }
+  }
+}

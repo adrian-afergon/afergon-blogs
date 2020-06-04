@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { render, RenderResult } from '@testing-library/react';
 import { ArticleCard} from './';
-import { Post } from "../../models/post";
 import { ArticleCardText } from "./ArticleCard";
+import { Article } from "../../models/article";
 
-const buildPost = ({
+const buildArticle = ({
   locale = 'irrelevant locale',
   title = 'irrelevant title',
   handle = 'irrelevant handle',
@@ -12,27 +12,29 @@ const buildPost = ({
   external = false,
   intro = 'irrelevant intro',
   link = 'irrelevant link',
-}: Partial<Post>): Post => ({
+  type = 'Post'
+}: Partial<Article>): Article => ({
   title,
   locale,
   link,
   intro,
   handle,
   external,
-  date
+  date,
+  type
 });
 
 describe('ArticleCard', () => {
   it('shows an external link', () => {
     const view: RenderResult = render(
-      <ArticleCard item={buildPost({external: true})}/>,
+      <ArticleCard item={buildArticle({external: true})}/>,
     );
     expect(view.queryByLabelText(ArticleCardText.EXTERNAL_LINK)).toBeInTheDocument();
   });
 
   it('hides an external link', () => {
     const view: RenderResult = render(
-      <ArticleCard item={buildPost({})}/>,
+      <ArticleCard item={buildArticle({})}/>,
     );
     expect(view.queryByLabelText(ArticleCardText.EXTERNAL_LINK)).not.toBeInTheDocument();
   });

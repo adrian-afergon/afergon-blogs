@@ -5,8 +5,8 @@ import { SearchBar} from './';
 describe('SearchBar', () => {
   it('should display the default message', () => {
     const view: RenderResult = render(
-      <SearchBar/>,
+      <SearchBar types={[]} onChangeSelectedTypes={jest.fn()} onChangeFilter={jest.fn()}/>,
     );
-    expect(view.queryByText('Hello from SearchBar!')).toBeTruthy();
+    expect(view.queryByText('Hello from SearchBar!')).not.toBeInTheDocument();
   });
 });

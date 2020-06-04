@@ -1,5 +1,13 @@
 @import 'pages/variables';
 
+.image-wrapper {
+  width: 320px;
+  img {
+    width: 100%;
+    border-radius: 100%;
+  }
+}
+
 .LinkButton {
   padding: 1rem;
   font-size: 2rem;

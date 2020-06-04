@@ -6,7 +6,8 @@
       "date": "Jun 16, 2018",
       "locale": "spanish",
       "link": "https://medium.com/canariasjs/estructurando-datos-en-cloud-firestore-3dce2cb1ceae",
-      "external": true
+      "external": true,
+      "type": "Post"
     },
     {
       "title": "Cómo actualizar a Angular 6 y no morir en el intento",
@@ -14,7 +15,8 @@
       "date": "Jun 2, 2018",
       "locale": "spanish",
       "link": "https://medium.com/@Afergon/c%C3%B3mo-actualizar-a-angular-6-y-no-morir-en-el-intento-37e63e31bc94",
-      "external": true
+      "external": true,
+      "type": "Post"
     },
     {
       "title": "TDD: El bueno, el malo y el testeado",
@@ -22,7 +24,8 @@
       "date": "Jun 17, 2018",
       "locale": "spanish",
       "link": "https://medium.com/lean-mind/tdd-el-bueno-el-malo-y-el-testeado-be5b7202e915",
-      "external": true
+      "external": true,
+      "type": "Post"
     },
     {
       "title": "Creando React Native Apps con Enzyme",
@@ -30,42 +33,48 @@
       "date": "Sep 4, 2018",
       "locale": "spanish",
       "link": "https://medium.com/lean-mind/creando-react-native-apps-con-enzyme-f29d8518b2c4",
-      "external": true
+      "external": true,
+      "type": "Post"
     },    {
       "title": "Why Typescript?",
       "intro": "",
       "date": "Mar 25, 2019",
       "locale": "spanish",
       "link": "https://medium.com/lean-mind/why-typescript-83e5b29d5120",
-      "external": true
+      "external": true,
+      "type": "Post"
     },    {
       "title": "Make more human-readeable test",
       "intro": "",
       "date": "Apr 21, 2019",
       "locale": "english",
       "link": "https://medium.com/lean-mind/make-more-human-readeable-test-14d4230898c",
-      "external": true
+      "external": true,
+      "type": "Post"
     },    {
       "title": "Argumentos en docker, cómo parametrizar contenededores",
       "intro": "",
       "date": "Mar 6, 2019",
       "locale": "spanish",
       "link": "https://leanmind.es/es/blog/parametrizando-contenedores-docker/",
-      "external": true
+      "external": true,
+      "type": "Post"
     },    {
       "title": "React custom hooks: diseño y testing",
       "intro": "",
       "date": "Apr 20, 2020",
       "locale": "spanish",
       "link": "https://leanmind.es/es/blog/testing_react_custom_hooks/",
-      "external": true
+      "external": true,
+      "type": "Post"
     },    {
       "title": "Live coding: diseñando componentes React con TDD",
       "intro": "",
       "date": "Apr 27, 2020",
       "locale": "spanish",
       "link": "https://leanmind.es/es/blog/desarrollando-componentes-react-con-tdd/",
-      "external": true
+      "external": true,
+      "type": "Post"
     }
   ],
   "talks": [
@@ -77,7 +86,8 @@
       "locale": "spanish",
       "slides": "https://slides.com/afergon/deck#/",
       "video": "",
-      "external": true
+      "external": true,
+      "type": "Talk"
     },
     {
       "title": "Redux on a leash",
@@ -87,7 +97,8 @@
       "locale": "spanish",
       "slides": "https://slides.com/afergon/redux-on-a-leach-2",
       "video": "",
-      "external": true
+      "external": true,
+      "type": "Talk"
     },
     {
       "title": "La programación es el presente",
@@ -97,7 +108,8 @@
       "locale": "spanish",
       "slides": "https://slides.com/afergon/deck-3#/",
       "video": "",
-      "external": true
+      "external": true,
+      "type": "Talk"
     },
     {
       "title": "Test Driven Development",
@@ -107,7 +119,8 @@
       "locale": "spanish",
       "slides": "https://slides.com/afergon/test-driven-development#/",
       "video": "",
-      "external": true
+      "external": true,
+      "type": "Talk"
     },
     {
       "title": "Conceptos de arquitectura",
@@ -117,7 +130,8 @@
       "locale": "spanish",
       "slides": "https://slides.com/afergon/architecture#/",
       "video": "",
-      "external": true
+      "external": true,
+      "type": "Talk"
     },
     {
       "title": "Fireproof Components",
@@ -127,7 +141,8 @@
       "locale": "spanish",
       "slides": "https://slides.com/afergon/fireproof-components#/",
       "video": "https://www.youtube.com/watch?v=cu8eGBuP2pU",
-      "external": true
+      "external": true,
+      "type": "Talk"
     },
     {
       "title": "Let's test",
@@ -137,7 +152,8 @@
       "locale": "spanish",
       "slides": "https://slides.com/afergon/lets-test#/",
       "video": "",
-      "external": true
+      "external": true,
+      "type": "Talk"
     },
     {
       "title": "Testing custom hooks in React",
@@ -147,7 +163,8 @@
       "locale": "spanish",
       "slides": "https://slides.com/afergon/test-custom-hooks#/",
       "video": "",
-      "external": true
+      "external": true,
+      "type": "Talk"
     }
   ]
 }

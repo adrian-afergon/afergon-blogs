@@ -6,4 +6,5 @@ export interface Post {
   link: string;
   external: boolean;
   handle?: string;
+  type: string;
 }

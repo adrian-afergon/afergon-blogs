@@ -28,8 +28,6 @@ export const Header: React.FC<HeaderProps> = ({title}) => {
       </button>}
       {(toggled || isMediumScreen) && <ul role="navigation" onClick={handleToggle}>
         <li><Link href={ApplicationRoutes.articles}><a href={ApplicationRoutes.articles}>Articles</a></Link></li>
-        <li><Link href={ApplicationRoutes.articles}><a href={ApplicationRoutes.articles}>Career</a></Link></li>
-        <li><Link href={ApplicationRoutes.articles}><a href={ApplicationRoutes.articles}>Calendar</a></Link></li>
       </ul>}
 
     </header>

@@ -4,8 +4,9 @@ export interface Talk {
   places: string[];
   date: Date | string;
   locale: string;
-  slides: string;
-  video: string;
+  link: string;
+  video?: string;
   external: boolean;
   handle?: string;
+  type: string;
 }

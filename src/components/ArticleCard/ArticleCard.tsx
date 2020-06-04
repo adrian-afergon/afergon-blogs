@@ -1,16 +1,19 @@
 import * as React from 'react';
 import './ArticleCard.scss';
-import { Talk } from "../../models/talk";
-import { Post } from '../../models/post';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { faExternalLinkAlt, faPhotoVideo } from "@fortawesome/free-solid-svg-icons";
+import { faYoutube } from "@fortawesome/free-brands-svg-icons";
+import Link from "next/link";
+import { Article } from "../../models/article";
 
 interface ArticleCardProps {
-  item: Post | Talk
+  item: Article
 }
 
 export enum ArticleCardText {
-  EXTERNAL_LINK = 'external link'
+  EXTERNAL_LINK = 'external link',
+  VIDEO_LINK = 'video link',
+  SLIDES_LINK = 'slides link'
 }
 
 export const ArticleCard: React.FC<ArticleCardProps> = ({item}) => (
@@ -24,12 +27,22 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({item}) => (
     </section>
     <section className="card-footer">
       <div className="locale">{item.locale}</div>
-
+      {/*{"video" in item && item.video && (*/}
+      {/*  <div className="external">*/}
+      {/*    <Link href={item.video}>*/}
+      {/*      <a href={item.video} target="_blank">*/}
+      {/*        Watch the video*/}
+      {/*        <FontAwesomeIcon icon={faYoutube} size="xs" aria-label={ArticleCardText.VIDEO_LINK}/>*/}
+      {/*      </a>*/}
+      {/*    </Link>*/}
+      {/*  </div>*/}
+      {/*)}*/}
       {item.external && (
         <div className="external">
           <FontAwesomeIcon icon={faExternalLinkAlt} size="xs" aria-label={ArticleCardText.EXTERNAL_LINK} />
         </div>
       )}
+
     </section>
   </article>
 );

@@ -1,94 +1,69 @@
 import * as React from 'react';
 import Head from 'next/head';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faPhotoVideo,
-} from "@fortawesome/free-solid-svg-icons";
-import {
-  faYoutube,
-} from '@fortawesome/free-brands-svg-icons';
 import './articles.scss';
-import { Header } from "../src/components/Header";
-import { Footer } from "../src/components/Footer";
-import { Post } from "../src/models/post";
-import { Talk } from "../src/models/talk";
 import { postsRepository } from "../src/repositories/posts-repository";
 import { talksRepository } from "../src/repositories/talks.repository";
 import { SearchBar } from "../src/components/SearchBar";
 import { ArticleCard } from "../src/components/ArticleCard";
+import { Article } from "../src/models/article";
+import { Layout } from "../src/components/Layout";
 
-const Home: React.FC = () => {
-  const [talks, setTalks] = React.useState<Talk[]>([]);
-  const [posts, setPosts] = React.useState<Post[]>([]);
-  const [filteredTalks, setFilteredTalks] = React.useState<Talk[]>([]);
-  const [filteredPosts, setFilteredPosts] = React.useState<Post[]>([]);
+const Articles: React.FC = () => {
+  const [articles, setArticles] = React.useState<Article[]>([]);
+  const [filteredArticles, setFilteredArticles] = React.useState<Article[]>([]);
   const [filter, setFilter] = React.useState<string>('');
   const [selectedTypes, setSelectedTypes] = React.useState<string[]>([]);
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFilter(event.target.value)
   }
 
+  const articleIncludeText = (article: Article) => article.title
+    .toLocaleLowerCase()
+    .includes(filter.toLocaleLowerCase());
+
+  const articleHasSelectedType = (article: Article) => selectedTypes.length === 0 || selectedTypes.includes(article.type)
+
+  const matchFilters = (article: Article) => articleIncludeText(article) && articleHasSelectedType(article);
+
   React.useEffect(() => {
-    postsRepository.getPosts().then((data) => {setPosts(data); setFilteredPosts(data); });
-    talksRepository.getTalks().then((data) => {setTalks(data); setFilteredTalks(data); });
+    Promise.all<Article[]>([
+      postsRepository.getPosts(),
+      talksRepository.getTalks()
+    ]).then(([posts, talks]) => {
+      setArticles([...posts, ...talks]);
+      setFilteredArticles([...posts, ...talks]);
+    });
   }, []);
 
   React.useEffect(() => {
-    setFilteredPosts(posts.filter(post => post.title.toLocaleLowerCase().includes(filter.toLocaleLowerCase())))
-    setFilteredTalks(talks.filter(talk => talk.title.toLocaleLowerCase().includes(filter.toLocaleLowerCase())))
-  }, [filter]);
+    setFilteredArticles(articles
+      .filter(matchFilters))
+  }, [filter, selectedTypes]);
 
   return (
-    <div className="container">
+    <Layout>
       <Head>
         <title>Adrián Ferrera - Articles</title>
         <link rel="icon" href="/favicon.ico"/>
       </Head>
-
-      <Header title={"Adrián Ferrera"}/>
-      <SearchBar types={['Posts', 'Talks']} onChangeSelectedTypes={setSelectedTypes} onChangeFilter={handleFilterChange} />
-      <main>
-        <section className="posts">
-        <p className="description">
-          Temporary you can read my current posts in the following links:
-        </p>
+      <SearchBar types={['Post', 'Talk']} onChangeSelectedTypes={setSelectedTypes} onChangeFilter={handleFilterChange} />
+      <section className="articles">
         <ul>
-          {filteredPosts.map((post) => (
-            <li key={post.title}>
+          {filteredArticles.map((article) => (
+            <li key={article.title}>
               <a
-                href={post.link}
+                href={article.link}
                 target="_blank"
                 rel="noreferrer"
               >
-                <ArticleCard item={post} />
+                <ArticleCard item={article} />
               </a>
             </li>
           ))}
         </ul>
-        </section>
-        <p className="description">Or you can check my talks :</p>
-        <ul>
-          {filteredTalks.map((talk) => (
-            <li key={talk.title}>
-              <a
-                href={talk.video ? talk.video : talk.slides}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {talk.title}
-                <FontAwesomeIcon
-                  icon={talk.video ? faYoutube : faPhotoVideo}
-                  size="xs"
-                />
-              </a>
-            </li>
-          ))}
-        </ul>
-      </main>
-
-      <Footer/>
-    </div>
+      </section>
+    </Layout>
   );
 };
 
-export default Home;
+export default Articles;

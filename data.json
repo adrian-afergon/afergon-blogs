@@ -84,7 +84,7 @@
       "places": ["JsDayCan 2018"],
       "date": "Nov 10, 2018",
       "locale": "spanish",
-      "slides": "https://slides.com/afergon/deck#/",
+      "link": "https://slides.com/afergon/deck#/",
       "video": "",
       "external": true,
       "type": "Talk"
@@ -95,7 +95,7 @@
       "places":["TLP Winter", "GDG Gran Canaria"],
       "date": "Feb, 2019",
       "locale": "spanish",
-      "slides": "https://slides.com/afergon/redux-on-a-leach-2",
+      "link": "https://slides.com/afergon/redux-on-a-leach-2",
       "video": "",
       "external": true,
       "type": "Talk"
@@ -106,7 +106,7 @@
       "places": ["CIFP César Manríque"],
       "date": "Feb, 2019",
       "locale": "spanish",
-      "slides": "https://slides.com/afergon/deck-3#/",
+      "link": "https://slides.com/afergon/deck-3#/",
       "video": "",
       "external": true,
       "type": "Talk"
@@ -117,7 +117,7 @@
       "places": ["TLP Summer 2019"],
       "date": "Jul, 2019",
       "locale": "spanish",
-      "slides": "https://slides.com/afergon/test-driven-development#/",
+      "link": "https://slides.com/afergon/test-driven-development#/",
       "video": "",
       "external": true,
       "type": "Talk"
@@ -128,7 +128,7 @@
       "places": ["CIFP César Manrique 2019"],
       "date": "Nov, 2019",
       "locale": "spanish",
-      "slides": "https://slides.com/afergon/architecture#/",
+      "link": "https://slides.com/afergon/architecture#/",
       "video": "",
       "external": true,
       "type": "Talk"
@@ -139,7 +139,7 @@
       "places": ["JSDay Can 2019"],
       "date": "Nov 10, 2019",
       "locale": "spanish",
-      "slides": "https://slides.com/afergon/fireproof-components#/",
+      "link": "https://slides.com/afergon/fireproof-components#/",
       "video": "https://www.youtube.com/watch?v=cu8eGBuP2pU",
       "external": true,
       "type": "Talk"
@@ -150,7 +150,7 @@
       "places": ["Secuoyas"],
       "date": "Nov, 2019",
       "locale": "spanish",
-      "slides": "https://slides.com/afergon/lets-test#/",
+      "link": "https://slides.com/afergon/lets-test#/",
       "video": "",
       "external": true,
       "type": "Talk"
@@ -161,7 +161,7 @@
       "places": ["Guide Smiths"],
       "date": "May, 2020",
       "locale": "spanish",
-      "slides": "https://slides.com/afergon/test-custom-hooks#/",
+      "link": "https://slides.com/afergon/test-custom-hooks#/",
       "video": "",
       "external": true,
       "type": "Talk"

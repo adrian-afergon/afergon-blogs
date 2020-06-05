@@ -8,7 +8,6 @@ const stories = storiesOf('ArticleCard', module);
 stories.addDecorator(withKnobs);
 
 stories.add('with article', () => {
-  const value = text('Text value', 'Hello from ArticleCard!!');
 
   const article: Article = {
     date: text('Date', 'date'),

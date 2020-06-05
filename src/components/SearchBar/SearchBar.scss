@@ -50,6 +50,11 @@
       left: 0;
       box-shadow: $box-shadow;
       font-size: 1rem;
+      transition: $time-transition box-shadow;
+      &:hover {
+        box-shadow: $box-shadow-hover;
+      }
+
       &::before {
         content: "";
         width: 100%;
@@ -102,6 +107,7 @@
         }
 
         .checkbox {
+          color: $color-white;
           display:inline-block;
           width: 1rem;
           height: 1rem;

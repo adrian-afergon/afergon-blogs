@@ -75,6 +75,14 @@
       "link": "https://leanmind.es/es/blog/desarrollando-componentes-react-con-tdd/",
       "external": true,
       "type": "Post"
+    },    {
+      "title": "TDD en React con TypeScript",
+      "intro": "",
+      "date": "Jun 29, 2020",
+      "locale": "spanish",
+      "link": "https://https://softwarecrafters.io/react/tdd-react-typescript/",
+      "external": true,
+      "type": "Post"
     }
   ],
   "talks": [

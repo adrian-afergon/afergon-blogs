@@ -19,7 +19,7 @@ export const Header: React.FC<HeaderProps> = ({title}) => {
 
   return (
     <header className={`Header ${isTop ? '' : 'scrolled'}`}>
-      <Link href={ApplicationRoutes.root}>{title}</Link>
+      <Link href={ApplicationRoutes.root}><a href={ApplicationRoutes.root}>{title}</a></Link>
       {!isMediumScreen && <button
         onClick={handleToggle}
         className={`${toggled ? 'active' : '' }`}

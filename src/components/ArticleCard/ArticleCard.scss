@@ -12,15 +12,8 @@
   &:hover {
     box-shadow: $box-shadow-hover;
   }
-  @media (prefers-color-scheme: light) {
-    background-color: $color-white-broken;
-    color: $color-black;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    background-color: $color-black-broken;
-    color: $color-white;
-  }
+  background-color: var(--bg-color-broken);
+  color: var(--font-color);
 
   @media (min-width: $size-limit-medium) {
     width: 320px;
@@ -33,13 +26,7 @@
   }
 
   p{
-    @media (prefers-color-scheme: light) {
-      color: $color-black-broken;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      color: $color-white-broken;
-    }
+    color: var(--font-color-broken);
   }
 
   .date {

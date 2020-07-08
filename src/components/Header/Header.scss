@@ -5,15 +5,8 @@
   width: 100%;
   z-index: 1;
   height: 2.4rem;
-
   &.scrolled {
-    @media (prefers-color-scheme: light) {
-      background-color: $color-white;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      background-color: $color-black;
-    }
+    background-color: var(--bg-color);
   }
 
   a{
@@ -30,26 +23,13 @@
     border: 0;
     transition: $time-transition;
     background-color: transparent;
-    @media (prefers-color-scheme: light) {
-      color: $color-black;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      color: $color-white;
-    }
-
+    color: var(--font-color);
   }
   button:hover, button:focus {
     outline: none;
   }
   button:hover, button.active {
-    @media (prefers-color-scheme: light) {
-      background-color: $color-white-broken;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      background-color: $color-black-broken;
-    }
+    background-color: var(--bg-color-broken);
   }
 
   ul {
@@ -60,13 +40,7 @@
     top: 2.4rem;
     position: absolute;
     height: 100vh;
-    @media (prefers-color-scheme: light) {
-      background-color: $color-white-alpha;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      background-color: $color-black-alpha;
-    }
+    background-color: var(--bg-color-alpha);
 
     @media (min-width: $size-limit-medium) {
       background-color: transparent;
@@ -79,36 +53,19 @@
     }
 
     li{
-      @media (prefers-color-scheme: light) {
-        background-color: $color-white-broken;
-      }
-
-      @media (prefers-color-scheme: dark) {
-        background-color: $color-black-broken;
-      }
+      background-color: var(--bg-color-broken);
 
       @media (min-width: $size-limit-medium) {
         background-color: transparent;
       }
+      transition: $time-transition;
 
 
       &:hover {
-        @media (prefers-color-scheme: light) {
-          background-color: $color-white;
-        }
-
-        @media (prefers-color-scheme: dark) {
-          background-color: $color-black;
-        }
+        background-color: var(--bg-color);
 
         @media (min-width: $size-limit-medium) {
-          @media (prefers-color-scheme: light) {
-            background-color: $color-white-broken;
-          }
-
-          @media (prefers-color-scheme: dark) {
-            background-color: $color-black-broken;
-          }
+          background-color: var(--bg-color-broken);
         }
 
       }
@@ -117,13 +74,8 @@
     a {
       font-style: normal;
       width: 100%;
-      @media (prefers-color-scheme: light) {
-        color: $color-black-broken;
-      }
-
-      @media (prefers-color-scheme: dark) {
-        color: $color-white-broken;
-      }
+      height: 2.4rem;
+      color: var(--font-color-broken);
     }
   }
 }

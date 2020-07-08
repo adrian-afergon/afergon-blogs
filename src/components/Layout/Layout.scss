@@ -6,15 +6,8 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
   Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  @media (prefers-color-scheme: light) {
-    background-color: $color-white;
-    color: $color-black;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    background-color: $color-black;
-    color: $color-white;
-  }
+  background-color: var(--bg-color);
+  color: var(--font-color);
 }
 
 * {

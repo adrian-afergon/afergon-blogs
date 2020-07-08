@@ -12,22 +12,10 @@
   padding: 1rem;
   font-size: 2rem;
   transition: $time-transition;
-  @media (prefers-color-scheme: light) {
-    background-color: $color-blue;
-    color: $color-white;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    background-color: $color-pink;
-    color: $color-white;
-  }
+  background-color: var(--primary-color);
+  color: var(--font-color-light);
 
   &:hover {
-    @media (prefers-color-scheme: light) {
-      background-color: $color-blue-broken;
-    }
-    @media (prefers-color-scheme: dark) {
-      background-color: $color-pink-broken;
-    }
+    background-color: var(--primary-color-broken);
   }
 }

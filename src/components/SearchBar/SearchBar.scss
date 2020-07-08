@@ -8,16 +8,8 @@
   top: 2.4rem;
   font-size: 1.2rem;
   box-shadow: $box-shadow;
-
-  @media (prefers-color-scheme: light) {
-    background-color: $color-white-broken;
-    color: $color-black-broken;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    background-color: $color-black-broken;
-    color: $color-white-broken;
-  }
+  background-color: var(--bg-color-broken);
+  color: var(--font-color-broken);
 
   button {
     border: 0;
@@ -27,13 +19,7 @@
     font-size: inherit;
     cursor: pointer;
     width:100%;
-    @media (prefers-color-scheme: light) {
-      background-color: $color-blue;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      background-color: $color-pink;
-    }
+    background-color: var(--primary-color);
   }
 
   .type-filter{
@@ -62,21 +48,10 @@
         position: absolute;
         top: -.21rem;
         left:0;
-        @media (prefers-color-scheme: light) {
-          background-color: $color-blue;
-        }
-        @media (prefers-color-scheme: dark) {
-          background-color: $color-pink;
-          }
+        background-color: var(--primary-color);
       }
 
-      @media (prefers-color-scheme: light) {
-        background-color: $color-white-broken;
-      }
-
-      @media (prefers-color-scheme: dark) {
-        background-color: $color-black-broken;
-      }
+      background-color: var(--bg-color-broken);
 
       h3{
         font-weight: lighter;
@@ -93,13 +68,7 @@
         input {
           display: none;
           &:checked + .checkbox {
-            @media (prefers-color-scheme: light) {
-              background-color: $color-blue;
-            }
-
-            @media (prefers-color-scheme: dark) {
-              background-color: $color-pink;
-            }
+            background-color: var(--primary-color);
             svg {
               opacity: 1;
             }
@@ -111,13 +80,7 @@
           display:inline-block;
           width: 1rem;
           height: 1rem;
-          @media (prefers-color-scheme: light) {
-            background-color: $color-white;
-          }
-
-          @media (prefers-color-scheme: dark) {
-            background-color: $color-black;
-          }
+          background-color: var(--bg-color);
           transition: $time-transition background-color;
           margin: .2rem .8rem .2rem .2rem;
 
@@ -150,18 +113,9 @@
       &:-webkit-autofill:hover,
       &:-webkit-autofill:focus,
       &:-webkit-autofill:active  {
-
-        @media (prefers-color-scheme: light) {
-          -webkit-text-fill-color: $color-black-broken;
-          -webkit-box-shadow: 0 0 0px 1000px $color-white-broken inset;
-        }
-
-        @media (prefers-color-scheme: dark) {
-          -webkit-text-fill-color: $color-white-broken;
-          -webkit-box-shadow: 0 0 0px 1000px $color-black-broken inset;
-        }
+        -webkit-text-fill-color: var(--font-color-broken);
+        -webkit-box-shadow: 0 0 0 1000px var(--bg-color-broken) inset;
       }
-
     }
 
     width: 100%;

@@ -2,10 +2,11 @@ import * as React from 'react';
 import './Header.scss';
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { useMedia } from "../../hooks/useMedia";
 import { useScroll } from "../../hooks/useScroll";
 import { ApplicationRoutes } from "../../ApplicationRoutes";
+import { useDarkMode } from "../../hooks/useDarkMode/useDarkMode";
 
 interface HeaderProps {
   title: string
@@ -16,6 +17,7 @@ export const Header: React.FC<HeaderProps> = ({title}) => {
   const { isTop } = useScroll();
   const { isMediumScreen } = useMedia();
   const handleToggle = () => setToggled(!toggled);
+  const { isDarkMode, changeMode } = useDarkMode();
 
   return (
     <header className={`Header ${isTop ? '' : 'scrolled'}`}>
@@ -28,7 +30,9 @@ export const Header: React.FC<HeaderProps> = ({title}) => {
       </button>}
       {(toggled || isMediumScreen) && <ul role="navigation" onClick={handleToggle}>
         <li><Link href={ApplicationRoutes.articles}><a href={ApplicationRoutes.articles}>Articles</a></Link></li>
+        <li><a href={ApplicationRoutes.articles} target="_blank">Newsletter</a></li>
       </ul>}
+      <button onClick={changeMode}><FontAwesomeIcon icon={isDarkMode ? faMoon : faSun} /></button>
 
     </header>
   );

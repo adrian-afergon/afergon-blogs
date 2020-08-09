@@ -8,6 +8,7 @@ body {
   Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: var(--bg-color);
   color: var(--font-color);
+  transition: color $time-transition, background-color $time-transition;
 }
 
 * {

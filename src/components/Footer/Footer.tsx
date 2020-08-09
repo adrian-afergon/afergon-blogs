@@ -5,11 +5,11 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedinIn, faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 export const Footer: React.FC<{}> = () => (
-  <footer>
+  <footer className="Footer">
     <ul>
       <li>
         <a href="mailto:adrian.afergon@gmail.com">
-          <FontAwesomeIcon icon={faEnvelope} size="sm" />
+          <span className="icon-wrapper"><FontAwesomeIcon icon={faEnvelope} size="sm" /></span>
           Contact with me
         </a>
       </li>
@@ -19,7 +19,7 @@ export const Footer: React.FC<{}> = () => (
           rel="noreferrer"
           href="https://github.com/adrian-afergon"
         >
-          <FontAwesomeIcon icon={faGithub} size="sm" /> Github
+          <span className="icon-wrapper"><FontAwesomeIcon icon={faGithub} size="sm" /></span> Github
         </a>
       </li>
       <li>
@@ -28,7 +28,7 @@ export const Footer: React.FC<{}> = () => (
           rel="noreferrer"
           href="https://twitter.com/AdrianFerrera91"
         >
-          <FontAwesomeIcon icon={faTwitter} size="sm" /> Twiter
+          <span className="icon-wrapper"><FontAwesomeIcon icon={faTwitter} size="sm" /></span> Twiter
         </a>
       </li>
       <li>
@@ -37,7 +37,7 @@ export const Footer: React.FC<{}> = () => (
           rel="noreferrer"
           href="https://www.linkedin.com/in/afergon/"
         >
-          <FontAwesomeIcon icon={faLinkedinIn} size="sm" /> LinkedIn
+          <span className="icon-wrapper"><FontAwesomeIcon icon={faLinkedinIn} size="sm" /></span> LinkedIn
         </a>
       </li>
     </ul>

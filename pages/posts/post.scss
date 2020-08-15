@@ -1,6 +1,8 @@
+@import '../variables';
 article {
 
-  max-width: 720px;
+  display: grid;
+  max-width: $size-limit-small;
   margin: auto;
 
   h1, h2, h3, h4 {

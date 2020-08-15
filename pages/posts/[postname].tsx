@@ -4,6 +4,7 @@ import Head from 'next/head'
 import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
 import { Layout } from "../../src/components/Layout";
+import { CodeBlock } from "../../src/components/CodeBlock";
 
 interface PostPageProps {
   metadata: any,
@@ -19,7 +20,7 @@ const PostPage:React.FC<PostPageProps> = ({ metadata, markdownBody }) => {
         <title>{metadata.author} - {metadata.title}</title>
       </Head>
       <article>
-        <ReactMarkdown source={markdownBody} />
+        <ReactMarkdown source={markdownBody} renderers={{ code: CodeBlock }}/>
       </article>
     </Layout>
   )

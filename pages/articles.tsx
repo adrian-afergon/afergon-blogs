@@ -1,12 +1,11 @@
 import * as React from 'react';
 import Head from 'next/head';
 import './articles.scss';
-import { postsRepository } from "../src/repositories/posts-repository";
-import { talksRepository } from "../src/repositories/talks.repository";
 import { SearchBar } from "../src/components/SearchBar";
 import { ArticleCard } from "../src/components/ArticleCard";
 import { Article } from "../src/models/article";
 import { Layout } from "../src/components/Layout";
+import { RepositoryContext } from "../src/contexts/repositories.context";
 
 const Articles: React.FC = () => {
   const [articles, setArticles] = React.useState<Article[]>([]);
@@ -16,6 +15,8 @@ const Articles: React.FC = () => {
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFilter(event.target.value)
   }
+
+  const {postsRepository, talksRepository} = React.useContext(RepositoryContext)
 
   const articleIncludeText = (article: Article) => article.title
     .toLocaleLowerCase()

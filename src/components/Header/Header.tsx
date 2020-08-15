@@ -30,6 +30,7 @@ export const Header: React.FC<HeaderProps> = ({title}) => {
       </button>}
       {(toggled || isMediumScreen) && <ul role="navigation" onClick={handleToggle}>
         <li><Link href={ApplicationRoutes.articles}><a href={ApplicationRoutes.articles}>Articles</a></Link></li>
+        <li><Link href={ApplicationRoutes.resources}><a href={ApplicationRoutes.resources}>Resources</a></Link></li>
         {/*<li><a href={ApplicationRoutes.articles} target="_blank">Newsletter</a></li>*/}
       </ul>}
       <button onClick={changeMode}><FontAwesomeIcon icon={isDarkMode ? faMoon : faSun} /></button>

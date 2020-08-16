@@ -1,4 +1,4 @@
 ---
-to: <%= path %>/<%= name %>/home.tsx
+to: <%= path %>/<%= name %>/index.tsx
 ---
 export { <%= name %> } from './<%= name %>';

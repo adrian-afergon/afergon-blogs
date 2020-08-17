@@ -21,14 +21,16 @@
     padding: 1rem;
 
     @media (min-width: $size-limit-medium) {
-      flex-direction: row;
+      display:block;
+      text-align: center;
     }
 
     li{
       text-align: left;
 
       @media (min-width: $size-limit-medium) {
-        flex: 1;
+        display: inline-block;
+        margin: 0 20px;
       }
 
       a {

@@ -1,6 +1,6 @@
-@import './variables';
+@import 'pages/variables';
 
-.articles {
+.resources {
   ul {
     list-style: none;
     display: flex;
@@ -18,4 +18,3 @@
     }
   }
 }
-

@@ -1,6 +1,12 @@
 const path = require('path');
 module.exports = {
-  stories: ['../src/components/**/**/*.stories.tsx'],
+  stories: ['../src/components/**/**/*.stories.@tsx'],
+  addons: [
+    'storybook-dark-mode/register',
+    '@storybook/addon-a11y/register',
+    '@storybook/addon-knobs/register',
+    '@storybook/addon-actions/register'
+  ],
   webpackFinal: async config => {
     config.module.rules.push({
       test: /\.(ts|tsx)$/,

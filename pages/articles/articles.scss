@@ -1,0 +1,21 @@
+@import 'pages/variables';
+
+.articles {
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+
+    @media (min-width: $size-limit-medium){
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    li {
+      margin: .4rem;
+    }
+  }
+}
+

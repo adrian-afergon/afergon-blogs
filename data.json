@@ -182,5 +182,21 @@
       "external": true,
       "type": "Talk"
     }
+  ],
+  "resources": [
+    {
+      "title": "Google tests",
+      "image": "https://natstalghia.stream/wp-content/uploads/2020/03/google-cloud-developers-cheat-sheet-1200x800.png",
+      "date": "Aug. 2020",
+      "link": "https://natstalghia.stream/wp-content/uploads/2020/03/google-cloud-developers-cheat-sheet-1200x800.png",
+      "external": false
+    },
+    {
+      "title": "Cheat Sheet: Functional Operators, Array Refactoring Patterns",
+      "image": "/resources/cheat-sheet-arrays.png",
+      "date": "Aug. 2020",
+      "link": "/resources/cheat-sheet-arrays.png",
+      "external": false
+    }
   ]
 }

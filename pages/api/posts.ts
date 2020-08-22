@@ -1,6 +1,7 @@
+import { NextApiRequest, NextApiResponse } from 'next'
 import firebase from '../../lib/firebase';
 
-export default (req: any, res: any) => {
+export default (req: NextApiRequest, res: NextApiResponse) => {
   firebase
     .ref('/posts')
     .once('value')

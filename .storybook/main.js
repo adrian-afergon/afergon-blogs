@@ -1,6 +1,6 @@
 const path = require('path');
 module.exports = {
-  stories: ['../src/components/**/**/*.stories.@tsx'],
+  stories: ['../src/components/**/**/*.stories.tsx'],
   addons: [
     'storybook-dark-mode/register',
     '@storybook/addon-a11y/register',

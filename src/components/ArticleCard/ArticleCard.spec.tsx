@@ -2,27 +2,7 @@ import * as React from 'react';
 import { render, RenderResult } from '@testing-library/react';
 import { ArticleCard} from './';
 import { ArticleCardText } from "./ArticleCard";
-import { Article } from "../../models/article";
-
-const buildArticle = ({
-  locale = 'irrelevant locale',
-  title = 'irrelevant title',
-  handle = 'irrelevant handle',
-  date = '0, Jan 2020',
-  external = false,
-  intro = 'irrelevant intro',
-  link = 'irrelevant link',
-  type = 'Post'
-}: Partial<Article>): Article => ({
-  title,
-  locale,
-  link,
-  intro,
-  handle,
-  external,
-  date,
-  type
-});
+import { buildArticle } from "../../_helpers/builders/build-article";
 
 describe('ArticleCard', () => {
   it('shows an external link', () => {

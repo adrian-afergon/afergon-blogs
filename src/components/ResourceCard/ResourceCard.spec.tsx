@@ -2,20 +2,7 @@ import * as React from 'react';
 import { render, RenderResult } from '@testing-library/react';
 import { ResourceCard} from './ResourceCard';
 import { Resource } from "../../models/resource";
-
-const buildResource = ({
-  date = 'irrelevant date',
-  external = false,
-  image = 'irrelevant url',
-  link = 'irrelevant link',
-  title = 'irrelevant title',
-}: Partial<Resource>): Resource => ({
-  link,
-  date,
-  external,
-  image,
-  title,
-});
+import { buildResource } from "../../_helpers/builders/build-resource";
 
 describe('ResourceCard', () => {
   it('should display the default message', () => {

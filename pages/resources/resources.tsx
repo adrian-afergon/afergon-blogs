@@ -19,7 +19,7 @@ export const Resources = () => {
     <section className="resources">
       <ul>
         { resources.map( resource => <li>
-          <Link href={resource.link}>
+          <Link href={resource.link} target="_blank">
           <a href={resource.link} target="_blank"
              rel="noreferrer">
           <ResourceCard resource={resource}/>

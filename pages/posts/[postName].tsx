@@ -5,6 +5,7 @@ import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
 import { Layout } from "../../src/components/Layout";
 import { CodeBlock } from "../../src/components/CodeBlock";
+import { firebaseInstance } from "../../lib/firebase";
 
 interface PostPageProps {
   metadata: any,
@@ -26,32 +27,29 @@ const PostPage:React.FC<PostPageProps> = ({ metadata, markdownBody }) => {
   )
 };
 
-export default PostPage;
-
 export async function getStaticProps({ ...ctx }) {
-  const { postname } = ctx.params
+  const { postName } = ctx.params
 
-  const content = await import(`../../posts/${postname}.md`)
-  const data = matter(content.default)
+  const file = firebaseInstance.storage.bucket().file(`posts/${postName}.md`);
+  const [buffer] = await file.download();
+  const {data, content} = matter(buffer);
 
   return {
     props: {
-      metadata: data.data,
-      markdownBody: data.content,
+      metadata: data,
+      markdownBody: content,
     },
   }
 }
 
 export async function getStaticPaths() {
-  const blogSlugs = ((context) =>
-    context.keys().map((key, index) =>
-      key.replace(/^.*[\\\/]/, "").slice(0, -3)
-    ))(require.context('../../posts', true, /\.md$/))
-
-  const paths = blogSlugs.map((slug) => `/posts/${slug}`)
-
+  const [[,...filesOnDirectory]] = await firebaseInstance.storage.bucket().getFiles({prefix: 'posts/' });
+  const getHandle = (filePath: string) => filePath.split('.md')[0];
+  const paths = filesOnDirectory.map((file) => getHandle(`/${file.name}`))
   return {
     paths,
     fallback: false,
   }
 }
+
+export default PostPage;

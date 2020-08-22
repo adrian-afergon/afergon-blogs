@@ -10,6 +10,6 @@ describe('<%= name %>', () => {
     const view: RenderResult = render(
       <<%= name %>/>,
     );
-    expect(view.queryByText('Hello from <%= name %>!')).toBeTruthy();
+    expect(view.queryByText('Hello from <%= name %>!')).toBeInTheDocument();
   });
 });

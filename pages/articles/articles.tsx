@@ -66,3 +66,5 @@ export const Articles: React.FC = () => {
     </Layout>
   );
 };
+
+export default Articles;

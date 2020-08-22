@@ -30,3 +30,5 @@ export const Resources = () => {
     </section>
   </Layout>
 }
+
+export default Resources;

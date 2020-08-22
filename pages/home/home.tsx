@@ -25,3 +25,5 @@ export const Home: React.FC = () => (
     </section>
   </Layout>
 );
+
+export default Home;

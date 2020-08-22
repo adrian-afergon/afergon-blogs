@@ -7,7 +7,8 @@ try {
       privateKey: process.env.FIREBASE_PRIVATE_KEY,
       projectId: process.env.FIREBASE_PROJECT_ID
     }),
-    databaseURL: process.env.FIREBASE_DATABASE_URL
+    databaseURL: process.env.FIREBASE_DATABASE_URL,
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET
   });
 } catch (error) {
   /*
@@ -19,4 +20,15 @@ try {
   }
 }
 
-export default admin.database();
+interface FirebaseInstance {
+  database: admin.database.Database,
+  storage: admin.storage.Storage,
+}
+
+export const firebaseInstance: FirebaseInstance = {
+  database: admin.database(),
+  storage: admin.storage()
+}
+
+export default firebaseInstance.database;
+

@@ -93,36 +93,4 @@
       }
     }
   }
-  .text-filter {
-    input {
-      padding: .4rem .8rem;
-
-      background-color: transparent;
-      color: inherit;
-      border: 0;
-      width: 100%;
-      font-size: inherit;
-      &:focus {
-        outline: none;
-      }
-      &::placeholder{
-        font-style: italic;
-      }
-
-      &:-webkit-autofill,
-      &:-webkit-autofill:hover,
-      &:-webkit-autofill:focus,
-      &:-webkit-autofill:active  {
-        -webkit-text-fill-color: var(--font-color-broken);
-        -webkit-box-shadow: 0 0 0 1000px var(--bg-color-broken) inset;
-      }
-    }
-
-    width: 100%;
-    display: flex;
-    svg {
-      margin: .4rem .8rem;
-      display: block;
-    }
-  }
 }

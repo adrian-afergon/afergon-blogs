@@ -1,12 +1,13 @@
 import * as React from 'react';
 import './SearchBar.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faFilter, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faFilter } from "@fortawesome/free-solid-svg-icons";
+import { TextFilter } from "../TextFilter";
 
 interface SearchBarProps {
   types: string[],
   onChangeSelectedTypes: (selectedTypes: string[]) => void
-  onChangeFilter: (event: React.ChangeEvent<HTMLInputElement>) => void
+  onChangeFilter: (value: string) => void
 }
 
 type CheckboxItem = { value: string; isChecked: boolean };
@@ -72,14 +73,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         }
       </section>
 
-      <section className="text-filter">
-        <input type="text" name="Filter" placeholder="Search by text..." onChange={onChangeFilter}/>
-        <FontAwesomeIcon icon={faSearch}/>
-      </section>
-
-      <section>
-
-      </section>
+      <TextFilter onChangeFilter={onChangeFilter} />
     </section>
   );
 };

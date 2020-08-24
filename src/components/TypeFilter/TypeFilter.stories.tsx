@@ -1,14 +1,17 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { text, withKnobs } from '@storybook/addon-knobs';
+import { withKnobs } from '@storybook/addon-knobs';
 import { TypeFilter } from './TypeFilter'
+import { action } from "@storybook/addon-actions";
 
 const stories = storiesOf('TypeFilter', module);
 stories.addDecorator(withKnobs);
 
 stories.add('with message', () => {
-  const value = text('Text value', 'Hello from TypeFilter!!');
   return (
-      <TypeFilter>{value}</TypeFilter>
+      <TypeFilter
+        onChangeSelectedTypes={action('Filters has change')}
+        types={['Post', 'Talks']}
+      />
   );
 });

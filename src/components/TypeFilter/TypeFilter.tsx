@@ -10,6 +10,10 @@ interface TypeFilterProps {
 
 type CheckboxItem = { value: string; isChecked: boolean };
 
+export enum TypeFilterText {
+  filterModal = 'Filter by types'
+}
+
 export const TypeFilter: React.FC<TypeFilterProps> = ({ types ,onChangeSelectedTypes }) => {
   const transformToCheckbox = (item: string) => ({value:item ,isChecked: false });
   const [checkboxTypes, setCheckboxTypes] = React.useState(types.map(transformToCheckbox))
@@ -38,12 +42,12 @@ export const TypeFilter: React.FC<TypeFilterProps> = ({ types ,onChangeSelectedT
         {` Filter`}
       </button>
       {
-        toggled && <div aria-label="Filter by types">
+        toggled && <div aria-label={TypeFilterText.filterModal}>
           <ul>
             <h3>Type</h3>
             {
               checkboxTypes.map((checkboxType) => (
-                <li>
+                <li key={checkboxType.value}>
                   <label>
                     <input
                       type="checkbox"

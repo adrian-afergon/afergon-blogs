@@ -40,12 +40,14 @@
     transition: $time-transition background-color;
     cursor: pointer;
     width: auto;
+    color: var(--font-color);
 
     svg {
       margin: .2rem .4rem;
     }
 
     &:hover {
+      color: $color-white;
       background-color: var(--primary-color);
     }
   }

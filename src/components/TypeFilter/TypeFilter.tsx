@@ -2,6 +2,7 @@ import * as React from 'react';
 import './TypeFilter.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faFilter } from "@fortawesome/free-solid-svg-icons";
+import { useClickOutside } from "../../hooks/useClickOutside";
 
 interface TypeFilterProps {
   types: string[],
@@ -18,13 +19,15 @@ export const TypeFilter: React.FC<TypeFilterProps> = ({ types ,onChangeSelectedT
   const transformToCheckbox = (item: string) => ({value:item ,isChecked: false });
   const [checkboxTypes, setCheckboxTypes] = React.useState(types.map(transformToCheckbox))
   const [toggled, setToggled] = React.useState(false);
+  const wrapperRef = React.useRef(null);
+  useClickOutside(wrapperRef, () => setToggled(false));
 
   React.useEffect(() => {
-    const getValueFromCheked = (total:string[], checkboxType: CheckboxItem) =>
+    const getValueFromChecked = (total:string[], checkboxType: CheckboxItem) =>
       checkboxType.isChecked
         ? [...total, checkboxType.value]
         : total;
-    onChangeSelectedTypes(checkboxTypes.reduce(getValueFromCheked, []));
+    onChangeSelectedTypes(checkboxTypes.reduce(getValueFromChecked, []));
   }, [checkboxTypes])
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,15 +38,20 @@ export const TypeFilter: React.FC<TypeFilterProps> = ({ types ,onChangeSelectedT
     ));
   }
 
+  const handleClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    setToggled(!toggled)
+  }
+
   return (
-    <section className="TypeFilter">
-      <button onClick={() => setToggled(!toggled)}>
+    <section className="TypeFilter" ref={wrapperRef}>
+      <button onClick={handleClick}>
         <FontAwesomeIcon icon={faFilter} aria-label="Filter By"/>
         {` Filter`}
       </button>
       {
-        toggled && <div aria-label={TypeFilterText.filterModal}>
-          <ul>
+        toggled && <div aria-label={TypeFilterText.filterModal} >
+          <ul >
             <h3>Type</h3>
             {
               checkboxTypes.map((checkboxType) => (

@@ -6,7 +6,7 @@ import { faBars, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { useMedia } from "../../hooks/useMedia";
 import { useScroll } from "../../hooks/useScroll";
 import { ApplicationRoutes } from "../../ApplicationRoutes";
-import { useDarkMode } from "../../hooks/useDarkMode/useDarkMode";
+import { useDarkMode } from "../../hooks/useDarkMode";
 
 interface HeaderProps {
   title: string

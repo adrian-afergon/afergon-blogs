@@ -12,8 +12,8 @@ export const Articles: React.FC = () => {
   const [filteredArticles, setFilteredArticles] = React.useState<Article[]>([]);
   const [filter, setFilter] = React.useState<string>('');
   const [selectedTypes, setSelectedTypes] = React.useState<string[]>([]);
-  const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFilter(event.target.value)
+  const handleFilterChange = (value: string) => {
+    setFilter(value)
   }
 
   const {postsRepository, talksRepository} = React.useContext(RepositoryContext)

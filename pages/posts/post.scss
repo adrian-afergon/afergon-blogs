@@ -21,4 +21,13 @@ article {
   h3 {
     font-size: 1.2rem;
   }
+
+  img {
+    margin: auto;
+    max-width: $size-limit-small;
+  }
+
+  a {
+    color: var(--primary-color);
+  }
 }

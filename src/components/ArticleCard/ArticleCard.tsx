@@ -1,9 +1,7 @@
 import * as React from 'react';
 import './ArticleCard.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExternalLinkAlt, faPhotoVideo } from "@fortawesome/free-solid-svg-icons";
-import { faYoutube } from "@fortawesome/free-brands-svg-icons";
-import Link from "next/link";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { Article } from "../../models/article";
 
 interface ArticleCardProps {
@@ -16,11 +14,15 @@ export enum ArticleCardText {
   SLIDES_LINK = 'slides link'
 }
 
+const formatDate = (date: Date) => {
+  return `${date.toLocaleString('en-US', { month: 'short' })} ${date.getDate()}, ${date.getFullYear()}`
+}
+
 export const ArticleCard: React.FC<ArticleCardProps> = ({item}) => (
   <article className="ArticleCard">
     <section className="card-header">
       <h2>{item.title}</h2>
-      <span className="date">{item.date}</span>
+      <span className="date">{formatDate(item.date)}</span>
     </section>
     <section className="card-body">
       <p>{item.intro}</p>

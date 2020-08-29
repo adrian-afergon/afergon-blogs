@@ -1,7 +1,7 @@
 export interface Post {
   title: string;
   intro: string;
-  date: Date | string;
+  date: Date;
   locale: string;
   link: string;
   external: boolean;

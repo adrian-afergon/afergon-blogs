@@ -2,7 +2,7 @@ export interface Talk {
   title: string;
   intro: string;
   places: string[];
-  date: Date | string;
+  date: Date;
   locale: string;
   link: string;
   video?: string;

@@ -26,6 +26,18 @@ export const Articles: React.FC = () => {
 
   const matchFilters = (article: Article) => articleIncludeText(article) && articleHasSelectedType(article);
 
+  const sortArticlesByDate = (first: Article, second: Article) => {
+    const firstDate = first.date.getTime();
+    const secondDate = second.date.getTime();
+    if (firstDate < secondDate) {
+      return -1;
+    } else if (firstDate == secondDate) {
+      return 0;
+    } else {
+      return 1;
+    }
+  }
+
   React.useEffect(() => {
     Promise.all<Article[]>([
       postsRepository.getPosts(),
@@ -50,7 +62,7 @@ export const Articles: React.FC = () => {
       <SearchBar types={['Post', 'Talk']} onChangeSelectedTypes={setSelectedTypes} onChangeFilter={handleFilterChange} />
       <section className="articles">
         <ul>
-          {filteredArticles.map((article) => (
+          {filteredArticles.sort(sortArticlesByDate).reverse().map((article) => (
             <li key={article.title}>
               <a
                 href={article.link}

@@ -1,26 +1,24 @@
 import { Post } from "../models/post";
-import { posts } from '../../data.json';
+
+const mapPost = (data: any): Post => ({
+  date: new Date(data.date * 1000),
+  external: data.external,
+  handle: data.handle,
+  intro: data.intro,
+  link: data.link,
+  locale: data.locale,
+  title: data.title,
+  type: data.type
+});
 
 export interface PostsRepository {
   getPosts: () => Promise<Post[]>
-  getPost: (handle: string) => Promise<Post>
 }
 
 export const postsRepository: PostsRepository = {
   getPosts: async () => {
     const res = await fetch('/api/posts');
-    return res.json();
+    const data: Array<any> = await res.json();
+    return data.map(mapPost);
   },
-  getPost: (handle) => {
-    const post = posts.find((post: Post) => post.handle === handle)
-    return post ? Promise.resolve(post) : Promise.reject('Not found');
-  }
-};
-
-export const postsRepositoryLocal: PostsRepository = {
-  getPosts: () => Promise.resolve(posts),
-  getPost: (handle) => {
-    const post = posts.find((post: Post) => post.handle === handle)
-    return post ? Promise.resolve(post) : Promise.reject('Not found');
-  }
 };

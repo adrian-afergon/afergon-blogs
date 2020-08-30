@@ -20,6 +20,7 @@ const PostPage:React.FC<PostPageProps> = ({ metadata, markdownBody }) => {
       <Head>
         <title>{metadata.author} - {metadata.title}</title>
         <meta name="description" content={metadata.description} />
+        <meta property="og:image" content={metadata.image} />
       </Head>
       <article>
         <ReactMarkdown source={markdownBody} renderers={{ code: CodeBlock }}/>

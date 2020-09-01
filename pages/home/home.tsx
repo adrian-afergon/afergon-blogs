@@ -11,7 +11,7 @@ export const Home: React.FC = () => (
     </Head>
 
     <section className="intro">
-      <h2>Hey there!</h2>
+      <h2>Hey there<span>!</span></h2>
     </section>
     <section className="image-wrapper">
       <img src="/images/profile.jpg" alt="Profile picture" />

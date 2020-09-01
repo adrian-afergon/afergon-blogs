@@ -3,10 +3,12 @@
 .intro {
   display: flex;
   text-align: left;
-  color: var(--primary-color);
   h2{
     font-size: 1.6rem;
     font-weight: lighter;
+    span {
+      color: var(--primary-color);
+    }
   }
   text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5);
 }

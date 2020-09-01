@@ -31,4 +31,33 @@ article {
   a {
     color: var(--primary-color);
   }
+
+
+  blockquote{
+    font-size: 1rem;
+    margin:50px auto;
+    width: 100%;
+
+    font-style:italic;
+    color: var(--font-color-broken);
+    padding:.4rem 30px .4rem 75px;
+    border-left:8px solid var(--primary-color) ;
+    line-height:1.6;
+    position: relative;
+    background:var(--bg-color-broken);
+  }
+
+  blockquote::before{
+    content: "\201C";
+    color:var(--primary-color);
+    font-size:4em;
+    position: absolute;
+    left: 10px;
+    top:-10px;
+  }
+
+  blockquote::after{
+    content: '';
+  }
+
 }

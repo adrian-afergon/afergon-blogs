@@ -47,6 +47,7 @@ export async function getStaticProps({ ...ctx }) {
       metadata: data,
       markdownBody: content,
     },
+    revalidate: 1
   }
 }
 

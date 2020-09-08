@@ -8,7 +8,8 @@ const mapPost = (data: any): Post => ({
   link: data.link,
   locale: data.locale,
   title: data.title,
-  type: data.type
+  type: data.type,
+  locales: data.locales
 });
 
 export interface PostsRepository {

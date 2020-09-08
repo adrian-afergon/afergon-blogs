@@ -29,6 +29,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({item}) => (
         <p>{item.intro}</p>
       </section>
       <section className="card-footer">
+        <div className="locales">
         {
           item.locales
             ? item.locales.map(localeResource => <LocaleTag
@@ -36,6 +37,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({item}) => (
             : <LocaleTag>{item.locale}</LocaleTag>
 
         }
+        </div>
         {/*{"video" in item && item.video && (*/}
         {/*  <div className="external">*/}
         {/*    <Link href={item.video}>*/}

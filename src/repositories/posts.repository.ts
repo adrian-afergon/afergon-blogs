@@ -14,6 +14,7 @@ const mapPost = (data: any): Post => ({
 
 export interface PostsRepository {
   getPosts: () => Promise<Post[]>
+  getPostByHandle: (handle: string) => Promise<Post>
 }
 
 export const postsRepository: PostsRepository = {
@@ -21,5 +22,10 @@ export const postsRepository: PostsRepository = {
     const res = await fetch('/api/posts');
     const data: Array<any> = await res.json();
     return data.map(mapPost);
+  },
+  getPostByHandle: async (handle: string) => {
+    const res = await fetch(`/api/posts/${handle}`);
+    const data: any = await res.json();
+    return mapPost(data);
   },
 };

@@ -1,19 +1,33 @@
 import * as React from 'react';
-import './post.scss';
+import '../post.scss';
 import Head from 'next/head'
 import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
-import { Layout } from "../../src/components/Layout";
-import { CodeBlock } from "../../src/components/CodeBlock";
-import { firebaseInstance } from "../../lib/firebase";
+import { Layout } from "../../../src/components/Layout";
+import { CodeBlock } from "../../../src/components/CodeBlock";
+import { firebaseInstance } from "../../../lib/firebase";
+import { postsRepository } from "../../../src/repositories/posts.repository";
+import { Post } from "../../../src/models/post";
+import { ToggleLocale } from "../../../src/components/ToggleLocale";
 
 interface PostPageProps {
   metadata: any,
-  markdownBody: any
+  markdownBody: any,
+  postName?: string
 }
 
-const PostPage:React.FC<PostPageProps> = ({ metadata, markdownBody }) => {
+const PostPage:React.FC<PostPageProps> = ({ postName, metadata, markdownBody }) => {
   if (!metadata) return <></>
+
+  const [post, setPost] = React.useState<Post>();
+  React.useEffect(() => {
+    if(postName) {
+      postsRepository.getPostByHandle(postName).then((data) => {
+        console.log(data)
+        setPost(data)
+      })
+    }
+  }, [postName])
 
   return (
     <Layout>
@@ -29,6 +43,7 @@ const PostPage:React.FC<PostPageProps> = ({ metadata, markdownBody }) => {
         <meta name="twitter:image" content={metadata.image} />
       </Head>
       <article>
+        { post?.locales && <ToggleLocale locales={post.locales} /> }
         <ReactMarkdown source={markdownBody} renderers={{ code: CodeBlock }}/>
       </article>
     </Layout>
@@ -36,14 +51,14 @@ const PostPage:React.FC<PostPageProps> = ({ metadata, markdownBody }) => {
 };
 
 export async function getStaticProps({ ...ctx }) {
-  const { postName } = ctx.params
-
-  const file = firebaseInstance.storage.bucket().file(`posts/${postName}.md`);
+  const { postName, locale } = ctx.params
+  const file = firebaseInstance.storage.bucket().file(`posts/${locale}/${postName}.md`);
   const [buffer] = await file.download();
   const {data, content} = matter(buffer);
 
   return {
     props: {
+      postName,
       metadata: data,
       markdownBody: content,
     },
@@ -52,9 +67,10 @@ export async function getStaticProps({ ...ctx }) {
 }
 
 export async function getStaticPaths() {
-  const [[,...filesOnDirectory]] = await firebaseInstance.storage.bucket().getFiles({prefix: 'posts/' });
+  const [[,...esFilesOnDirectory]] = await firebaseInstance.storage.bucket().getFiles({prefix: 'posts/es/' });
+  const [[,...enFilesOnDirectory]] = await firebaseInstance.storage.bucket().getFiles({prefix: 'posts/en/' });
   const getHandle = (filePath: string) => filePath.split('.md')[0];
-  const paths = filesOnDirectory.map((file) => getHandle(`/${file.name}`))
+  const paths = [...esFilesOnDirectory, ...enFilesOnDirectory].map((file) => getHandle(`/${file.name}`))
   return {
     paths,
     fallback: false,

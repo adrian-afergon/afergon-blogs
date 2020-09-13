@@ -8,6 +8,11 @@
     padding: .8rem 1.2rem;
     border: 1px solid var(--primary-color);
     background-color: transparent;
+    flex: 1;
+    text-align: center;
+    @media (min-width: $size-limit-small){
+      flex: initial;
+    }
   }
   .active {
     background-color: var(--primary-color);

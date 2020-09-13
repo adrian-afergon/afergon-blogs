@@ -8,6 +8,6 @@ describe('LocaleTag', () => {
     const view: RenderResult = render(
       <LocaleTag>{text}</LocaleTag>,
     );
-    expect(view.queryByText('Hello from LocaleTag!')).toBeInTheDocument();
+    expect(view.queryByText(text)).toBeInTheDocument();
   });
 });

@@ -1,0 +1,1 @@
+export { LocaleTag } from './LocaleTag';

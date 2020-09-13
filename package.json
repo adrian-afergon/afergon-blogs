@@ -35,10 +35,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.11.1",
-    "@storybook/addon-a11y": "^6.0.10",
-    "@storybook/addon-actions": "^6.0.10",
-    "@storybook/addon-knobs": "^6.0.10",
-    "@storybook/react": "^6.0.10",
+    "@storybook/addon-a11y": "^6.0.21",
+    "@storybook/addon-actions": "^6.0.21",
+    "@storybook/addon-knobs": "^6.0.21",
+    "@storybook/react": "^6.0.21",
     "@testing-library/jest-dom": "^5.11.3",
     "@testing-library/react": "^10.4.8",
     "@types/jest": "^26.0.10",
@@ -59,7 +59,7 @@
     "jest": "^26.4.0",
     "prettier": "^2.0.5",
     "react-docgen-typescript-loader": "^3.7.2",
-    "storybook-dark-mode": "^1.0.0",
+    "storybook-dark-mode": "^1.0.2",
     "ts-jest": "^26.2.0",
     "typescript": "^3.9.7"
   }

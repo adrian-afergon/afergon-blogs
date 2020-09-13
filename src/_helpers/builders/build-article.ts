@@ -8,7 +8,8 @@ export const buildArticle = ({
   external = false,
   intro = 'irrelevant intro',
   link = 'irrelevant link',
-  type = 'Post'
+  type = 'Post',
+  locales = []
 }: Partial<Article>): Article => ({
   title,
   locale,
@@ -17,5 +18,6 @@ export const buildArticle = ({
   handle,
   external,
   date,
-  type
+  type,
+  locales
 });

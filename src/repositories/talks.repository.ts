@@ -14,7 +14,8 @@ const mapTalk = (data: any): Talk => ({
   title: data.title,
   type: data.type,
   places: data.places,
-  video: data.video
+  video: data.video,
+  locales: data.locales
 });
 
 export const talksRepository: TalksRepository = {

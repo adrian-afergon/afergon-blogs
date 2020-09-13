@@ -2,13 +2,16 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text, withKnobs } from '@storybook/addon-knobs';
 import { ToggleLocale } from './ToggleLocale'
+import { buildLocaleResource } from "../../_helpers/builders/build-locale-resource";
 
 const stories = storiesOf('ToggleLocale', module);
 stories.addDecorator(withKnobs);
 
 stories.add('with message', () => {
-  const value = text('Text value', 'Hello from ToggleLocale!!');
+  const firstLocale = buildLocaleResource({locale: 'a locale'})
+  const secondLocale = buildLocaleResource({locale: 'a different locale'})
+  const locales = [firstLocale, secondLocale]
   return (
-      <ToggleLocale>{value}</ToggleLocale>
+      <ToggleLocale locales={locales} />
   );
 });

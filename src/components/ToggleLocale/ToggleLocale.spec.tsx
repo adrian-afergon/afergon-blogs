@@ -6,8 +6,8 @@ import { renderWithRouter } from "../../_helpers/renders/renderWithRouter";
 
 describe('ToggleLocale', () => {
   it('should display the default message', () => {
-    const firstLocale = buildLocaleResource({locale: 'a locale'});
-    const secondLocale = buildLocaleResource({locale: 'a different locale'});
+    const firstLocale = buildLocaleResource({locale: 'a locale'})
+    const secondLocale = buildLocaleResource({locale: 'a different locale'})
     const locales = [firstLocale, secondLocale]
 
     const view: RenderResult = renderWithRouter(

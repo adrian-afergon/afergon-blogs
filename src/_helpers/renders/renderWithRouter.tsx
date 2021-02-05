@@ -34,6 +34,7 @@ export function renderWithRouter(
 }
 
 const mockRouter: NextRouter = {
+  isReady: false,
   basePath: '',
   pathname: '/',
   route: '/',
@@ -50,5 +51,5 @@ const mockRouter: NextRouter = {
     off: jest.fn(),
     emit: jest.fn(),
   },
-  isFallback: false,
+  isFallback: false
 };

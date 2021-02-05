@@ -1,7 +1,7 @@
-import * as React from 'react';
-import './SearchBar.scss';
-import { TextFilter } from "../TextFilter";
-import { TypeFilter } from "../TypeFilter";
+import * as React from 'react'
+import './SearchBar.scss'
+import { TextFilter } from '../TextFilter'
+import { TypeFilter } from '../TypeFilter'
 
 interface SearchBarProps {
   types: string[],
@@ -19,5 +19,5 @@ export const SearchBar: React.FC<SearchBarProps> = ({
       <TypeFilter types={types} onChangeSelectedTypes={onChangeSelectedTypes} />
       <TextFilter onChangeFilter={onChangeFilter} />
     </section>
-  );
-};
+  )
+}

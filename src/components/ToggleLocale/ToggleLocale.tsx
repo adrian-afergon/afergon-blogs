@@ -1,8 +1,8 @@
-import * as React from 'react';
-import './ToggleLocale.scss';
-import { LocaleResource } from "../../models/locale-resource";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import * as React from 'react'
+import './ToggleLocale.scss'
+import { LocaleResource } from '../../models/locale-resource'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 interface ToggleLocaleProps {
   locales: LocaleResource[]
@@ -11,7 +11,7 @@ interface ToggleLocaleProps {
 export const ToggleLocale: React.FC<ToggleLocaleProps> = ({
   locales
 }) => {
-  const { asPath } = useRouter();
+  const { asPath } = useRouter()
   const isActive = (link: string) => link === asPath
   const calculateClassNames = (link: string) => isActive(link) ? 'active' : ''
 
@@ -28,5 +28,5 @@ export const ToggleLocale: React.FC<ToggleLocaleProps> = ({
           </Link>)
       }
     </div>
-  );
-};
+  )
+}

@@ -1,19 +1,18 @@
-import * as React from 'react';
-import './TextFilter.scss';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
+import * as React from 'react'
+import './TextFilter.scss'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 interface TextFilterProps {
   onChangeFilter: (value: string) => void
 }
 
-export enum TextFilterText {
-  inputPlaceHolder = 'Search by text...',
-}
+export const TextFilterText = {
+  inputPlaceHolder: 'Search by text...'
+} as const
 
-export const TextFilter: React.FC<TextFilterProps> = ({onChangeFilter}) => {
-
-  const [filter, setFilter] = React.useState<string>('');
+export const TextFilter: React.FC<TextFilterProps> = ({ onChangeFilter }) => {
+  const [filter, setFilter] = React.useState<string>('')
 
   const handleChangeFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFilter(event.target.value)
@@ -21,7 +20,7 @@ export const TextFilter: React.FC<TextFilterProps> = ({onChangeFilter}) => {
   }
 
   const cleanFilter = () => {
-    setFilter('');
+    setFilter('')
     onChangeFilter('')
   }
 
@@ -33,5 +32,5 @@ export const TextFilter: React.FC<TextFilterProps> = ({onChangeFilter}) => {
       {hasValue && <button className="clean-search" onClick={cleanFilter} ><FontAwesomeIcon icon={faTimes} size="xs" aria-label="clean-search"/></button>}
       <FontAwesomeIcon icon={faSearch} aria-label="search"/>
     </section>
-  );
-};
+  )
+}

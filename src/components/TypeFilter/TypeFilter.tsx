@@ -1,8 +1,8 @@
-import * as React from 'react';
-import './TypeFilter.scss';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faFilter } from "@fortawesome/free-solid-svg-icons";
-import { useClickOutside } from "../../hooks/useClickOutside";
+import * as React from 'react'
+import './TypeFilter.scss'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck, faFilter } from '@fortawesome/free-solid-svg-icons'
+import { useClickOutside } from '../../hooks/useClickOutside'
 
 interface TypeFilterProps {
   types: string[],
@@ -11,35 +11,35 @@ interface TypeFilterProps {
 
 type CheckboxItem = { value: string; isChecked: boolean };
 
-export enum TypeFilterText {
-  filterModal = 'Filter by types'
-}
+export const TypeFilterText = {
+  filterModal: 'Filter by types'
+} as const
 
-export const TypeFilter: React.FC<TypeFilterProps> = ({ types ,onChangeSelectedTypes }) => {
-  const transformToCheckbox = (item: string) => ({value:item ,isChecked: false });
+export const TypeFilter: React.FC<TypeFilterProps> = ({ types, onChangeSelectedTypes }) => {
+  const transformToCheckbox = (item: string) => ({ value: item, isChecked: false })
   const [checkboxTypes, setCheckboxTypes] = React.useState(types.map(transformToCheckbox))
-  const [toggled, setToggled] = React.useState(false);
-  const wrapperRef = React.useRef(null);
-  useClickOutside(wrapperRef, () => setToggled(false));
+  const [toggled, setToggled] = React.useState(false)
+  const wrapperRef = React.useRef(null)
+  useClickOutside(wrapperRef, () => setToggled(false))
 
   React.useEffect(() => {
     const getValueFromChecked = (total:string[], checkboxType: CheckboxItem) =>
       checkboxType.isChecked
         ? [...total, checkboxType.value]
-        : total;
-    onChangeSelectedTypes(checkboxTypes.reduce(getValueFromChecked, []));
+        : total
+    onChangeSelectedTypes(checkboxTypes.reduce(getValueFromChecked, []))
   }, [checkboxTypes])
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCheckboxTypes(checkboxTypes.map((checkboxType) =>
       event.target.value === checkboxType.value
-        ? {...checkboxType, isChecked: !checkboxType.isChecked}
+        ? { ...checkboxType, isChecked: !checkboxType.isChecked }
         : checkboxType
-    ));
+    ))
   }
 
   const handleClick = (event: React.MouseEvent) => {
-    event.stopPropagation();
+    event.stopPropagation()
     setToggled(!toggled)
   }
 
@@ -47,7 +47,7 @@ export const TypeFilter: React.FC<TypeFilterProps> = ({ types ,onChangeSelectedT
     <section className="TypeFilter" ref={wrapperRef}>
       <button onClick={handleClick}>
         <FontAwesomeIcon icon={faFilter} aria-label="Filter By"/>
-        {` Filter`}
+        {' Filter'}
       </button>
       {
         toggled && <div aria-label={TypeFilterText.filterModal} >
@@ -74,5 +74,5 @@ export const TypeFilter: React.FC<TypeFilterProps> = ({ types ,onChangeSelectedT
         </div>
       }
     </section>
-  );
-};
+  )
+}

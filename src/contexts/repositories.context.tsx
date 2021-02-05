@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { PostsRepository, postsRepository } from "../repositories/posts.repository";
-import { TalksRepository, talksRepository } from "../repositories/talks.repository";
-import { ResourcesRepository, resourcesRepository } from "../repositories/resources.repository";
+import * as React from 'react'
+import { PostsRepository, postsRepository } from '../repositories/posts.repository'
+import { TalksRepository, talksRepository } from '../repositories/talks.repository'
+import { ResourcesRepository, resourcesRepository } from '../repositories/resources.repository'
 
 export interface RepositoryContextProps {
   postsRepository: PostsRepository,
@@ -17,5 +17,5 @@ const defaultValue = {
 
 export const RepositoryContext = React.createContext<RepositoryContextProps>(defaultValue)
 
-export const RepositoryProvider: React.FC<{}> = ({ children}) => (
-  <RepositoryContext.Provider value={defaultValue}>{children}</RepositoryContext.Provider>);
+export const RepositoryProvider: React.FC<{}> = ({ children }) => (
+  <RepositoryContext.Provider value={defaultValue}>{children}</RepositoryContext.Provider>)

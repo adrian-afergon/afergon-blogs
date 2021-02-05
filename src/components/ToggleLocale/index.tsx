@@ -1,1 +1,1 @@
-export { ToggleLocale } from './ToggleLocale';
+export { ToggleLocale } from './ToggleLocale'

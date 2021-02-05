@@ -1,1 +1,1 @@
-export { TextFilter } from './TextFilter';
+export { TextFilter } from './TextFilter'

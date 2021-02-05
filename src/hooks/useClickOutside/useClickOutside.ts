@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react'
 
 type ReactRef = {current: HTMLElement|null}
 
@@ -7,12 +7,12 @@ export const useClickOutside = (ref: ReactRef, callback: () => void) => {
     const handleClickOutside = (event: any) => {
       event.stopPropagation()
       if (ref.current && !ref.current.contains(event.target)) {
-        callback();
+        callback()
       }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
+    }
+    document.addEventListener('mousedown', handleClickOutside)
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [ref]);
-};
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [ref])
+}

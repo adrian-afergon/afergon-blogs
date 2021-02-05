@@ -1,5 +1,5 @@
-export enum ApplicationRoutes {
-  articles = '/articles',
-  resources = '/resources',
-  root = '/',
-}
+export const ApplicationRoutes = {
+  articles: '/articles',
+  resources: '/resources',
+  root: '/'
+} as const

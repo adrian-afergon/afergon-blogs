@@ -1,40 +1,40 @@
-import * as React from 'react';
-import Head from 'next/head';
-import './articles.scss';
-import { SearchBar } from "../../src/components/SearchBar";
-import { ArticleCard } from "../../src/components/ArticleCard";
-import { Article } from "../../src/models/article";
-import { Layout } from "../../src/components/Layout";
-import { RepositoryContext } from "../../src/contexts/repositories.context";
+import * as React from 'react'
+import Head from 'next/head'
+import './articles.scss'
+import { SearchBar } from '../../src/components/SearchBar'
+import { ArticleCard } from '../../src/components/ArticleCard'
+import { Article } from '../../src/models/article'
+import { Layout } from '../../src/components/Layout'
+import { RepositoryContext } from '../../src/contexts/repositories.context'
 
 export const Articles: React.FC = () => {
-  const [articles, setArticles] = React.useState<Article[]>([]);
-  const [filteredArticles, setFilteredArticles] = React.useState<Article[]>([]);
-  const [filter, setFilter] = React.useState<string>('');
-  const [selectedTypes, setSelectedTypes] = React.useState<string[]>([]);
+  const [articles, setArticles] = React.useState<Article[]>([])
+  const [filteredArticles, setFilteredArticles] = React.useState<Article[]>([])
+  const [filter, setFilter] = React.useState<string>('')
+  const [selectedTypes, setSelectedTypes] = React.useState<string[]>([])
   const handleFilterChange = (value: string) => {
     setFilter(value)
   }
 
-  const {postsRepository, talksRepository} = React.useContext(RepositoryContext)
+  const { postsRepository, talksRepository } = React.useContext(RepositoryContext)
 
   const articleIncludeText = (article: Article) => article.title
     .toLocaleLowerCase()
-    .includes(filter.toLocaleLowerCase());
+    .includes(filter.toLocaleLowerCase())
 
   const articleHasSelectedType = (article: Article) => selectedTypes.length === 0 || selectedTypes.includes(article.type)
 
-  const matchFilters = (article: Article) => articleIncludeText(article) && articleHasSelectedType(article);
+  const matchFilters = (article: Article) => articleIncludeText(article) && articleHasSelectedType(article)
 
   const sortArticlesByDate = (first: Article, second: Article) => {
-    const firstDate = first.date.getTime();
-    const secondDate = second.date.getTime();
+    const firstDate = first.date.getTime()
+    const secondDate = second.date.getTime()
     if (firstDate < secondDate) {
-      return -1;
-    } else if (firstDate == secondDate) {
-      return 0;
+      return -1
+    } else if (firstDate === secondDate) {
+      return 0
     } else {
-      return 1;
+      return 1
     }
   }
 
@@ -43,15 +43,15 @@ export const Articles: React.FC = () => {
       postsRepository.getPosts(),
       talksRepository.getTalks()
     ]).then(([posts, talks]) => {
-      setArticles([...posts, ...talks]);
-      setFilteredArticles([...posts, ...talks]);
-    });
-  }, []);
+      setArticles([...posts, ...talks])
+      setFilteredArticles([...posts, ...talks])
+    })
+  }, [])
 
   React.useEffect(() => {
     setFilteredArticles(articles
       .filter(matchFilters))
-  }, [filter, selectedTypes]);
+  }, [filter, selectedTypes])
 
   return (
     <Layout>
@@ -76,7 +76,7 @@ export const Articles: React.FC = () => {
         </ul>
       </section>
     </Layout>
-  );
-};
+  )
+}
 
-export default Articles;
+export default Articles

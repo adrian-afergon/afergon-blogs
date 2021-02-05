@@ -1,7 +1,7 @@
-import * as React from 'react';
-import Head from 'next/head';
-import './home.scss';
-import { Layout } from "../../src/components/Layout";
+import * as React from 'react'
+import Head from 'next/head'
+import './home.scss'
+import { Layout } from '../../src/components/Layout'
 
 export const Home: React.FC = () => (
   <Layout>
@@ -24,6 +24,6 @@ export const Home: React.FC = () => (
       </ul>
     </section>
   </Layout>
-);
+)
 
-export default Home;
+export default Home

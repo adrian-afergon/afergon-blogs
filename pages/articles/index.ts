@@ -1,2 +1,2 @@
-import {Articles} from './articles';
-export default Articles;
+import { Articles } from './articles'
+export default Articles

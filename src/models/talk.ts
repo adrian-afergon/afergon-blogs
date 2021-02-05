@@ -1,4 +1,4 @@
-import { LocaleResource } from "./locale-resource";
+import { LocaleResource } from './locale-resource'
 
 export interface Talk {
   title: string;

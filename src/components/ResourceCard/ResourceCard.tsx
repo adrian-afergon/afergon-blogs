@@ -1,16 +1,16 @@
-import * as React from 'react';
-import './ResourceCard.scss';
-import { Resource } from "../../models/resource";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import { ArticleCardText } from "../ArticleCard/ArticleCard";
+import * as React from 'react'
+import './ResourceCard.scss'
+import { Resource } from '../../models/resource'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
+import { ArticleCardText } from '../ArticleCard/ArticleCard'
 
 interface ResourceCardProps {
   resource: Resource
 }
 
 export const ResourceCard: React.FC<ResourceCardProps> = ({ resource }) => (
-    <article className="ResourceCard" style={{backgroundImage: `url(${resource.image})`}}>
+    <article className="ResourceCard" style={{ backgroundImage: `url(${resource.image})` }}>
       <section className="card-header">
 
       </section>
@@ -26,4 +26,4 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({ resource }) => (
         )}
       </section>
     </article>
-);
+)

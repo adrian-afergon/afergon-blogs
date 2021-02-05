@@ -1,2 +1,2 @@
-import {Resources} from './resources'
-export default Resources;
+import { Resources } from './resources'
+export default Resources

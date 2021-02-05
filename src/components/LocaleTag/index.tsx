@@ -1,1 +1,1 @@
-export { LocaleTag } from './LocaleTag';
+export { LocaleTag } from './LocaleTag'

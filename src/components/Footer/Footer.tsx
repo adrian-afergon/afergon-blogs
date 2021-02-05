@@ -1,8 +1,8 @@
-import * as React from 'react';
-import './Footer.scss';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { faGithub, faLinkedinIn, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import * as React from 'react'
+import './Footer.scss'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faGithub, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
 export const Footer: React.FC<{}> = () => (
   <footer className="Footer">
@@ -42,4 +42,4 @@ export const Footer: React.FC<{}> = () => (
       </li>
     </ul>
   </footer>
-);
+)

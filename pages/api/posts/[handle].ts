@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import firebase from '../../../lib/firebase';
+import firebase from '../../../lib/firebase'
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
-  const { query: { handle }} = req
+  const { query: { handle } } = req
 
   firebase.ref('/posts')
     .orderByChild('handle')
@@ -11,10 +11,10 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     .once('value')
     .then((snapshot) => {
       snapshot.forEach(child => {
-        res.json(child.val());
-      });
+        res.json(child.val())
+      })
     })
     .catch((error) => {
-      res.json({ error });
-    });
-};
+      res.json({ error })
+    })
+}

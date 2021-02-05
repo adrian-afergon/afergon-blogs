@@ -1,4 +1,4 @@
-import { Resource } from "../models/resource";
+import { Resource } from '../models/resource'
 
 export interface ResourcesRepository {
   getResources: () => Promise<Resource[]>
@@ -6,7 +6,7 @@ export interface ResourcesRepository {
 
 export const resourcesRepository: ResourcesRepository = {
   getResources: async () => {
-    const res = await fetch('/api/resources');
-    return res.json();
-  },
-};
+    const res = await fetch('/api/resources')
+    return res.json()
+  }
+}

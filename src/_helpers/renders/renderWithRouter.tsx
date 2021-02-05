@@ -1,9 +1,9 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import { RouterContext } from 'next/dist/next-server/lib/router-context';
-import { NextRouter } from 'next/router';
+import React from 'react'
+import { render } from '@testing-library/react'
+import { RouterContext } from 'next/dist/next-server/lib/router-context'
+import { NextRouter } from 'next/router'
 
-export * from '@testing-library/react';
+export * from '@testing-library/react'
 
 // --------------------------------------------------
 // Override the default test render with our own
@@ -17,21 +17,6 @@ export * from '@testing-library/react';
 type DefaultParams = Parameters<typeof render>;
 type RenderUI = DefaultParams[0];
 type RenderOptions = DefaultParams[1] & { router?: Partial<NextRouter> };
-
-export function renderWithRouter(
-  ui: RenderUI,
-  { wrapper, router, ...options }: RenderOptions = {},
-) {
-  if (!wrapper) {
-    wrapper = ({ children }) => (
-      <RouterContext.Provider value={{ ...mockRouter, ...router }}>
-        {children}
-      </RouterContext.Provider>
-    );
-  }
-
-  return render(ui, { wrapper, ...options });
-}
 
 const mockRouter: NextRouter = {
   isReady: false,
@@ -49,7 +34,23 @@ const mockRouter: NextRouter = {
   events: {
     on: jest.fn(),
     off: jest.fn(),
-    emit: jest.fn(),
+    emit: jest.fn()
   },
   isFallback: false
-};
+}
+
+export function renderWithRouter (
+  ui: RenderUI,
+  { wrapper, router, ...options }: RenderOptions = {}
+) {
+  if (!wrapper) {
+    // eslint-disable-next-line react/display-name
+    wrapper = ({ children }) => (
+      <RouterContext.Provider value={{ ...mockRouter, ...router }}>
+        {children}
+      </RouterContext.Provider>
+    )
+  }
+
+  return render(ui, { wrapper, ...options })
+}

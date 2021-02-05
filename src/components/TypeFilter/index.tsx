@@ -1,1 +1,1 @@
-export { TypeFilter } from './TypeFilter';
+export { TypeFilter } from './TypeFilter'

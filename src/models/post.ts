@@ -1,4 +1,4 @@
-import { LocaleResource } from "./locale-resource";
+import { LocaleResource } from './locale-resource'
 
 export interface Post {
   title: string;
@@ -11,4 +11,3 @@ export interface Post {
   handle?: string;
   type: string;
 }
-

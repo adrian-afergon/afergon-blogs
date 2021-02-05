@@ -1,4 +1,4 @@
-import { Post } from "../models/post";
+import { Post } from '../models/post'
 
 const mapPost = (data: any): Post => ({
   date: new Date(data.date * 1000),
@@ -10,7 +10,7 @@ const mapPost = (data: any): Post => ({
   title: data.title,
   type: data.type,
   locales: data.locales
-});
+})
 
 export interface PostsRepository {
   getPosts: () => Promise<Post[]>
@@ -19,13 +19,13 @@ export interface PostsRepository {
 
 export const postsRepository: PostsRepository = {
   getPosts: async () => {
-    const res = await fetch('/api/posts');
-    const data: Array<any> = await res.json();
-    return data.map(mapPost);
+    const res = await fetch('/api/posts')
+    const data: Array<any> = await res.json()
+    return data.map(mapPost)
   },
   getPostByHandle: async (handle: string) => {
-    const res = await fetch(`/api/posts/${handle}`);
-    const data: any = await res.json();
-    return mapPost(data);
-  },
-};
+    const res = await fetch(`/api/posts/${handle}`)
+    const data: any = await res.json()
+    return mapPost(data)
+  }
+}

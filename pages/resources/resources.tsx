@@ -1,18 +1,18 @@
-import * as React from 'react';
-import './resources.scss';
-import Link from 'next/link';
-import { Layout } from '../../src/components/Layout';
-import { RepositoryContext } from '../../src/contexts/repositories.context';
-import { Resource } from '../../src/models/resource';
-import { ResourceCard } from '../../src/components/ResourceCard';
+import * as React from 'react'
+import './resources.scss'
+import Link from 'next/link'
+import { Layout } from '../../src/components/Layout'
+import { RepositoryContext } from '../../src/contexts/repositories.context'
+import { Resource } from '../../src/models/resource'
+import { ResourceCard } from '../../src/components/ResourceCard'
 
 export const Resources = () => {
-  const [resources, setResources] = React.useState<Resource[]>([]);
-  const { resourcesRepository } = React.useContext(RepositoryContext);
+  const [resources, setResources] = React.useState<Resource[]>([])
+  const { resourcesRepository } = React.useContext(RepositoryContext)
 
   React.useEffect(() => {
-    resourcesRepository.getResources().then(setResources);
-  });
+    resourcesRepository.getResources().then(setResources)
+  })
 
   return (
     <Layout>
@@ -31,7 +31,7 @@ export const Resources = () => {
         </ul>
       </section>
     </Layout>
-  );
-};
+  )
+}
 
-export default Resources;
+export default Resources

@@ -1,4 +1,4 @@
-import { Article } from "../../models/article";
+import { Article } from '../../models/article'
 
 export const buildArticle = ({
   locale = 'irrelevant locale',
@@ -20,4 +20,4 @@ export const buildArticle = ({
   date,
   type,
   locales
-});
+})

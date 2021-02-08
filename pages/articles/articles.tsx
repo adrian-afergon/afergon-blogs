@@ -66,7 +66,7 @@ export const Articles: React.FC = () => {
             <li key={article.title}>
               <a
                 href={article.link}
-                target="_blank"
+                target={article.external ? '_blank' : ''}
                 rel="noreferrer"
               >
                 <ArticleCard item={article} />

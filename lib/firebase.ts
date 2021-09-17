@@ -10,7 +10,7 @@ try {
     databaseURL: process.env.FIREBASE_DATABASE_URL,
     storageBucket: process.env.FIREBASE_STORAGE_BUCKET
   })
-} catch (error) {
+} catch (error: any) {
   /*
    * We skip the "already exists" message which is
    * not an actual error when we're hot-reloading.

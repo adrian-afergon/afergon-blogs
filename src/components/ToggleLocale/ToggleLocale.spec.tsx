@@ -1,16 +1,22 @@
 import * as React from 'react'
-import { RenderResult } from '@testing-library/react'
+import { render, RenderResult } from '@testing-library/react'
 import { ToggleLocale } from './'
 import { buildLocaleResource } from '../../_helpers/builders/build-locale-resource'
-import { renderWithRouter } from '../../_helpers/renders/renderWithRouter'
+import mockRouter from 'next-router-mock'
+
+jest.mock('next/router', () => require('next-router-mock'))
 
 describe('ToggleLocale', () => {
+  beforeEach(() => {
+    mockRouter.setCurrentUrl('/initial')
+  })
+
   it('should display the default message', () => {
     const firstLocale = buildLocaleResource({ locale: 'a locale' })
     const secondLocale = buildLocaleResource({ locale: 'a different locale' })
     const locales = [firstLocale, secondLocale]
 
-    const view: RenderResult = renderWithRouter(
+    const view: RenderResult = render(
       <ToggleLocale locales={locales} />
     )
 

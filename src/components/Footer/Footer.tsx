@@ -28,7 +28,7 @@ export const Footer: React.FC<{}> = () => (
           rel="noreferrer"
           href="https://twitter.com/AdrianFerrera91"
         >
-          <span className="icon-wrapper"><FontAwesomeIcon icon={faTwitter} size="sm" /></span> Twiter
+          <span className="icon-wrapper"><FontAwesomeIcon icon={faTwitter} size="sm" /></span> Twitter
         </a>
       </li>
       <li>

@@ -60,4 +60,11 @@ article {
     content: '';
   }
 
+  pre {
+    @media (max-width: $size-limit-small) {
+      width: 94vw;
+    }
+    width: 100%;
+  }
+
 }

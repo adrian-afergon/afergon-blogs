@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 import { useMedia } from '../../hooks/useMedia'
 import { useScroll } from '../../hooks/useScroll'
-import { ApplicationRoutes } from '../../ApplicationRoutes'
+import { ApplicationRoutes, ExternalRoutes } from '../../ApplicationRoutes'
 import { useDarkMode } from '../../hooks/useDarkMode'
 
 interface HeaderProps {
@@ -31,6 +31,7 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
       {(toggled || isMediumScreen) && <ul role="navigation" onClick={handleToggle}>
         <li><Link href={ApplicationRoutes.articles}><a href={ApplicationRoutes.articles}>Articles</a></Link></li>
         <li><Link href={ApplicationRoutes.resources}><a href={ApplicationRoutes.resources}>Resources</a></Link></li>
+        <li><a href={ExternalRoutes.podcast} target="_blank" rel="noreferrer">Podcast</a></li>
         {/* <li><a href={ApplicationRoutes.articles} target="_blank">Newsletter</a></li> */}
       </ul>}
       <button onClick={changeMode}><FontAwesomeIcon icon={isDarkMode ? faMoon : faSun} /></button>

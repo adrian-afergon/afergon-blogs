@@ -1,8 +1,12 @@
 import * as React from 'react'
-import './LocaleTag.scss'
+import styles from './LocaleTag.module.scss'
 
-export const LocaleTag: React.FC<{}> = ({ children }) => (
-  <span className="LocaleTag">
+type Props = {
+  children: React.ReactNode
+}
+
+export const LocaleTag: React.FC<Props> = ({ children }) => (
+  <span className={styles.LocaleTag}>
     {children}
   </span>
 )

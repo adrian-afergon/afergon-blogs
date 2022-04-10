@@ -1,5 +1,5 @@
 import * as React from 'react'
-import './ToggleLocale.scss'
+import styles from './ToggleLocale.module.scss'
 import { LocaleResource } from '../../models/locale-resource'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -13,10 +13,10 @@ export const ToggleLocale: React.FC<ToggleLocaleProps> = ({
 }) => {
   const { asPath } = useRouter()
   const isActive = (link: string) => link === asPath
-  const calculateClassNames = (link: string) => isActive(link) ? 'active' : ''
+  const calculateClassNames = (link: string) => isActive(link) ? styles.active : ''
 
   return (
-    <div className="ToggleLocale">
+    <div className={styles.ToggleLocale}>
       {
         locales.map(localeResource =>
           <Link

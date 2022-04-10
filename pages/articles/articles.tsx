@@ -1,6 +1,6 @@
 import * as React from 'react'
 import Head from 'next/head'
-import './articles.scss'
+import styles from './articles.module.scss'
 import { SearchBar } from '../../src/components/SearchBar'
 import { ArticleCard } from '../../src/components/ArticleCard'
 import { Article } from '../../src/models/article'
@@ -58,9 +58,12 @@ export const Articles: React.FC = () => {
       <Head>
         <title>Adrián Ferrera - Articles</title>
         <link rel="icon" href="/favicon.ico"/>
+        <meta name="description"
+              content="Hello and welcome to my website! My name is Adrián Ferrera, I'm a Full Stack Developer that love Typescript and likes to help the developers community. Here you can check my blog, talks, resources or just contact with me."/>
+        <meta property="og:image" content="/images/profile.jpg"/>
       </Head>
       <SearchBar types={['Post', 'Talk']} onChangeSelectedTypes={setSelectedTypes} onChangeFilter={handleFilterChange} />
-      <section className="articles">
+      <section className={styles.articles}>
         <ul>
           {filteredArticles.sort(sortArticlesByDate).reverse().map((article) => (
             <li key={article.title}>

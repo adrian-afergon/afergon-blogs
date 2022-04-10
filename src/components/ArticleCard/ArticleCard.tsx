@@ -1,11 +1,11 @@
 import * as React from 'react'
-import './ArticleCard.scss'
+import styles from './ArticleCard.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
 import { Article } from '../../models/article'
 import { LocaleTag } from '../LocaleTag'
 
-interface ArticleCardProps {
+export interface ArticleCardProps {
   item: Article
 }
 
@@ -20,16 +20,16 @@ const formatDate = (date: Date) => {
 }
 
 export const ArticleCard: React.FC<ArticleCardProps> = ({ item }) => (
-    <article className="ArticleCard">
-      <section className="card-header">
+    <article className={styles.ArticleCard}>
+      <section className={styles.cardHeader}>
         <h2>{item.title}</h2>
-        <span className="date">{formatDate(item.date)}</span>
+        <span className={styles.date}>{formatDate(item.date)}</span>
       </section>
-      <section className="card-body">
+      <section className={styles.cardBody}>
         <p>{item.intro}</p>
       </section>
-      <section className="card-footer">
-        <div className="locales">
+      <section className={styles.cardFooter}>
+        <div className={styles.locales}>
         {
           item.locales
             ? item.locales.map(localeResource => <LocaleTag

@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { firebaseInstance } from '../../../lib/firebase'
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
+const filename = (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const file = firebaseInstance.storage.bucket().file(`resources/${req.query.filename}`)
     Promise.all([
@@ -16,3 +16,5 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     res.send(error)
   }
 }
+
+export default filename

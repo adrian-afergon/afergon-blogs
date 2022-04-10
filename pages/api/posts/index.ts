@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import firebase from '../../../lib/firebase'
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
+const posts = (req: NextApiRequest, res: NextApiResponse) => {
   firebase
     .ref('/posts')
     .once('value')
@@ -12,3 +12,5 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
       res.json({ error })
     })
 }
+
+export default posts

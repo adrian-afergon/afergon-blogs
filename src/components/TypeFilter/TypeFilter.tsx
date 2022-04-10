@@ -1,5 +1,5 @@
 import * as React from 'react'
-import './TypeFilter.scss'
+import styles from './TypeFilter.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faFilter } from '@fortawesome/free-solid-svg-icons'
 import { useClickOutside } from '../../hooks/useClickOutside'
@@ -44,7 +44,7 @@ export const TypeFilter: React.FC<TypeFilterProps> = ({ types, onChangeSelectedT
   }
 
   return (
-    <section className="TypeFilter" ref={wrapperRef}>
+    <section className={styles.TypeFilter} ref={wrapperRef}>
       <button onClick={handleClick}>
         <FontAwesomeIcon icon={faFilter} aria-label="Filter By"/>
         {' Filter'}
@@ -63,7 +63,7 @@ export const TypeFilter: React.FC<TypeFilterProps> = ({ types, onChangeSelectedT
                       checked={checkboxType.isChecked}
                       onChange={handleCheckboxChange}
                     />
-                    <div className="checkbox">
+                    <div className={styles.checkbox}>
                       <FontAwesomeIcon icon={faCheck}/>
                     </div>
                     <span>{checkboxType.value}</span>

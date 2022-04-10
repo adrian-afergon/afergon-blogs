@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import firebase from '../../../lib/firebase'
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
+const handle = (req: NextApiRequest, res: NextApiResponse) => {
   const { query: { handle } } = req
 
   firebase.ref('/posts')
@@ -18,3 +18,5 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
       res.json({ error })
     })
 }
+
+export default handle

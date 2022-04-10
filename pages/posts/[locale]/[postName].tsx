@@ -1,5 +1,5 @@
 import * as React from 'react'
-import '../post.scss'
+import styles from '../post.module.scss'
 import Head from 'next/head'
 import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
@@ -19,7 +19,9 @@ interface PostPageProps {
 const PostPage:React.FC<PostPageProps> = ({ postName, metadata, markdownBody }) => {
   if (!metadata) return <></>
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [post, setPost] = React.useState<Post>()
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   React.useEffect(() => {
     if (postName) {
       postsRepository.getPostByHandle(postName).then((data) => {
@@ -41,7 +43,7 @@ const PostPage:React.FC<PostPageProps> = ({ postName, metadata, markdownBody }) 
         <meta name="twitter:description" content={metadata.description} />
         <meta name="twitter:image" content={metadata.image} />
       </Head>
-      <article>
+      <article className={styles.article}>
         { post?.locales && <ToggleLocale locales={post.locales} /> }
         <ReactMarkdown components={{
           code ({ node, inline, className, children, ...props }) {

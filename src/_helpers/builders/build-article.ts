@@ -10,7 +10,7 @@ export const buildArticle = ({
   link = 'irrelevant link',
   type = 'Post',
   locales = []
-}: Partial<Article>): Article => ({
+}: Partial<Article> = {}): Article => ({
   title,
   locale,
   link,

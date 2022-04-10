@@ -1,5 +1,5 @@
 import * as React from 'react'
-import './Header.scss'
+import styles from './Header.module.scss'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
@@ -20,7 +20,7 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
   const { isDarkMode, changeMode } = useDarkMode()
 
   return (
-    <header className={`Header ${isTop ? '' : 'scrolled'}`}>
+    <header className={[styles.Header, isTop ? '' : styles.scrolled].join(" ")}> {/* `Header ${isTop ? '' : 'scrolled'}` */}
       <Link href={ApplicationRoutes.root}><a href={ApplicationRoutes.root}>{title}</a></Link>
       {!isMediumScreen && <button
         onClick={handleToggle}

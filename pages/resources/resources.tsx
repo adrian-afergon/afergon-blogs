@@ -1,5 +1,5 @@
 import * as React from 'react'
-import './resources.scss'
+import styles from './resources.module.scss'
 import Link from 'next/link'
 import { Layout } from '../../src/components/Layout'
 import { RepositoryContext } from '../../src/contexts/repositories.context'
@@ -16,7 +16,7 @@ export const Resources = () => {
 
   return (
     <Layout>
-      <section className="resources">
+      <section className={styles.resources}>
         <ul>
           {resources &&
             resources.map((resource) => (

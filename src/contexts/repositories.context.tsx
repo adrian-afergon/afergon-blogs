@@ -17,5 +17,9 @@ const defaultValue = {
 
 export const RepositoryContext = React.createContext<RepositoryContextProps>(defaultValue)
 
-export const RepositoryProvider: React.FC<{}> = ({ children }) => (
+type Props = {
+  children?: React.ReactNode
+}
+
+export const RepositoryProvider: React.FC<Props> = ({ children }) => (
   <RepositoryContext.Provider value={defaultValue}>{children}</RepositoryContext.Provider>)

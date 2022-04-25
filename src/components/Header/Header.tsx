@@ -1,40 +1,41 @@
 import * as React from 'react'
 import styles from './Header.module.scss'
 import Link from 'next/link'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
-import { useMedia } from '../../hooks/useMedia'
-import { useScroll } from '../../hooks/useScroll'
-import { ApplicationRoutes, ExternalRoutes } from '../../ApplicationRoutes'
-import { useDarkMode } from '../../hooks/useDarkMode'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faBars, faMoon, faSun} from '@fortawesome/free-solid-svg-icons'
+import {useMedia} from '../../hooks/useMedia'
+import {useScroll} from '../../hooks/useScroll'
+import {ApplicationRoutes} from '../../ApplicationRoutes'
+import {useDarkMode} from '../../hooks/useDarkMode'
 
 interface HeaderProps {
   title: string
 }
 
-export const Header: React.FC<HeaderProps> = ({ title }) => {
+export const Header: React.FC<HeaderProps> = ({title}) => {
   const [toggled, setToggled] = React.useState(false)
-  const { isTop } = useScroll()
-  const { isMediumScreen } = useMedia()
+  const {isTop} = useScroll()
+  const {isMediumScreen} = useMedia()
   const handleToggle = () => setToggled(!toggled)
-  const { isDarkMode, changeMode } = useDarkMode()
+  const {isDarkMode, changeMode} = useDarkMode()
 
   return (
-    <header className={[styles.Header, isTop ? '' : styles.scrolled].join(" ")}> {/* `Header ${isTop ? '' : 'scrolled'}` */}
+    <header
+      className={[styles.Header, isTop ? '' : styles.scrolled].join(" ")}> {/* `Header ${isTop ? '' : 'scrolled'}` */}
       <Link href={ApplicationRoutes.root}><a href={ApplicationRoutes.root}>{title}</a></Link>
       {!isMediumScreen && <button
-        onClick={handleToggle}
-        className={`${toggled ? 'active' : ''}`}
-        aria-label="menu">
-        <FontAwesomeIcon icon={faBars} size="xs" />
+          onClick={handleToggle}
+          className={`${toggled ? 'active' : ''}`}
+          aria-label="menu">
+          <FontAwesomeIcon icon={faBars} size="xs"/>
       </button>}
       {(toggled || isMediumScreen) && <ul role="navigation" onClick={handleToggle}>
-        <li><Link href={ApplicationRoutes.articles}><a href={ApplicationRoutes.articles}>Articles</a></Link></li>
-        <li><Link href={ApplicationRoutes.resources}><a href={ApplicationRoutes.resources}>Resources</a></Link></li>
-        <li><a href={ExternalRoutes.podcast} target="_blank" rel="noreferrer">Podcast</a></li>
+          <li><Link href={ApplicationRoutes.articles}><a href={ApplicationRoutes.articles}>Articles</a></Link></li>
+          <li><Link href={ApplicationRoutes.resources}><a href={ApplicationRoutes.resources}>Resources</a></Link></li>
+          <li><Link href={ApplicationRoutes.podcast}><a href={ApplicationRoutes.podcast}>Podcast</a></Link></li>
         {/* <li><a href={ApplicationRoutes.articles} target="_blank">Newsletter</a></li> */}
       </ul>}
-      <button onClick={changeMode}><FontAwesomeIcon icon={isDarkMode ? faMoon : faSun} /></button>
+      <button onClick={changeMode}><FontAwesomeIcon icon={isDarkMode ? faMoon : faSun}/></button>
 
     </header>
   )

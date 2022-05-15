@@ -20,16 +20,20 @@ export const Podcast: React.FC = () =>
       <section className={styles.podcast}>
         <ul>
           <li>
+            <iframe src="https://www.ivoox.com/player_ej_87053001_6_1.html?c1=94bc4c" width="100%" height="200"
+                    allowFullScreen loading="lazy"/>
+          </li>
+          <li>
             <iframe src="https://www.ivoox.com/player_ej_86729581_6_1.html?c1=94bc4c" width="100%" height="200"
-                    frameBorder="0" allowFullScreen scrolling="no" loading="lazy"/>
+                    allowFullScreen loading="lazy"/>
           </li>
           <li>
             <iframe src="https://www.ivoox.com/player_ej_86468563_6_1.html?c1=94bc4c" width="100%" height="200"
-                    frameBorder="0" allowFullScreen scrolling="no" loading="lazy"/>
+                    allowFullScreen loading="lazy"/>
           </li>
           <li>
             <iframe src="https://www.ivoox.com/player_ej_86086007_6_1.html?c1=94bc4c" width="100%" height="200"
-                    frameBorder="0" allowFullScreen scrolling="no" loading="lazy"/>
+                    allowFullScreen loading="lazy"/>
           </li>
         </ul>
       </section>

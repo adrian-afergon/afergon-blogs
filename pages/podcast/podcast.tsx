@@ -3,7 +3,7 @@ import Head from 'next/head'
 import styles from './podcast.module.scss'
 import {Layout} from '../../src/components/Layout'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faTwitter, faYoutube, faSpotify, faAmazon, faTiktok, faInstagram} from "@fortawesome/free-brands-svg-icons";
+import {faTwitter, faYoutube, faSpotify, faAmazon, faTiktok, faInstagram, faItunes, faGoogle} from "@fortawesome/free-brands-svg-icons";
 import {ExternalRoutes} from "../../src/ApplicationRoutes";
 
 export const Podcast: React.FC = () =>
@@ -20,19 +20,23 @@ export const Podcast: React.FC = () =>
       <section className={styles.podcast}>
         <ul>
           <li>
-            <iframe src="https://www.ivoox.com/player_ej_87053001_6_1.html?c1=94bc4c" width="100%" height="200"
+            <iframe src="https://www.ivoox.com/player_ej_87332165_6_1.html" width="100%" height="200"
                     allowFullScreen loading="lazy"/>
           </li>
           <li>
-            <iframe src="https://www.ivoox.com/player_ej_86729581_6_1.html?c1=94bc4c" width="100%" height="200"
+            <iframe src="https://www.ivoox.com/player_ej_87053001_6_1.html" width="100%" height="200"
                     allowFullScreen loading="lazy"/>
           </li>
           <li>
-            <iframe src="https://www.ivoox.com/player_ej_86468563_6_1.html?c1=94bc4c" width="100%" height="200"
+            <iframe src="https://www.ivoox.com/player_ej_86729581_6_1.html" width="100%" height="200"
                     allowFullScreen loading="lazy"/>
           </li>
           <li>
-            <iframe src="https://www.ivoox.com/player_ej_86086007_6_1.html?c1=94bc4c" width="100%" height="200"
+            <iframe src="https://www.ivoox.com/player_ej_86468563_6_1.html" width="100%" height="200"
+                    allowFullScreen loading="lazy"/>
+          </li>
+          <li>
+            <iframe src="https://www.ivoox.com/player_ej_86086007_6_1.html" width="100%" height="200"
                     allowFullScreen loading="lazy"/>
           </li>
         </ul>
@@ -58,6 +62,27 @@ export const Podcast: React.FC = () =>
               <span className={styles.iconWrapper}><FontAwesomeIcon icon={faSpotify} size="sm" /></span> Spotify
             </a>
           </li>
+
+          <li>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href={ExternalRoutes.devsLives.applePodcast}
+            >
+              <span className={styles.iconWrapper}><FontAwesomeIcon icon={faItunes} size="sm" /></span> Apple Podcast
+            </a>
+          </li>
+
+          <li>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href={ExternalRoutes.devsLives.googlePodcast}
+            >
+              <span className={styles.iconWrapper}><FontAwesomeIcon icon={faGoogle} size="sm" /></span> Google Podcast
+            </a>
+          </li>
+
           <li>
             <a
               target="_blank"

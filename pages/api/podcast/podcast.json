@@ -1,0 +1,40 @@
+{
+  "episodes": [
+    {
+      "episodeNumber": 1,
+      "episodeTitle":"Devs Lives #1 Daniel Ramos Acosta | Hablemos de arquitectura",
+      "link":"https://www.ivoox.com/player_ej_86086007_6_1.html",
+      "published":"2022-04-25T04:00:00.000Z"
+    },
+    {
+      "episodeNumber": 2,
+      "episodeTitle":"Devs Lives #2 Jorge Aguiar Martin | Serverless y la arquitectura",
+      "link":"https://www.ivoox.com/player_ej_86468563_6_1.html",
+      "published":"2022-05-02T04:00:00.000Z"
+    },
+    {
+      "episodeNumber": 3,
+      "episodeTitle":"Devs Lives #3 Maria Soria Durá | Una developer por el mundo",
+      "link":"https://www.ivoox.com/player_ej_86729581_6_1.html",
+      "published":"2022-05-09T04:00:00.000Z"
+    },
+    {
+      "episodeNumber": 4,
+      "episodeTitle":"Devs Lives #4 Isaura Fontcuberta | La UX va mucho más allá",
+      "link":"https://www.ivoox.com/player_ej_87053001_6_1.html",
+      "published":"2022-05-016T04:00:00.000Z"
+    },
+    {
+      "episodeNumber": 5,
+      "episodeTitle":"Devs Lives #5 Ulises Santana | Más allá de JS",
+      "link":"https://www.ivoox.com/player_ej_87332165_6_1.html",
+      "published":"2022-05-23T04:00:00.000Z"
+    },
+    {
+      "episodeNumber": 6,
+      "episodeTitle":"Devs Lives #6 Gabriela García | Hacking, Canarias y más!",
+      "link":"https://www.ivoox.com/player_ej_87735677_6_1.html",
+      "published":"2022-05-30T04:00:00.000Z"
+    }
+  ]
+}

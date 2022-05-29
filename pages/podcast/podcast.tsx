@@ -3,10 +3,25 @@ import Head from 'next/head'
 import styles from './podcast.module.scss'
 import {Layout} from '../../src/components/Layout'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faTwitter, faYoutube, faSpotify, faAmazon, faTiktok, faInstagram, faItunes, faGoogle} from "@fortawesome/free-brands-svg-icons";
+import {
+  faAmazon,
+  faGoogle,
+  faInstagram,
+  faItunes,
+  faSpotify,
+  faTiktok,
+  faTwitter,
+  faYoutube
+} from "@fortawesome/free-brands-svg-icons";
+import {faRss} from "@fortawesome/free-solid-svg-icons";
 import {ExternalRoutes} from "../../src/ApplicationRoutes";
+import {Podcast} from "../../src/models/podcast";
 
-export const Podcast: React.FC = () =>
+interface PodcastPageProps {
+  data: Podcast[]
+}
+
+export const PodcastPage: React.FC<PodcastPageProps> = ({data = []}) =>
   (
     <Layout>
       <Head>
@@ -19,26 +34,13 @@ export const Podcast: React.FC = () =>
 
       <section className={styles.podcast}>
         <ul>
-          <li>
-            <iframe src="https://www.ivoox.com/player_ej_87332165_6_1.html" width="100%" height="200"
-                    allowFullScreen loading="lazy"/>
-          </li>
-          <li>
-            <iframe src="https://www.ivoox.com/player_ej_87053001_6_1.html" width="100%" height="200"
-                    allowFullScreen loading="lazy"/>
-          </li>
-          <li>
-            <iframe src="https://www.ivoox.com/player_ej_86729581_6_1.html" width="100%" height="200"
-                    allowFullScreen loading="lazy"/>
-          </li>
-          <li>
-            <iframe src="https://www.ivoox.com/player_ej_86468563_6_1.html" width="100%" height="200"
-                    allowFullScreen loading="lazy"/>
-          </li>
-          <li>
-            <iframe src="https://www.ivoox.com/player_ej_86086007_6_1.html" width="100%" height="200"
-                    allowFullScreen loading="lazy"/>
-          </li>
+          {data.map( episode =>
+            <li key={episode.episodeNumber}>
+              <h4>{episode.episodeTitle}</h4>
+              <iframe src={episode.link}
+                      allowFullScreen loading="lazy"/>
+            </li>
+          )}
         </ul>
       </section>
       <section className={styles.rss}>
@@ -48,9 +50,18 @@ export const Podcast: React.FC = () =>
             <a
               target="_blank"
               rel="noreferrer"
+              href={ExternalRoutes.devsLives.rss}
+            >
+              <span className={styles.iconWrapper}><FontAwesomeIcon icon={faRss} size="sm"/></span> Feed RSS
+            </a>
+          </li>
+          <li>
+            <a
+              target="_blank"
+              rel="noreferrer"
               href={ExternalRoutes.devsLives.youtube}
             >
-              <span className={styles.iconWrapper}><FontAwesomeIcon icon={faYoutube} size="sm" /></span> Youtube
+              <span className={styles.iconWrapper}><FontAwesomeIcon icon={faYoutube} size="sm"/></span> Youtube
             </a>
           </li>
           <li>
@@ -59,7 +70,7 @@ export const Podcast: React.FC = () =>
               rel="noreferrer"
               href={ExternalRoutes.devsLives.spotify}
             >
-              <span className={styles.iconWrapper}><FontAwesomeIcon icon={faSpotify} size="sm" /></span> Spotify
+              <span className={styles.iconWrapper}><FontAwesomeIcon icon={faSpotify} size="sm"/></span> Spotify
             </a>
           </li>
 
@@ -69,7 +80,7 @@ export const Podcast: React.FC = () =>
               rel="noreferrer"
               href={ExternalRoutes.devsLives.applePodcast}
             >
-              <span className={styles.iconWrapper}><FontAwesomeIcon icon={faItunes} size="sm" /></span> Apple Podcast
+              <span className={styles.iconWrapper}><FontAwesomeIcon icon={faItunes} size="sm"/></span> Apple Podcast
             </a>
           </li>
 
@@ -79,7 +90,7 @@ export const Podcast: React.FC = () =>
               rel="noreferrer"
               href={ExternalRoutes.devsLives.googlePodcast}
             >
-              <span className={styles.iconWrapper}><FontAwesomeIcon icon={faGoogle} size="sm" /></span> Google Podcast
+              <span className={styles.iconWrapper}><FontAwesomeIcon icon={faGoogle} size="sm"/></span> Google Podcast
             </a>
           </li>
 
@@ -89,7 +100,7 @@ export const Podcast: React.FC = () =>
               rel="noreferrer"
               href={ExternalRoutes.devsLives.amazon}
             >
-              <span className={styles.iconWrapper}><FontAwesomeIcon icon={faAmazon} size="sm" /></span> Amazon Music
+              <span className={styles.iconWrapper}><FontAwesomeIcon icon={faAmazon} size="sm"/></span> Amazon Music
             </a>
           </li>
           <li>
@@ -98,7 +109,7 @@ export const Podcast: React.FC = () =>
               rel="noreferrer"
               href={ExternalRoutes.devsLives.tiktok}
             >
-              <span className={styles.iconWrapper}><FontAwesomeIcon icon={faTiktok} size="sm" /></span> TikTok
+              <span className={styles.iconWrapper}><FontAwesomeIcon icon={faTiktok} size="sm"/></span> TikTok
             </a>
           </li>
           <li>
@@ -107,7 +118,7 @@ export const Podcast: React.FC = () =>
               rel="noreferrer"
               href={ExternalRoutes.devsLives.instagram}
             >
-              <span className={styles.iconWrapper}><FontAwesomeIcon icon={faInstagram} size="sm" /></span> Instagram
+              <span className={styles.iconWrapper}><FontAwesomeIcon icon={faInstagram} size="sm"/></span> Instagram
             </a>
           </li>
           <li>
@@ -116,7 +127,7 @@ export const Podcast: React.FC = () =>
               rel="noreferrer"
               href={ExternalRoutes.devsLives.twitter}
             >
-              <span className={styles.iconWrapper}><FontAwesomeIcon icon={faTwitter} size="sm" /></span> Twitter
+              <span className={styles.iconWrapper}><FontAwesomeIcon icon={faTwitter} size="sm"/></span> Twitter
             </a>
           </li>
         </ul>
@@ -124,4 +135,4 @@ export const Podcast: React.FC = () =>
     </Layout>
   )
 
-export default Podcast
+export default PodcastPage

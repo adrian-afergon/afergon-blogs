@@ -1,15 +1,13 @@
-import { NextApiRequest, NextApiResponse } from 'next'
-import firebase from '../../../lib/firebase'
+import {NextApiRequest, NextApiResponse} from 'next'
+import {getPosts} from "./posts.repository";
 
 const posts = (req: NextApiRequest, res: NextApiResponse) => {
-  firebase
-    .ref('/posts')
-    .once('value')
-    .then((snapshot) => {
-      res.json(snapshot.val())
+  getPosts()
+    .then((posts) => {
+      res.json(posts)
     })
     .catch((error) => {
-      res.json({ error })
+      res.json({error})
     })
 }
 

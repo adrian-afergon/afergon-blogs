@@ -7,11 +7,11 @@ const mapPodcast = (data: any): Podcast => ({
   published: data.published
 })
 
-export interface PostsRepository {
+export interface PodcastApi {
   getPodcasts: () => Promise<Podcast[]>
 }
 
-export const postsRepository: PostsRepository = {
+export const podcastApi: PodcastApi = {
   getPodcasts: async () => {
     const res = await fetch('/api/podcast')
     const data: Array<any> = await res.json()

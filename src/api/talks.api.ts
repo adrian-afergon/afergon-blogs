@@ -1,6 +1,6 @@
 import { Talk } from '../models/talk'
 
-export interface TalksRepository {
+export interface TalksApi {
   getTalks: () => Promise<Talk[]>
 }
 
@@ -18,7 +18,7 @@ const mapTalk = (data: any): Talk => ({
   locales: data.locales
 })
 
-export const talksRepository: TalksRepository = {
+export const talksRepository: TalksApi = {
   getTalks: async () => {
     const res = await fetch('/api/talks')
     const data: Array<any> = await res.json()

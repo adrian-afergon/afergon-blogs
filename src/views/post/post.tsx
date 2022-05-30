@@ -2,11 +2,11 @@ import * as React from 'react'
 import styles from './post.module.scss'
 import Head from 'next/head'
 import ReactMarkdown from 'react-markdown'
-import {Layout} from '../../components/Layout'
-import {CodeBlock} from '../../components/CodeBlock'
-import {postsRepository} from '../../repositories/posts.repository'
-import {Post} from '../../models/post'
-import {ToggleLocale} from '../../components/ToggleLocale'
+import { Layout } from '../../components/Layout'
+import { CodeBlock } from '../../components/CodeBlock'
+import { postsRepository } from '../../api/posts.api'
+import { Post } from '../../models/post'
+import { ToggleLocale } from '../../components/ToggleLocale'
 
 interface PostPageProps {
   metadata: any,

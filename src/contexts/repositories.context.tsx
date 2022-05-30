@@ -1,12 +1,12 @@
 import * as React from 'react'
-import { PostsRepository, postsRepository } from '../repositories/posts.repository'
-import { TalksRepository, talksRepository } from '../repositories/talks.repository'
-import { ResourcesRepository, resourcesRepository } from '../repositories/resources.repository'
+import { PostsApi, postsRepository } from '../api/posts.api'
+import { TalksApi, talksRepository } from '../api/talks.api'
+import { ResourcesApi, resourcesRepository } from '../api/resources.api'
 
 export interface RepositoryContextProps {
-  postsRepository: PostsRepository,
-  talksRepository: TalksRepository,
-  resourcesRepository: ResourcesRepository
+  postsRepository: PostsApi,
+  talksRepository: TalksApi,
+  resourcesRepository: ResourcesApi
 }
 
 const defaultValue = {

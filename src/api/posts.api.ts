@@ -12,12 +12,12 @@ const mapPost = (data: any): Post => ({
   locales: data.locales
 })
 
-export interface PostsRepository {
+export interface PostsApi {
   getPosts: () => Promise<Post[]>
   getPostByHandle: (handle: string) => Promise<Post>
 }
 
-export const postsRepository: PostsRepository = {
+export const postsRepository: PostsApi = {
   getPosts: async () => {
     const res = await fetch('/api/posts')
     const data: Array<any> = await res.json()

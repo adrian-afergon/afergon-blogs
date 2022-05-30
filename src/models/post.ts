@@ -3,7 +3,7 @@ import { LocaleResource } from './locale-resource'
 export interface Post {
   title: string;
   intro: string;
-  date: Date;
+  date: number;
   locale: string;
   locales?: LocaleResource[]
   link: string;

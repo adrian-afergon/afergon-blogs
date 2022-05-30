@@ -15,6 +15,21 @@
 
     li {
       margin: .4rem;
+
+      iframe {
+        height: 220px;
+        width: 100%;
+        border: none;
+        padding-bottom: 0;
+        @media (min-width: $size-limit-medium) {
+          width: 500px;
+        }
+      }
+
+      h4{
+        margin-top: 0;
+        margin-bottom: .5rem;
+      }
     }
   }
 }

@@ -1,11 +1,11 @@
 import * as React from 'react'
 import Head from 'next/head'
 import styles from './articles.module.scss'
-import { SearchBar } from '../../src/components/SearchBar'
-import { ArticleCard } from '../../src/components/ArticleCard'
-import { Article } from '../../src/models/article'
-import { Layout } from '../../src/components/Layout'
-import { RepositoryContext } from '../../src/contexts/repositories.context'
+import { SearchBar } from '../../components/SearchBar'
+import { ArticleCard } from '../../components/ArticleCard'
+import { Article } from '../../models/article'
+import { Layout } from '../../components/Layout'
+import { RepositoryContext } from '../../contexts/repositories.context'
 
 export const Articles: React.FC = () => {
   const [articles, setArticles] = React.useState<Article[]>([])
@@ -57,7 +57,7 @@ export const Articles: React.FC = () => {
     <Layout>
       <Head>
         <title>Adrián Ferrera - Articles</title>
-        <link rel="icon" href="/favicon.ico"/>
+        <link rel="icon" href="/home/afergon/projects/afergon/afergon-blogs/public/favicon.ico"/>
         <meta name="description"
               content="Hello and welcome to my website! My name is Adrián Ferrera, I'm a Full Stack Developer that love Typescript and likes to help the developers community. Here you can check my blog, talks, resources or just contact with me."/>
         <meta property="og:image" content="/images/profile.jpg"/>

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Head from 'next/head'
 import styles from './podcast.module.scss'
-import {Layout} from '../../src/components/Layout'
+import {Layout} from '../../components/Layout'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
   faAmazon,
@@ -14,8 +14,8 @@ import {
   faYoutube
 } from "@fortawesome/free-brands-svg-icons";
 import {faRss} from "@fortawesome/free-solid-svg-icons";
-import {ExternalRoutes} from "../../src/ApplicationRoutes";
-import {Podcast} from "../../src/models/podcast";
+import {ExternalRoutes} from "../../ApplicationRoutes";
+import {Podcast} from "../../models/podcast";
 
 interface PodcastPageProps {
   data: Podcast[]
@@ -26,7 +26,7 @@ export const PodcastPage: React.FC<PodcastPageProps> = ({data = []}) =>
     <Layout>
       <Head>
         <title>Devs Lives - Podcast</title>
-        <link rel="icon" href="/favicon.ico"/>
+        <link rel="icon" href="/home/afergon/projects/afergon/afergon-blogs/public/favicon.ico"/>
         <meta name="description"
               content="Hello and welcome to my website! My name is Adrián Ferrera, and this is Devs Lives podcast! Here we will talk with different person and their lives as developers."/>
         <meta property="og:image" content="/images/profile.jpg"/>

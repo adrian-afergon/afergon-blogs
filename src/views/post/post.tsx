@@ -1,14 +1,12 @@
 import * as React from 'react'
-import styles from '../post.module.scss'
+import styles from './post.module.scss'
 import Head from 'next/head'
-import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
-import { Layout } from '../../../src/components/Layout'
-import { CodeBlock } from '../../../src/components/CodeBlock'
-import { firebaseInstance } from '../../../lib/firebase'
-import { postsRepository } from '../../../src/repositories/posts.repository'
-import { Post } from '../../../src/models/post'
-import { ToggleLocale } from '../../../src/components/ToggleLocale'
+import {Layout} from '../../components/Layout'
+import {CodeBlock} from '../../components/CodeBlock'
+import {postsRepository} from '../../repositories/posts.repository'
+import {Post} from '../../models/post'
+import {ToggleLocale} from '../../components/ToggleLocale'
 
 interface PostPageProps {
   metadata: any,
@@ -16,7 +14,7 @@ interface PostPageProps {
   postName?: string
 }
 
-const PostPage:React.FC<PostPageProps> = ({ postName, metadata, markdownBody }) => {
+export const PostPage:React.FC<PostPageProps> = ({ postName, metadata, markdownBody }) => {
   if (!metadata) return <></>
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -58,33 +56,6 @@ const PostPage:React.FC<PostPageProps> = ({ postName, metadata, markdownBody }) 
       </article>
     </Layout>
   )
-}
-
-export async function getStaticProps ({ ...ctx }) {
-  const { postName, locale } = ctx.params
-  const file = firebaseInstance.storage.bucket().file(`posts/${locale}/${postName}.md`)
-  const [buffer] = await file.download()
-  const { data, content } = matter(buffer)
-
-  return {
-    props: {
-      postName,
-      metadata: data,
-      markdownBody: content
-    },
-    revalidate: 1
-  }
-}
-
-export async function getStaticPaths () {
-  const [[, ...esFilesOnDirectory]] = await firebaseInstance.storage.bucket().getFiles({ prefix: 'posts/es/' })
-  const [[, ...enFilesOnDirectory]] = await firebaseInstance.storage.bucket().getFiles({ prefix: 'posts/en/' })
-  const getHandle = (filePath: string) => filePath.split('.md')[0]
-  const paths = [...esFilesOnDirectory, ...enFilesOnDirectory].map((file) => getHandle(`/${file.name}`))
-  return {
-    paths,
-    fallback: false
-  }
 }
 
 export default PostPage

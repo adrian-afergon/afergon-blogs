@@ -1,4 +1,4 @@
-import { PodcastPage as Podcast } from './podcast'
+import { PodcastPage as Podcast } from '../../src/views/podcast/podcast'
 import {getEpisodes} from "../api/podcast/podcast.repository";
 
 // @ts-ignore

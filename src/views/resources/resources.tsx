@@ -1,10 +1,10 @@
 import * as React from 'react'
 import styles from './resources.module.scss'
 import Link from 'next/link'
-import { Layout } from '../../src/components/Layout'
-import { RepositoryContext } from '../../src/contexts/repositories.context'
-import { Resource } from '../../src/models/resource'
-import { ResourceCard } from '../../src/components/ResourceCard'
+import { Layout } from '../../components/Layout'
+import { RepositoryContext } from '../../contexts/repositories.context'
+import { Resource } from '../../models/resource'
+import { ResourceCard } from '../../components/ResourceCard'
 
 export const Resources = () => {
   const [resources, setResources] = React.useState<Resource[]>([])

@@ -1,4 +1,4 @@
-import {Talk} from "../../../src/models/talk";
+import {Talk} from "../../models/talk";
 import firebase from "../../../lib/firebase";
 
 const mapTalk = (data: any): Talk => ({

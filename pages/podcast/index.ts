@@ -1,5 +1,5 @@
 import { PodcastPage as Podcast } from '../../src/views/podcast/podcast'
-import {getEpisodes} from "../api/podcast/podcast.repository";
+import {getEpisodes} from "../../src/repositories/podcast/podcast.repository";
 
 // @ts-ignore
 export async function getServerSideProps({ _, res }) {

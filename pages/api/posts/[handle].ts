@@ -1,5 +1,5 @@
 import {NextApiRequest, NextApiResponse} from 'next'
-import {getPost} from "./posts.repository";
+import {getPost} from "../../../src/repositories/posts/posts.repository";
 
 const handle = (req: NextApiRequest, res: NextApiResponse) => {
   const {query: {handle}} = req

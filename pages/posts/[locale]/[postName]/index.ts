@@ -1,6 +1,6 @@
 import {PostPage} from '../../../../src/views/post/post'
-import {getFilesAtDirectory, getPostFile} from "../../../api/posts/posts.repository";
-import {generateRssFeed} from "../../../api/posts/feed.repository";
+import {getFilesAtDirectory, getPostFile} from "../../../../src/repositories/posts/posts.repository";
+import {generateRssFeed} from "../../../../src/repositories/posts/feed.repository";
 
 
 export async function getStaticProps({...ctx}) {

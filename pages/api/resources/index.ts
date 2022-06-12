@@ -1,5 +1,5 @@
 import {NextApiRequest, NextApiResponse} from 'next'
-import {getResources} from "./resources.repository";
+import {getResources} from "../../../src/repositories/resources/resources.repository";
 
 const resources = (req: NextApiRequest, res: NextApiResponse) => {
   getResources().then((snapshot) => {

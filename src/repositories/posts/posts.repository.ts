@@ -1,6 +1,6 @@
 import firebase, {firebaseInstance} from "../../../lib/firebase";
 import matter from "gray-matter";
-import {Post} from "../../../src/models/post";
+import {Post} from "../../models/post";
 
 interface MarkdownParams {locale: string, postName: string}
 

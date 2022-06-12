@@ -7,8 +7,8 @@ export async function getServerSideProps({ _, res }) {
     'Cache-Control',
     'public, s-maxage=10, stale-while-revalidate=59'
   )
-  const data = getEpisodes().sort((a,b) => a.episodeNumber - b.episodeNumber).reverse()
-  return { props: { data } }
+  const episodes = getEpisodes().sort((a,b) => a.episodeNumber - b.episodeNumber).reverse()
+  return { props: { episodes } }
 }
 
 export default Podcast

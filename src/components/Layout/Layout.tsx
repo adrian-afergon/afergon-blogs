@@ -1,8 +1,7 @@
 import * as React from 'react'
 import styles from './Layout.module.scss'
-import { Header } from '../Header'
-import { Footer } from '../Footer'
-import { RepositoryProvider } from '../../contexts/repositories.context'
+import {Header} from '../Header'
+import {Footer} from '../Footer'
 import Head from "next/head";
 
 type LayoutProps = {
@@ -22,9 +21,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => (
     <div className={styles.container}>
       <Header title={'Adrián Ferrera'}/>
       <main>
-        <RepositoryProvider>
           {children}
-        </RepositoryProvider>
       </main>
       <Footer />
     </div>

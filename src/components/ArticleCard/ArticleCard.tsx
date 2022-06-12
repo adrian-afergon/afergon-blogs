@@ -15,7 +15,8 @@ export const ArticleCardText = {
   SLIDES_LINK: 'slides link'
 } as const
 
-const formatDate = (date: Date) => {
+const formatDate = (dateTime: number) => {
+  const date = new Date(dateTime)
   return `${date.toLocaleString('en-US', { month: 'short' })} ${date.getDate()}, ${date.getFullYear()}`
 }
 

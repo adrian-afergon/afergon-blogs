@@ -4,7 +4,7 @@ export interface Talk {
   title: string;
   intro: string;
   places: string[];
-  date: Date;
+  date: number;
   locale: string;
   link: string;
   locales?: LocaleResource[]

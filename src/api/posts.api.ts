@@ -1,7 +1,7 @@
 import { Post } from '../models/post'
 
 const mapPost = (data: any): Post => ({
-  date: new Date(data.date * 1000),
+  date: data.date * 1000,
   external: data.external,
   handle: data.handle,
   intro: data.intro,

@@ -1,20 +1,16 @@
 import * as React from 'react'
 import styles from './resources.module.scss'
 import Link from 'next/link'
-import { Layout } from '../../components/Layout'
-import { RepositoryContext } from '../../contexts/repositories.context'
-import { Resource } from '../../models/resource'
-import { ResourceCard } from '../../components/ResourceCard'
+import {Layout} from '../../components/Layout'
+import {Resource} from '../../models/resource'
+import {ResourceCard} from '../../components/ResourceCard'
 
-export const Resources = () => {
-  const [resources, setResources] = React.useState<Resource[]>([])
-  const { resourcesRepository } = React.useContext(RepositoryContext)
+interface ResourcesProps {
+  resources: Resource[]
+}
 
-  React.useEffect(() => {
-    resourcesRepository.getResources().then(setResources)
-  })
-
-  return (
+export const Resources: React.FC<ResourcesProps> = ({resources = []}) =>
+  (
     <Layout>
       <section className={styles.resources}>
         <ul>
@@ -23,7 +19,7 @@ export const Resources = () => {
               <li key={resource.title}>
                 <Link href={resource.link}>
                   <a href={resource.link} target="_blank" rel="noreferrer">
-                    <ResourceCard resource={resource} />
+                    <ResourceCard resource={resource}/>
                   </a>
                 </Link>
               </li>
@@ -32,6 +28,5 @@ export const Resources = () => {
       </section>
     </Layout>
   )
-}
 
 export default Resources

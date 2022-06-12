@@ -18,10 +18,10 @@ import {ExternalRoutes} from "../../ApplicationRoutes";
 import {Podcast} from "../../models/podcast";
 
 interface PodcastPageProps {
-  data: Podcast[]
+  episodes: Podcast[]
 }
 
-export const PodcastPage: React.FC<PodcastPageProps> = ({data = []}) =>
+export const PodcastPage: React.FC<PodcastPageProps> = ({episodes = []}) =>
   (
     <Layout>
       <Head>
@@ -34,7 +34,7 @@ export const PodcastPage: React.FC<PodcastPageProps> = ({data = []}) =>
 
       <section className={styles.podcast}>
         <ul>
-          {data.map( episode =>
+          {episodes.map(episode =>
             <li key={episode.episodeNumber}>
               <h4>{episode.episodeTitle}</h4>
               <iframe src={episode.link}

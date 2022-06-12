@@ -2,7 +2,7 @@ import { LocaleResource } from './locale-resource'
 
 export interface Post {
   title: string;
-  intro: string;
+  summary: string;
   date: number;
   locale: string;
   locales?: LocaleResource[]

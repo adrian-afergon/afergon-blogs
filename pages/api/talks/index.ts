@@ -1,5 +1,5 @@
 import {NextApiRequest, NextApiResponse} from 'next'
-import {getTalks} from "./talks.repository";
+import {getTalks} from "../../../src/repositories/talks/talks.repository";
 
 const talks = (req: NextApiRequest, res: NextApiResponse) => {
   getTalks()

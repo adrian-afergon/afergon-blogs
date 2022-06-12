@@ -1,30 +1,31 @@
-import { PostPage } from '../../../../src/views/post/post'
-import {firebaseInstance} from "../../../../lib/firebase";
-import matter from "gray-matter";
-import {getPost} from "../../../api/posts/posts.repository";
+import {PostPage} from '../../../../src/views/post/post'
+import {getFilesAtDirectory, getPostFile} from "../../../../src/repositories/posts/posts.repository";
+import {generateRssFeed} from "../../../../src/repositories/posts/feed.repository";
 
+export async function getStaticProps({...ctx}) {
 
-export async function getStaticProps ({ ...ctx }) {
-  const { postName, locale } = ctx.params
-  const file = firebaseInstance.storage.bucket().file(`posts/${locale}/${postName}.md`)
-  const [buffer] = await file.download()
-  const { data, content } = matter(buffer)
-
-  const post = await getPost(postName)
+  const [{post, metadata, markdownBody}] = await Promise.all([
+    getPostFile(ctx.params),
+    //TODO: this is a temporary solution for generation RSS
+    generateRssFeed()
+  ])
 
   return {
     props: {
       post,
-      metadata: data,
-      markdownBody: content
+      metadata,
+      markdownBody
     },
     revalidate: 1
   }
 }
 
-export async function getStaticPaths () {
-  const [[, ...esFilesOnDirectory]] = await firebaseInstance.storage.bucket().getFiles({ prefix: 'posts/es/' })
-  const [[, ...enFilesOnDirectory]] = await firebaseInstance.storage.bucket().getFiles({ prefix: 'posts/en/' })
+export async function getStaticPaths() {
+  const [esFilesOnDirectory, enFilesOnDirectory] = await Promise.all(
+    ['es', 'en']
+      .map((locale) => getFilesAtDirectory(`posts/${locale}/`))
+  )
+
   const getHandle = (filePath: string) => filePath.split('.md')[0]
   const paths = [...esFilesOnDirectory, ...enFilesOnDirectory].map((file) => getHandle(`/${file.name}`))
   return {

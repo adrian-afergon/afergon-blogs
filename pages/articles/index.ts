@@ -1,6 +1,6 @@
 import {Articles} from "../../src/views/articles"
-import {getTalks} from "../api/talks/talks.repository";
-import {getPosts} from "../api/posts/posts.repository";
+import {getTalks} from "../../src/repositories/talks/talks.repository";
+import {getPosts} from "../../src/repositories/posts/posts.repository";
 import {Article} from "../../src/models/article";
 
 // @ts-ignore

@@ -6,7 +6,7 @@ export const buildArticle = ({
   handle = 'irrelevant handle',
   date = 0,
   external = false,
-  intro = 'irrelevant intro',
+  summary = 'irrelevant intro',
   link = 'irrelevant link',
   type = 'Post',
   locales = []
@@ -14,7 +14,7 @@ export const buildArticle = ({
   title,
   locale,
   link,
-  intro,
+  summary,
   handle,
   external,
   date,

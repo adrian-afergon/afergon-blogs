@@ -1,5 +1,5 @@
 import {Resources} from '../../src/views/resources/resources'
-import {getResources} from "../api/resources/resources.repository";
+import {getResources} from "../../src/repositories/resources/resources.repository";
 
 // @ts-ignore
 export async function getServerSideProps({_, res}) {

@@ -1,11 +1,11 @@
-import {Talk} from "../../../src/models/talk";
+import {Talk} from "../../models/talk";
 import firebase from "../../../lib/firebase";
 
 const mapTalk = (data: any): Talk => ({
   date: data.date * 1000,
   external: data.external,
   handle: data.handle || null,
-  intro: data.intro || '',
+  summary: data.summary || '',
   link: data.link,
   locale: data.locale,
   title: data.title,

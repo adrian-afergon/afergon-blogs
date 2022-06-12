@@ -9,25 +9,7 @@ export const getFilesAtDirectory = async (path: string) => {
   return esFilesOnDirectory
 }
 
-export const getBlogPostsData = async () => {
-  const [spanishFiles, englishFiles] = await Promise.all(
-    ['es', 'en']
-      .map((locale) => getFilesAtDirectory(`posts/${locale}/`))
-  )
-  const downloadedFiles = await Promise.all([...spanishFiles, ...englishFiles]
-    .map(file => file.download()))
-
-  return downloadedFiles
-    .map(([buffer]) => {
-      const {data, content} = matter(buffer)
-      return {
-        ...data,
-        slug: 'TODO'
-      }
-    })
-}
-
-export const getPosts = async () => {
+export const getPosts = async (): Promise<Post[]> => {
   const snapshot = await firebase
     .ref('/posts')
     .once('value')
@@ -40,7 +22,7 @@ const getMarkdownFile = async ({locale, postName}: MarkdownParams) => {
   return matter(buffer)
 }
 
-const getPost = async (handle: string | string []): Promise<Post> => {
+export const getPost = async (handle: string | string []): Promise<Post> => {
   const result: Post[] = []
   const snapShot = await firebase.ref('/posts')
     .orderByChild('handle')

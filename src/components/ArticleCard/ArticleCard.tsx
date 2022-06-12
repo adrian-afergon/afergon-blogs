@@ -27,7 +27,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({ item }) => (
         <span className={styles.date}>{formatDate(item.date)}</span>
       </section>
       <section className={styles.cardBody}>
-        <p>{item.intro}</p>
+        <p/>
       </section>
       <section className={styles.cardFooter}>
         <div className={styles.locales}>
@@ -39,16 +39,6 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({ item }) => (
 
         }
         </div>
-        {/* {"video" in item && item.video && ( */}
-        {/*  <div className="external"> */}
-        {/*    <Link href={item.video}> */}
-        {/*      <a href={item.video} target="_blank"> */}
-        {/*        Watch the video */}
-        {/*        <FontAwesomeIcon icon={faYoutube} size="xs" aria-label={ArticleCardText.VIDEO_LINK}/> */}
-        {/*      </a> */}
-        {/*    </Link> */}
-        {/*  </div> */}
-        {/* )} */}
         {item.external && (
           <div className="external">
             <FontAwesomeIcon icon={faExternalLinkAlt} size="xs" aria-label={ArticleCardText.EXTERNAL_LINK}/>

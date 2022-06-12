@@ -2,7 +2,7 @@ import { LocaleResource } from './locale-resource'
 
 export interface Talk {
   title: string;
-  intro: string;
+  summary: string;
   places: string[];
   date: number;
   locale: string;

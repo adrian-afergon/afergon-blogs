@@ -1,9 +1,9 @@
-import { Feed } from "feed";
-import { getBlogPostsData } from "./posts.repository";
+import {Feed} from "feed";
+import {getPosts} from "./posts.repository";
 import * as fs from "fs";
 
 export const generateRssFeed = async () => {
-  const posts = await getBlogPostsData();
+  const posts = await getPosts();
   const siteURL = process.env.SITE_URL || 'https://adrianferrera.com';
   const date = new Date();
   const author = {
@@ -16,11 +16,10 @@ export const generateRssFeed = async () => {
     description: "",
     id: siteURL,
     link: siteURL,
-    image: `${siteURL}/logo.svg`,
-    favicon: `${siteURL}/favicon.png`,
+    image: `${siteURL}/images/profile.jpg`,
+    favicon: `${siteURL}/favicon.ico`,
     copyright: `All rights reserved ${date.getFullYear()}, Adrián Ferrera`,
     updated: date,
-    generator: "Feed for Node.js",
     feedLinks: {
       rss2: `${siteURL}/rss/feed.xml`,
       json: `${siteURL}/rss/feed.json`,
@@ -29,7 +28,7 @@ export const generateRssFeed = async () => {
     author,
   });
   posts.forEach((post) => {
-    const url = `${siteURL}/blog/${post.slug}`;
+    const url = post.external ? post.link : `${siteURL}/${post.link}`;
     feed.addItem({
       // @ts-ignore
       title: post.title,
@@ -42,12 +41,10 @@ export const generateRssFeed = async () => {
       author: [author],
       contributor: [author],
       // @ts-ignore
-      date: new Date(post.publishedAt),
+      date: new Date(post.date * 1000),
     });
   });
 
-  fs.mkdirSync("./public/rss", { recursive: true });
+  fs.mkdirSync("./public/rss", {recursive: true});
   fs.writeFileSync("./public/rss/feed.xml", feed.rss2());
-  //fs.writeFileSync("./public/rss/atom.xml", feed.atom1());
-  //fs.writeFileSync("./public/rss/feed.json", feed.json1());
 };

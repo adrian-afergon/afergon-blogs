@@ -1,6 +1,7 @@
 import { PostPage } from '../../../../src/views/post/post'
 import {firebaseInstance} from "../../../../lib/firebase";
 import matter from "gray-matter";
+import {getPost} from "../../../api/posts/posts.repository";
 
 
 export async function getStaticProps ({ ...ctx }) {
@@ -9,9 +10,11 @@ export async function getStaticProps ({ ...ctx }) {
   const [buffer] = await file.download()
   const { data, content } = matter(buffer)
 
+  const post = await getPost(postName)
+
   return {
     props: {
-      postName,
+      post,
       metadata: data,
       markdownBody: content
     },

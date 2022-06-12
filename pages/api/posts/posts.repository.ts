@@ -20,7 +20,7 @@ export const getPosts = async (): Promise<Post[]> => {
     .then((snapshot) => snapshot.val().map(mapPost))
 }
 
-export const getPost = async (handle: string | string []): Promise<Post[]> => {
+export const getPost = async (handle: string | string []): Promise<Post> => {
   const result: Post[] = []
   const snapShot = await firebase.ref('/posts')
     .orderByChild('handle')
@@ -32,5 +32,5 @@ export const getPost = async (handle: string | string []): Promise<Post[]> => {
     result.push(item.val() as Post)
   })
 
-    return result
+  return result[0]
 }

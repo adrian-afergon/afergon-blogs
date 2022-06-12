@@ -4,29 +4,18 @@ import Head from 'next/head'
 import ReactMarkdown from 'react-markdown'
 import { Layout } from '../../components/Layout'
 import { CodeBlock } from '../../components/CodeBlock'
-import { postsRepository } from '../../api/posts.api'
 import { Post } from '../../models/post'
 import { ToggleLocale } from '../../components/ToggleLocale'
 
 interface PostPageProps {
   metadata: any,
   markdownBody: any,
-  postName?: string
+  postName?: string,
+  post: Post
 }
 
-export const PostPage:React.FC<PostPageProps> = ({ postName, metadata, markdownBody }) => {
-  if (!metadata) return <></>
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [post, setPost] = React.useState<Post>()
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  React.useEffect(() => {
-    if (postName) {
-      postsRepository.getPostByHandle(postName).then((data) => {
-        setPost(data)
-      })
-    }
-  }, [postName])
+export const PostPage:React.FC<PostPageProps> = ({ metadata, markdownBody, post = null }) => {
+  if (!metadata || !post) return <></>
 
   return (
     <Layout>
@@ -42,7 +31,7 @@ export const PostPage:React.FC<PostPageProps> = ({ postName, metadata, markdownB
         <meta name="twitter:image" content={metadata.image} />
       </Head>
       <article className={styles.article}>
-        { post?.locales && <ToggleLocale locales={post.locales} /> }
+        { post.locales && <ToggleLocale locales={post.locales} /> }
         <ReactMarkdown components={{
           code ({ node, inline, className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || '')

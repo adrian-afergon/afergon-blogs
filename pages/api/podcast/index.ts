@@ -1,8 +1,8 @@
 import {NextApiRequest, NextApiResponse} from "next";
-import {getEpisodes} from "../../../src/repositories/podcast/podcast.repository";
+import {getPublishedEpisodesSorted} from "../../../src/repositories/podcast/podcast.repository";
 
 const posts = (req: NextApiRequest, res: NextApiResponse) => {
-      res.json(getEpisodes)
+      res.json(getPublishedEpisodesSorted)
 }
 
 export default posts

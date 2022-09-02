@@ -9,11 +9,23 @@ export const getFilesAtDirectory = async (path: string) => {
   return esFilesOnDirectory
 }
 
+const mapPost = (data: any): Post => ({
+  date: data.date * 1000,
+  external: data.external,
+  handle: data.handle || null,
+  summary: data.summary || '',
+  link: data.link,
+  locale: data.locale,
+  title: data.title,
+  type: data.type,
+  locales: data.locales || null
+})
+
 export const getPosts = async (): Promise<Post[]> => {
   const snapshot = await firebase
     .ref('/posts')
     .once('value')
-  return snapshot.val()
+  return snapshot.val().map(mapPost)
 }
 
 const getMarkdownFile = async ({locale, postName}: MarkdownParams) => {

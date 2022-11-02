@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Head from 'next/head'
 import styles from './podcast.module.scss'
-import {Layout} from '../../components/Layout'
+import {Layout} from '@/components/Layout'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
   faAmazon,
@@ -14,8 +14,8 @@ import {
   faYoutube
 } from "@fortawesome/free-brands-svg-icons";
 import {faRss} from "@fortawesome/free-solid-svg-icons";
-import {ExternalRoutes} from "../../ApplicationRoutes";
-import {Podcast} from "../../models/podcast";
+import {ExternalRoutes} from "@/ApplicationRoutes";
+import {Podcast} from "@/lib/podcast/domain/podcast";
 
 interface PodcastPageProps {
   episodes: Podcast[]

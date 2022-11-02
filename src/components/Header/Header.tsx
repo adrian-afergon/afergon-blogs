@@ -3,10 +3,10 @@ import styles from './Header.module.scss'
 import Link from 'next/link'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBars, faMoon, faSun} from '@fortawesome/free-solid-svg-icons'
-import {useMedia} from '../../hooks/useMedia'
-import {useScroll} from '../../hooks/useScroll'
-import {ApplicationRoutes} from '../../ApplicationRoutes'
-import {useDarkMode} from '../../hooks/useDarkMode'
+import {useMedia} from '@/hooks/useMedia'
+import {useScroll} from '@/hooks/useScroll'
+import {ApplicationRoutes} from '@/ApplicationRoutes'
+import {useDarkMode} from '@/hooks/useDarkMode'
 
 interface HeaderProps {
   title: string

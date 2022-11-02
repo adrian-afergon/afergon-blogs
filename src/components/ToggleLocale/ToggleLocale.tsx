@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styles from './ToggleLocale.module.scss'
-import { LocaleResource } from '../../models/locale-resource'
+import { LocaleResource } from '@/lib/common/domain/locale-resource'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 

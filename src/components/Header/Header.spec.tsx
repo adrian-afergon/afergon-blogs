@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { fireEvent, render, RenderResult } from '@testing-library/react'
 import { Header } from './index'
-import { MediaSizes } from '../../hooks/useMedia/media-sizes'
+import { MediaSizes } from '@/hooks/useMedia/media-sizes'
 
 describe('Header', () => {
   const title = 'irrelevant title'

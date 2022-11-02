@@ -1,4 +1,4 @@
-@import 'pages/variables';
+@import 'src/pages/variables';
 
 .intro {
   display: flex;
@@ -10,7 +10,7 @@
       color: var(--primary-color);
     }
   }
-  text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
 }
 
 .adjectives {

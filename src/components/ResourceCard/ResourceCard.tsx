@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styles from './ResourceCard.module.scss'
-import {Resource} from '../../models/resource'
+import {Resource} from '@/lib/resources/domain/resource'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faExternalLinkAlt} from '@fortawesome/free-solid-svg-icons'
 import {ArticleCardText} from '../ArticleCard/ArticleCard'

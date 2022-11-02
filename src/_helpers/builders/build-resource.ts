@@ -1,4 +1,4 @@
-import { Resource } from '../../models/resource'
+import { Resource } from '@/lib/resources/domain/resource'
 
 export const buildResource = ({
   date = 'irrelevant date',

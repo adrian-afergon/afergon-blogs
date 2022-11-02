@@ -1,9 +1,9 @@
 import * as React from 'react'
 import styles from './resources.module.scss'
 import Link from 'next/link'
-import {Layout} from '../../components/Layout'
-import {Resource} from '../../models/resource'
-import {ResourceCard} from '../../components/ResourceCard'
+import {Layout} from '@/components/Layout'
+import {Resource} from '@/lib/resources/domain/resource'
+import {ResourceCard} from '@/components/ResourceCard'
 
 interface ResourcesProps {
   resources: Resource[]

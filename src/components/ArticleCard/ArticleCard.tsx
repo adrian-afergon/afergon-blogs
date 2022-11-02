@@ -2,7 +2,7 @@ import * as React from 'react'
 import styles from './ArticleCard.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
-import { Article } from '../../models/article'
+import { Article } from '@/models/article'
 import { LocaleTag } from '../LocaleTag'
 
 export interface ArticleCardProps {

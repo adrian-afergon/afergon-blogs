@@ -1,10 +1,10 @@
 import * as React from 'react'
 import Head from 'next/head'
 import styles from './articles.module.scss'
-import {SearchBar} from '../../components/SearchBar'
-import {ArticleCard} from '../../components/ArticleCard'
-import {Article} from '../../models/article'
-import {Layout} from '../../components/Layout'
+import {SearchBar} from '@/components/SearchBar'
+import {ArticleCard} from '@/components/ArticleCard'
+import {Article} from '@/models/article'
+import {Layout} from '@/components/Layout'
 
 interface ArticlesProps {
   articles: Article[]

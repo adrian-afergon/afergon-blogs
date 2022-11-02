@@ -2,7 +2,7 @@ import * as React from 'react'
 import { render, RenderResult } from '@testing-library/react'
 import { ArticleCard } from './'
 import { ArticleCardText } from './ArticleCard'
-import { buildArticle } from '../../_helpers/builders/build-article'
+import { buildArticle } from '@/_helpers/builders/build-article'
 
 describe('ArticleCard', () => {
   it('shows an external link', () => {

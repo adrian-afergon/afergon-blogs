@@ -1,4 +1,4 @@
-import { LocaleResource } from '../../models/locale-resource'
+import { LocaleResource } from '@/lib/common/domain/locale-resource'
 
 export const buildLocaleResource = ({
   link = 'http://irrelevant.link',

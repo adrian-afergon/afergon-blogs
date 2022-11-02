@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render, RenderResult } from '@testing-library/react'
 import { ToggleLocale } from './'
-import { buildLocaleResource } from '../../_helpers/builders/build-locale-resource'
+import { buildLocaleResource } from '@/_helpers/builders/build-locale-resource'
 import mockRouter from 'next-router-mock'
 
 jest.mock('next/router', () => require('next-router-mock'))

@@ -2,7 +2,7 @@ import * as React from 'react'
 import styles from './TypeFilter.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faFilter } from '@fortawesome/free-solid-svg-icons'
-import { useClickOutside } from '../../hooks/useClickOutside'
+import { useClickOutside } from '@/hooks/useClickOutside'
 
 interface TypeFilterProps {
   types: string[],
@@ -22,20 +22,19 @@ export const TypeFilter: React.FC<TypeFilterProps> = ({ types, onChangeSelectedT
   const wrapperRef = React.useRef(null)
   useClickOutside(wrapperRef, () => setToggled(false))
 
-  React.useEffect(() => {
-    const getValueFromChecked = (total:string[], checkboxType: CheckboxItem) =>
-      checkboxType.isChecked
-        ? [...total, checkboxType.value]
-        : total
-    onChangeSelectedTypes(checkboxTypes.reduce(getValueFromChecked, []))
-  }, [checkboxTypes])
+  const getValueFromChecked = (total:string[], checkboxType: CheckboxItem) =>
+    checkboxType.isChecked
+      ? [...total, checkboxType.value]
+      : total
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCheckboxTypes(checkboxTypes.map((checkboxType) =>
+    const types = checkboxTypes.map((checkboxType) =>
       event.target.value === checkboxType.value
         ? { ...checkboxType, isChecked: !checkboxType.isChecked }
         : checkboxType
-    ))
+    )
+    setCheckboxTypes(types)
+    onChangeSelectedTypes(types.reduce(getValueFromChecked, []))
   }
 
   const handleClick = (event: React.MouseEvent) => {

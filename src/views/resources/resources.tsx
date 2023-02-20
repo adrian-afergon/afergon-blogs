@@ -17,10 +17,8 @@ export const Resources: React.FC<ResourcesProps> = ({resources = []}) =>
           {resources &&
             resources.map((resource) => (
               <li key={resource.title}>
-                <Link href={resource.link}>
-                  <a href={resource.link} target="_blank" rel="noreferrer">
-                    <ResourceCard resource={resource}/>
-                  </a>
+                <Link href={resource.link} target="_blank" rel="noreferrer">
+                  <ResourceCard resource={resource}/>
                 </Link>
               </li>
             ))}

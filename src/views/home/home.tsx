@@ -1,14 +1,13 @@
 import * as React from 'react'
 import Head from 'next/head'
 import styles from './home.module.scss'
-import { Layout } from '@/components/Layout'
-import Image from "next/image";
+import {Layout} from '@/components/Layout'
 
 export const Home: React.FC = () => (
   <Layout>
     <Head>
       <title>Adrián Ferrera</title>
-      <link rel="icon" href="/home/afergon/projects/afergon/afergon-blogs/public/favicon.ico" />
+      <link rel="icon" href="/favicon.ico" />
       <meta name="description"
             content="Hello and welcome to my website! My name is Adrián Ferrera, I'm a Full Stack Developer that love Typescript and likes to help the developers community. Here you can check my blog, talks, resources or just contact with me."/>
       <meta property="og:image" content="/images/profile.jpg"/>

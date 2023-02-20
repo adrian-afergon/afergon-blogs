@@ -21,10 +21,9 @@ export const ToggleLocale: React.FC<ToggleLocaleProps> = ({
         locales.map(localeResource =>
           <Link
             key={localeResource.locale}
-            href={localeResource.link}>
-            <a href={localeResource.link} className={calculateClassNames(localeResource.link)}>
+            href={localeResource.link}
+            className={calculateClassNames(localeResource.link)}>
               {localeResource.locale}
-            </a>
           </Link>)
       }
     </div>

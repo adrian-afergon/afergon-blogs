@@ -10,7 +10,7 @@ export class TalksNotionRepository implements TalksRepository {
     ) {
     }
 
-    private async fetcher(url: string, method = 'GET') {
+    private async fetcher(url: string, method = 'GET', body?: string) {
         return fetch(url, {
             method,
             headers: {
@@ -18,23 +18,43 @@ export class TalksNotionRepository implements TalksRepository {
                 'Notion-version': '2022-06-28',
                 'Content-type': 'application/json'
             },
+            body
         });
     }
 
     async getTalks(): Promise<Talk[]> {
         const res = await this.fetcher(
             `https://api.notion.com/v1/databases/${this.database}/query`,
-            'POST'
+            'POST',
+            JSON.stringify({
+                filter: {
+                    and: [
+                        {
+                            property: 'Type',
+                            'select': {
+                                equals: 'Talk'
+                            },
+                        },
+                        {
+                            property: 'Status',
+                            'status': {
+                                equals: 'Publish'
+                            }
+                        },
+
+                    ],
+                }
+            })
         );
         const database = await res.json();
         return database.results.map((item: any) => ({
-            title: item.properties.Name.title[0].plain_text,
-            summary: item.properties.intro?.rich_text[0]?.plain_text || '',
-            date: item.properties.date.date.start,
-            locales: item.properties.locales.multi_select.map((it: any) => it.name),
-            link: item.properties.link.rich_text[0].plain_text,
-            external: item.properties.external.checkbox,
-            handle: '',
+            title: item.properties.Name.title[0].text.content,
+            summary: '',
+            date: item.properties.Date.date.start,
+            locales: [item.properties.Locale.select.name],
+            link: item.properties.ExternalLink.url,
+            external: Boolean(item.properties.ExternalLink.url),
+            handle: item.properties.Path?.rich_text[0]?.plain_text || '',
         }))
     }
 }

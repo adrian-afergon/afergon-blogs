@@ -22,7 +22,7 @@ export const Header: React.FC<HeaderProps> = ({title}) => {
   return (
     <header
       className={[styles.Header, isTop ? '' : styles.scrolled].join(" ")}> {/* `Header ${isTop ? '' : 'scrolled'}` */}
-      <Link href={ApplicationRoutes.root}><a href={ApplicationRoutes.root}>{title}</a></Link>
+      <Link href={ApplicationRoutes.root}>{title}</Link>
       {!isMediumScreen && <button
           onClick={handleToggle}
           className={`${toggled ? 'active' : ''}`}
@@ -30,9 +30,9 @@ export const Header: React.FC<HeaderProps> = ({title}) => {
           <FontAwesomeIcon icon={faBars} size="xs"/>
       </button>}
       {(toggled || isMediumScreen) && <ul role="navigation" onClick={handleToggle}>
-          <li><Link href={ApplicationRoutes.articles}><a href={ApplicationRoutes.articles}>Articles</a></Link></li>
-          <li><Link href={ApplicationRoutes.resources}><a href={ApplicationRoutes.resources}>Resources</a></Link></li>
-          <li><Link href={ApplicationRoutes.podcast}><a href={ApplicationRoutes.podcast}>Podcast</a></Link></li>
+          <li><Link href={ApplicationRoutes.articles}>Articles</Link></li>
+          <li><Link href={ApplicationRoutes.resources}>Resources</Link></li>
+          <li><Link href={ApplicationRoutes.podcast}>Podcast</Link></li>
         {/* <li><a href={ApplicationRoutes.articles} target="_blank">Newsletter</a></li> */}
       </ul>}
       <button onClick={changeMode}><FontAwesomeIcon icon={isDarkMode ? faMoon : faSun}/></button>

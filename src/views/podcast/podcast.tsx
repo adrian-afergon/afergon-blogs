@@ -26,7 +26,7 @@ export const PodcastPage: React.FC<PodcastPageProps> = ({episodes = []}) =>
     <Layout>
       <Head>
         <title>Devs Lives - Podcast</title>
-        <link rel="icon" href="/home/afergon/projects/afergon/afergon-blogs/public/favicon.ico"/>
+        <link rel="icon" href="/favicon.ico"/>
         <meta name="description"
               content="Hello and welcome to my website! My name is Adrián Ferrera, and this is Devs Lives podcast! Here we will talk with different person and their lives as developers."/>
         <meta property="og:image" content="/images/profile.jpg"/>

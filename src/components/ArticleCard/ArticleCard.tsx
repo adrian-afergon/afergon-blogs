@@ -32,11 +32,8 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({ item }) => (
       <section className={styles.cardFooter}>
         <div className={styles.locales}>
         {
-          item.locales
-            ? item.locales.map(localeResource => <LocaleTag
-              key={localeResource.link}>{localeResource.locale}</LocaleTag>)
-            : <LocaleTag>{item.locale}</LocaleTag>
-
+          item.locales.map(localeResource => <LocaleTag
+             key={`${item.title}-${localeResource}`}>{localeResource}</LocaleTag>)
         }
         </div>
         {item.external && (

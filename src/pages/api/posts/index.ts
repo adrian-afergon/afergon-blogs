@@ -1,12 +1,13 @@
 import {NextApiRequest, NextApiResponse} from 'next'
-import {getPosts} from "@/lib/posts/infrastructure/posts.repository";
+import {PostsNotionRepository} from "@/lib/posts/infrastructure/posts.notion.repository";
 
 const posts = (req: NextApiRequest, res: NextApiResponse) => {
-  getPosts()
-    .then(res.json)
-    .catch((error) => {
-      res.json({error})
-    })
+    const postRepository = new PostsNotionRepository()
+    postRepository.getPosts()
+        .then(res.json)
+        .catch((error) => {
+            res.json({error})
+        })
 }
 
 export default posts

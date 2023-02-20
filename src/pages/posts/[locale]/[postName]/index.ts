@@ -1,11 +1,13 @@
 import {PostPage} from '../../../../views/post/post'
-import {getFilesAtDirectory, getPostFile} from "@/lib/posts/infrastructure/posts.repository";
+import {postsFirebaseRepository} from "@/lib/posts/infrastructure/posts.firebase.repository";
 import {generateRssFeed} from "@/lib/posts/infrastructure/feed.repository";
+import {PostsNotionRepository} from "@/lib/posts/infrastructure/posts.notion.repository";
 
 export async function getStaticProps({...ctx}) {
 
+  console.log('params', ctx.params)
   const [{post, metadata, markdownBody}] = await Promise.all([
-    getPostFile(ctx.params),
+    new PostsNotionRepository().getPostFile(ctx.params),
     //TODO: this is a temporary solution for generation RSS
     generateRssFeed()
   ])
@@ -23,7 +25,7 @@ export async function getStaticProps({...ctx}) {
 export async function getStaticPaths() {
   const [esFilesOnDirectory, enFilesOnDirectory] = await Promise.all(
     ['es', 'en']
-      .map((locale) => getFilesAtDirectory(`posts/${locale}/`))
+      .map((locale) => postsFirebaseRepository.getFilesAtDirectory(`posts/${locale}/`))
   )
 
   const getHandle = (filePath: string) => filePath.split('.md')[0]

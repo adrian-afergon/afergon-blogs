@@ -1,8 +1,8 @@
 import {NextApiRequest, NextApiResponse} from 'next'
-import {getTalks} from "@/lib/talks/infrastructure/talks.repository";
+import { TalksNotionRepository } from "@/lib/talks/infrastructure/talks.notion.repository";
 
 const talks = (req: NextApiRequest, res: NextApiResponse) => {
-  getTalks()
+  new TalksNotionRepository().getTalks()
     .then((talks) => {
       res.json(talks)
     })

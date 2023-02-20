@@ -31,7 +31,7 @@ export const PostPage:React.FC<PostPageProps> = ({ metadata, markdownBody, post 
         <meta name="twitter:image" content={metadata.image} />
       </Head>
       <article className={styles.article}>
-        { post.locales && <ToggleLocale locales={post.locales} /> }
+        { post.locales && <ToggleLocale locales={post.locales} handle={post.handle || ''}/> }
         <ReactMarkdown components={{
           code ({ node, inline, className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || '')

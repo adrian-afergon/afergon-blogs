@@ -21,7 +21,6 @@ export async function getStaticProps({...ctx}) {
 }
 
 export async function getStaticPaths() {
-  // const paths = await postsFirebaseRepository.getAllFilePaths()
   const paths = await PostsFactoryRepository.getInstance().getAllFilePaths()
   return {
     paths,

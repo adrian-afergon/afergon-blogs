@@ -13,7 +13,7 @@ export class PostsFirebaseRepository implements PostsRepository {
     summary: data.summary || '',
     link: data.link,
     title: data.title,
-    locales: data.locales || null
+    locales: data.locales ? data.locales.map((locale: {locale: string, link: string}) => locale.locale): [data.locale]
   })
 
   private async getMarkdownFile({locale, postName}: MarkdownParams) {
@@ -39,7 +39,7 @@ export class PostsFirebaseRepository implements PostsRepository {
       result.push(item.val() as Post)
     })
 
-    return result[0]
+    return this.mapPost(result[0])
   }
 
   async getPostFile(params: MarkdownParams): Promise<PostFile> {
@@ -53,7 +53,8 @@ export class PostsFirebaseRepository implements PostsRepository {
     }
 
     return {
-      post: {...post, id: params.postName},
+      post: {...post, id: params.postName
+  },
       metadata: data,
       markdownBody: content
     }

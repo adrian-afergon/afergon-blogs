@@ -1,5 +1,5 @@
 import {NextApiRequest, NextApiResponse} from 'next'
-import {postsFirebaseRepository} from "@/lib/posts/infrastructure/posts.firebase.repository";
+import {PostsFactoryRepository} from "@/lib/posts/infrastructure/posts.factory.repository";
 
 const handle = (req: NextApiRequest, res: NextApiResponse) => {
   const {query: {handle}} = req
@@ -10,7 +10,7 @@ const handle = (req: NextApiRequest, res: NextApiResponse) => {
     return
   }
 
-  postsFirebaseRepository.getPost(handle)
+  PostsFactoryRepository.getInstance().getPost(handle)
     .then((post) => {
       res.json(post)
     })

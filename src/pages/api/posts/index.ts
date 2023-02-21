@@ -1,8 +1,8 @@
 import {NextApiRequest, NextApiResponse} from 'next'
-import {PostsNotionRepository} from "@/lib/posts/infrastructure/posts.notion.repository";
+import {PostsFactoryRepository} from "@/lib/posts/infrastructure/posts.factory.repository";
 
 const posts = (req: NextApiRequest, res: NextApiResponse) => {
-    const postRepository = new PostsNotionRepository()
+    const postRepository = PostsFactoryRepository.getInstance()
     postRepository.getPosts()
         .then(res.json)
         .catch((error) => {

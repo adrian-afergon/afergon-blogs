@@ -1,8 +1,8 @@
 import {Articles} from "../../views/articles"
-import {PostsNotionRepository} from "@/lib/posts/infrastructure/posts.notion.repository";
 import {TalksNotionRepository} from "@/lib/talks/infrastructure/talks.notion.repository";
 import {Post} from "@/lib/posts/domain/post";
 import {Talk} from "@/lib/talks/domain/talk";
+import {PostsFactoryRepository} from "@/lib/posts/infrastructure/posts.factory.repository";
 
 // @ts-ignore
 export async function getServerSideProps({_, res}) {
@@ -12,7 +12,7 @@ export async function getServerSideProps({_, res}) {
   )
 
   const [posts, talks] = await Promise.all<Array<Post | Talk>>([
-    new PostsNotionRepository().getPosts(),
+    PostsFactoryRepository.getInstance().getPosts(),
     new TalksNotionRepository().getTalks()
   ])
 

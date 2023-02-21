@@ -2,7 +2,6 @@ import {MarkdownParams, PostId, PostsRepository} from "@/lib/posts/domain/posts.
 import {Post} from "@/lib/posts/domain/post";
 import {PostFile} from "@/lib/posts/domain/post-file";
 import * as process from "process";
-import {File} from "@google-cloud/storage";
 import {NotionDatasource} from "@/lib/common/infrastructure/datasource/notion";
 
 export class PostsNotionRepository implements PostsRepository {
@@ -16,6 +15,18 @@ export class PostsNotionRepository implements PostsRepository {
         private readonly database: string = process.env.NOTION_BLOG_DATABASE || '',
         private readonly notionDatasource: NotionDatasource = new NotionDatasource()
     ) {
+    }
+
+    async getAllFilePaths (): Promise<string[]> {
+        const databaseResponse = await this.notionDatasource.queryDatabase(this.database, {
+            property: 'Path',
+            rich_text: {
+                is_not_empty: true
+            }
+        })
+
+        // @ts-ignore
+        return databaseResponse.results.map(item => `/posts/${this.locales[item.properties.Locale.select.name]}/${item.properties.Path?.rich_text[0]?.plain_text}`)
     }
 
     async getPost(handle: string | string[], locale?: string): Promise<(Post & { id: PostId }) | undefined> {
@@ -141,10 +152,6 @@ export class PostsNotionRepository implements PostsRepository {
             ? item.properties.ExternalLink.url
             : `posts/${this.locales[item.properties.Locale.select.name]}/${item.properties.Path?.rich_text[0]?.plain_text}`
 
-    }
-
-    getFilesAtDirectory(path: string): Promise<File[]> {
-        return Promise.reject('Not implemented yet');
     }
 
 }

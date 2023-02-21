@@ -1,9 +1,9 @@
 import {Feed} from "feed";
 import * as fs from "fs";
-import {PostsNotionRepository} from "@/lib/posts/infrastructure/posts.notion.repository";
+import {PostsFactoryRepository} from "@/lib/posts/infrastructure/posts.factory.repository";
 
 export const generateRssFeed = async () => {
-  const posts = await new PostsNotionRepository().getPosts();
+  const posts = await PostsFactoryRepository.getInstance().getPosts();
   const siteURL = process.env.SITE_URL || 'https://adrianferrera.com';
   const date = new Date();
   const author = {

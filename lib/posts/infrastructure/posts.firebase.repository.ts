@@ -3,6 +3,7 @@ import matter from "gray-matter";
 import {Post} from "../domain/post";
 import {MarkdownParams, PostsRepository} from "@/lib/posts/domain/posts.repository";
 import {PostFile} from "@/lib/posts/domain/post-file";
+import {PostNotFoundError} from "@/lib/posts/domain/errors";
 
 export class PostsFirebaseRepository implements PostsRepository {
 
@@ -49,7 +50,7 @@ export class PostsFirebaseRepository implements PostsRepository {
     ])
 
     if(!post) {
-      throw new Error('Element not found')
+      throw new PostNotFoundError(`Not found element with params: ${params}`)
     }
 
     return {

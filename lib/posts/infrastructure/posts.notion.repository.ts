@@ -3,6 +3,7 @@ import {Post} from "@/lib/posts/domain/post";
 import {PostFile} from "@/lib/posts/domain/post-file";
 import * as process from "process";
 import {NotionDatasource} from "@/lib/common/infrastructure/datasource/notion";
+import {PostNotFoundError} from "@/lib/posts/domain/errors";
 
 export class PostsNotionRepository implements PostsRepository {
 
@@ -25,8 +26,10 @@ export class PostsNotionRepository implements PostsRepository {
             }
         })
 
-        // @ts-ignore
-        return databaseResponse.results.map(item => `/posts/${this.locales[item.properties.Locale.select.name]}/${item.properties.Path?.rich_text[0]?.plain_text}`)
+        return databaseResponse.results
+            .map(item =>
+                // @ts-ignore
+                `/posts/${this.locales[item.properties.Locale.select.name]}/${item.properties.Path?.rich_text[0]?.plain_text}`)
     }
 
     async getPost(handle: string | string[], locale?: string): Promise<(Post & { id: PostId }) | undefined> {
@@ -34,19 +37,19 @@ export class PostsNotionRepository implements PostsRepository {
             and: [
                 {
                     property: 'Type',
-                    'select': {
+                    select: {
                         equals: 'Post'
                     },
                 },
                 {
                     property: 'Status',
-                    'status': {
+                    status: {
                         equals: 'Publish'
                     }
                 },
                 {
                     property: 'Path',
-                    'rich_text': {
+                    rich_text: {
                         equals: handle
                     }
                 }
@@ -59,7 +62,7 @@ export class PostsNotionRepository implements PostsRepository {
         )
 
         if(!item) {
-            throw new Error('No element')
+            throw new PostNotFoundError(`Not found post with hande: ${handle} and locale: ${locale}`)
         }
 
         // @ts-ignore
@@ -98,7 +101,7 @@ export class PostsNotionRepository implements PostsRepository {
         const post = await this.getPost(params.postName, params.locale)
         // TODO: this is an smell
         if (!post) {
-            throw new Error('Post not found')
+            throw new PostNotFoundError(`Not found element with params: ${params}`)
         }
 
         const markdownBody = await this.notionDatasource.getMarkDownFromPage(post.id)
@@ -124,13 +127,13 @@ export class PostsNotionRepository implements PostsRepository {
             and: [
                 {
                     property: 'Type',
-                    'select': {
+                    select: {
                         equals: 'Post'
                     },
                 },
                 {
                     property: 'Status',
-                    'status': {
+                    status: {
                         equals: 'Publish'
                     }
                 },

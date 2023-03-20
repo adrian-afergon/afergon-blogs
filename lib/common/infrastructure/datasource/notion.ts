@@ -28,7 +28,7 @@ export class NotionDatasource {
             notionClient: this.notionClient
         })
 
-        const x = await n2m.pageToMarkdown(pageId);
-        return n2m.toMarkdownString(x);
+        const markdownBlocks = await n2m.pageToMarkdown(pageId);
+        return n2m.toMarkdownString(markdownBlocks);
     }
 }

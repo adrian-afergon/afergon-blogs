@@ -1,5 +1,5 @@
 import { PodcastPage as Podcast } from '../../views/podcast/podcast'
-import {getPublishedEpisodesSorted} from "@/lib/podcast/infrastructure/podcast.repository";
+import {PodcastFactoryRepository} from "@/lib/podcast/infrastructure/podcast.factory.repository";
 
 // @ts-ignore
 export async function getServerSideProps({ _, res }) {
@@ -7,7 +7,7 @@ export async function getServerSideProps({ _, res }) {
     'Cache-Control',
     'public, s-maxage=10, stale-while-revalidate=59'
   )
-  const episodes = await getPublishedEpisodesSorted()
+  const episodes = await PodcastFactoryRepository.getInstance().getPublishedEpisodesSorted()
 
   return { props: { episodes } }
 }

@@ -10,10 +10,11 @@ export class NotionDatasource {
         this.notionClient = new Client({auth: this.key})
     }
 
-    async queryDatabase (databaseId: string, filter?: any) {
+    async queryDatabase (databaseId: string, filter?: any, sorts?: any) {
         return this.notionClient.databases.query({
             database_id: databaseId,
-            filter
+            filter,
+            sorts
         })
     }
 

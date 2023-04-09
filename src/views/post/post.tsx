@@ -5,7 +5,6 @@ import ReactMarkdown from 'react-markdown'
 import { Layout } from '@/components/Layout'
 import { CodeBlock } from '@/components/CodeBlock'
 import { Post } from '@/lib/posts/domain/post'
-import { ToggleLocale } from '@/components/ToggleLocale'
 
 interface PostPageProps {
   metadata: any,
@@ -31,7 +30,7 @@ export const PostPage:React.FC<PostPageProps> = ({ metadata, markdownBody, post 
         <meta name="twitter:image" content={metadata.image} />
       </Head>
       <article className={styles.article}>
-        { post.locales && <ToggleLocale locales={post.locales} handle={post.handle || ''}/> }
+        {/*{ post.locales && <ToggleLocale locales={post.locales} handle={post.handle || ''}/> }*/}
         <ReactMarkdown components={{
           code ({ node, inline, className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || '')

@@ -1,5 +1,3 @@
-import { LocaleResource } from '../../common/domain/locale-resource'
-
 export interface Talk {
   title: string;
   summary: string;
@@ -7,9 +5,9 @@ export interface Talk {
   date: number;
   locale: string;
   link: string;
-  locales?: LocaleResource[]
+  locales: string[]
   video?: string;
   external: boolean;
   handle?: string;
-  type: string;
+
 }

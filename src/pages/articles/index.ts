@@ -1,7 +1,8 @@
 import {Articles} from "../../views/articles"
-import {getTalks} from "@/lib/talks/infrastructure/talks.repository";
-import {getPosts} from "@/lib/posts/infrastructure/posts.repository";
-import {Article} from "@/models/article";
+import {TalksNotionRepository} from "@/lib/talks/infrastructure/talks.notion.repository";
+import {Post} from "@/lib/posts/domain/post";
+import {Talk} from "@/lib/talks/domain/talk";
+import {PostsFactoryRepository} from "@/lib/posts/infrastructure/posts.factory.repository";
 
 // @ts-ignore
 export async function getServerSideProps({_, res}) {
@@ -10,13 +11,14 @@ export async function getServerSideProps({_, res}) {
     'public, s-maxage=10, stale-while-revalidate=59'
   )
 
-  const [posts, talks] = await Promise.all<Article[]>([
-    getPosts(),
-    getTalks()
+  const [posts, talks] = await Promise.all<Array<Post | Talk>>([
+    PostsFactoryRepository.getInstance().getPosts(),
+    new TalksNotionRepository().getTalks()
   ])
 
-
-  return {props: {articles: [...posts, ...talks]}}
+  const typesPosts = posts.map((item) => ({...item, type: 'Post'}))
+  const typesTalks = talks.map((item) => ({...item, type: 'Talk'}))
+  return {props: {articles: [...typesPosts, ...typesTalks]}}
 }
 
 export default Articles

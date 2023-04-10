@@ -1,11 +1,11 @@
 import {PostPage} from '../../../../views/post/post'
-import {getFilesAtDirectory, getPostFile} from "@/lib/posts/infrastructure/posts.repository";
 import {generateRssFeed} from "@/lib/posts/infrastructure/feed.repository";
+import {PostsFactoryRepository} from "@/lib/posts/infrastructure/posts.factory.repository";
 
 export async function getStaticProps({...ctx}) {
 
   const [{post, metadata, markdownBody}] = await Promise.all([
-    getPostFile(ctx.params),
+    PostsFactoryRepository.getInstance().getPostFile(ctx.params),
     //TODO: this is a temporary solution for generation RSS
     generateRssFeed()
   ])
@@ -21,13 +21,7 @@ export async function getStaticProps({...ctx}) {
 }
 
 export async function getStaticPaths() {
-  const [esFilesOnDirectory, enFilesOnDirectory] = await Promise.all(
-    ['es', 'en']
-      .map((locale) => getFilesAtDirectory(`posts/${locale}/`))
-  )
-
-  const getHandle = (filePath: string) => filePath.split('.md')[0]
-  const paths = [...esFilesOnDirectory, ...enFilesOnDirectory].map((file) => getHandle(`/${file.name}`))
+  const paths = await PostsFactoryRepository.getInstance().getAllFilePaths()
   return {
     paths,
     fallback: false

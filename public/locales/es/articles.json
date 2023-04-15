@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "description": "Mi nombre es Adrián Ferrera, he escrito algunos artículos sobre desarrollo web, programación y otras cosas. Aquí los puedes encontrar."
+  },
+  "title": "Publicaciones",
+  "filter": "Filtrar",
+  "filterBy": "Filtrar por",
+  "filterType": "Tipo",
+  "search": "Buscar por texto...",
+
+
+  "post": "Publicación",
+  "talk": "Charla"
+}

@@ -5,12 +5,14 @@ import {SearchBar} from '@/components/SearchBar'
 import {ArticleCard} from '@/components/ArticleCard'
 import {Article} from '@/models/article'
 import {Layout} from '@/components/Layout'
+import {useTranslation} from "next-i18next";
 
 interface ArticlesProps {
   articles: Article[]
 }
 
 export const Articles: React.FC<ArticlesProps> = ({articles = []}) => {
+  const {t} = useTranslation('articles')
   const [filter, setFilter] = React.useState<string>('')
   const [selectedTypes, setSelectedTypes] = React.useState<string[]>([])
 
@@ -45,10 +47,10 @@ export const Articles: React.FC<ArticlesProps> = ({articles = []}) => {
   return (
     <Layout>
       <Head>
-        <title>Adrián Ferrera - Articles</title>
+        <title>Adrián Ferrera - {t('title')}</title>
         <link rel="icon" href="/favicon.ico"/>
         <meta name="description"
-              content="Hello and welcome to my website! My name is Adrián Ferrera, I'm a Full Stack Developer that love Typescript and likes to help the developers community. Here you can check my blog, talks, resources or just contact with me."/>
+              content={t('meta.description') ?? ''}/>
         <meta property="og:image" content="/images/profile.jpg"/>
       </Head>
       <SearchBar types={['Post', 'Talk']} onChangeSelectedTypes={setSelectedTypes} onChangeFilter={handleFilterChange}/>

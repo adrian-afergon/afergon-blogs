@@ -7,12 +7,14 @@ import {useMedia} from '@/hooks/useMedia'
 import {useScroll} from '@/hooks/useScroll'
 import {ApplicationRoutes} from '@/ApplicationRoutes'
 import {useDarkMode} from '@/hooks/useDarkMode'
+import {useTranslation} from "next-i18next";
 
 interface HeaderProps {
   title: string
 }
 
 export const Header: React.FC<HeaderProps> = ({title}) => {
+  const {t} = useTranslation('common');
   const [toggled, setToggled] = React.useState(false)
   const {isTop} = useScroll()
   const {isMediumScreen} = useMedia()
@@ -30,13 +32,12 @@ export const Header: React.FC<HeaderProps> = ({title}) => {
           <FontAwesomeIcon icon={faBars} size="xs"/>
       </button>}
       {(toggled || isMediumScreen) && <ul role="navigation" onClick={handleToggle}>
-          <li><Link href={ApplicationRoutes.articles}>Articles</Link></li>
-          <li><Link href={ApplicationRoutes.resources}>Resources</Link></li>
-          <li><Link href={ApplicationRoutes.podcast}>Podcast</Link></li>
+          <li><Link href={ApplicationRoutes.articles}>{t('navbar.articles')}</Link></li>
+          <li><Link href={ApplicationRoutes.resources}>{t('navbar.resources')}</Link></li>
+          <li><Link href={ApplicationRoutes.podcast}>{t('navbar.podcast')}</Link></li>
         {/* <li><a href={ApplicationRoutes.articles} target="_blank">Newsletter</a></li> */}
       </ul>}
       <button onClick={changeMode}><FontAwesomeIcon icon={isDarkMode ? faMoon : faSun}/></button>
-
     </header>
   )
 }

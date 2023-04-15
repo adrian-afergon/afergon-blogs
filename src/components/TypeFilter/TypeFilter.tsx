@@ -3,6 +3,7 @@ import styles from './TypeFilter.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faFilter } from '@fortawesome/free-solid-svg-icons'
 import { useClickOutside } from '@/hooks/useClickOutside'
+import {useTranslation} from "next-i18next";
 
 interface TypeFilterProps {
   types: string[],
@@ -16,6 +17,7 @@ export const TypeFilterText = {
 } as const
 
 export const TypeFilter: React.FC<TypeFilterProps> = ({ types, onChangeSelectedTypes }) => {
+  const {t} = useTranslation('common')
   const transformToCheckbox = (item: string) => ({ value: item, isChecked: false })
   const [checkboxTypes, setCheckboxTypes] = React.useState(types.map(transformToCheckbox))
   const [toggled, setToggled] = React.useState(false)
@@ -45,13 +47,13 @@ export const TypeFilter: React.FC<TypeFilterProps> = ({ types, onChangeSelectedT
   return (
     <section className={styles.TypeFilter} ref={wrapperRef}>
       <button onClick={handleClick}>
-        <FontAwesomeIcon icon={faFilter} aria-label="Filter By"/>
-        {' Filter'}
+        <FontAwesomeIcon icon={faFilter} aria-label={t('components.filter.label') ?? 'Filter by'}/>
+        {` ${t('components.filter.text')}`}
       </button>
       {
-        toggled && <div aria-label={TypeFilterText.filterModal} >
+        toggled && <div aria-label={t('components.filter.description') ?? TypeFilterText.filterModal} >
           <ul >
-            <h3>Type</h3>
+            <h3>{t('components.filter.type')}</h3>
             {
               checkboxTypes.map((checkboxType) => (
                 <li key={checkboxType.value}>
@@ -65,7 +67,7 @@ export const TypeFilter: React.FC<TypeFilterProps> = ({ types, onChangeSelectedT
                     <div className={styles.checkbox}>
                       <FontAwesomeIcon icon={faCheck}/>
                     </div>
-                    <span>{checkboxType.value}</span>
+                    <span>{t(`types.${checkboxType.value.toLocaleLowerCase()}`)}</span>
                   </label>
                 </li>))
             }

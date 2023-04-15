@@ -1,9 +1,10 @@
 import * as React from 'react'
 import styles from './ArticleCard.module.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
-import { Article } from '@/models/article'
-import { LocaleTag } from '../LocaleTag'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faExternalLinkAlt} from '@fortawesome/free-solid-svg-icons'
+import {Article} from '@/models/article'
+import {LocaleTag} from '../LocaleTag'
+import {useTranslation} from "next-i18next";
 
 export interface ArticleCardProps {
   item: Article
@@ -17,10 +18,12 @@ export const ArticleCardText = {
 
 const formatDate = (dateTime: number) => {
   const date = new Date(dateTime)
-  return `${date.toLocaleString('en-US', { month: 'short' })} ${date.getDate()}, ${date.getFullYear()}`
+  return `${date.toLocaleString('en-US', {month: 'short'})} ${date.getDate()}, ${date.getFullYear()}`
 }
 
-export const ArticleCard: React.FC<ArticleCardProps> = ({ item }) => (
+export const ArticleCard: React.FC<ArticleCardProps> = ({item}) => {
+  const {t} = useTranslation('common')
+  return (
     <article className={styles.ArticleCard}>
       <section className={styles.cardHeader}>
         <h2>{item.title}</h2>
@@ -31,10 +34,10 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({ item }) => (
       </section>
       <section className={styles.cardFooter}>
         <div className={styles.locales}>
-        {
-          item.locales.map(localeResource => <LocaleTag
-             key={`${item.title}-${localeResource}`}>{localeResource}</LocaleTag>)
-        }
+          {
+            item.locales.map(localeResource => <LocaleTag
+              key={`${item.title}-${localeResource}`}>{t(`locales.${localeResource.toLocaleLowerCase()}`) ?? localeResource}</LocaleTag>)
+          }
         </div>
         {item.external && (
           <div className="external">
@@ -44,4 +47,5 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({ item }) => (
 
       </section>
     </article>
-)
+  );
+}

@@ -37,6 +37,7 @@ export class TalksNotionRepository implements TalksRepository {
             link: item.properties.ExternalLink.url,
             external: Boolean(item.properties.ExternalLink.url),
             handle: item.properties.Path?.rich_text[0]?.plain_text || '',
+            tags: item.properties.Tags.multi_select.map((tag: any) => tag.name),
         }))
     }
 }

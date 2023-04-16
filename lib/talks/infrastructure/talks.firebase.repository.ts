@@ -12,7 +12,8 @@ const mapTalk = (data: any): Talk => ({
   title: data.title,
   places: data.places,
   video: data.video || null,
-  locales: data.locales || null
+  locales: data.locales || null,
+  tags: data.tags || [],
 })
 
 const getTalks = (): Promise<Talk[]> => {

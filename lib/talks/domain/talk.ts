@@ -9,5 +9,6 @@ export interface Talk {
   video?: string;
   external: boolean;
   handle?: string;
-
+  tags: string[];
+  hrefLang?: {[key: string]: string}
 }

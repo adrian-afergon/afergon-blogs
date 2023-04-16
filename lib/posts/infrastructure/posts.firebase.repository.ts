@@ -14,7 +14,9 @@ export class PostsFirebaseRepository implements PostsRepository {
     summary: data.summary || '',
     link: data.link,
     title: data.title,
-    locales: data.locales ? data.locales.map((locale: {locale: string, link: string}) => locale.locale): [data.locale]
+    locales: data.locales ? data.locales.map((locale: {locale: string, link: string}) => locale.locale): [data.locale],
+    tags: data.tags ?? [],
+    hrefLang: data.hrefLang ?? {}
   })
 
   private async getMarkdownFile({locale, postName}: MarkdownParams) {

@@ -7,8 +7,6 @@ import {GetStaticProps} from "next";
 
 export const getStaticProps: GetStaticProps<{}> = async ({locale, ...ctx}) => {
   if(!ctx.params) throw new Error('Params are not defined')
-
-  console.log('locale get static props', locale)
   const [{post, metadata, markdownBody}] = await Promise.all([
     PostsFactoryRepository.getInstance().getPostFile({locale: locale ?? '', postName: ctx.params.postName as string}),
     //TODO: this is a temporary solution for generation RSS

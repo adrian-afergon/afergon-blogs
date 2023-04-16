@@ -118,8 +118,6 @@ export class PostsNotionRepository implements PostsRepository {
 
     const markdownBody = await this.notionDatasource.getMarkDownFromPage(post.id)
 
-    console.log('post tags', post.tags)
-
     return {
       post,
       metadata: {

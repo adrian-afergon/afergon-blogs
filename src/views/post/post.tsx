@@ -15,9 +15,6 @@ interface PostPageProps {
 
 export const PostPage:React.FC<PostPageProps> = ({ metadata, markdownBody, post = null }) => {
   if (!metadata || !post) return <></>
-
-  console.log(post.tags)
-
   return (
     <Layout>
       <Head>

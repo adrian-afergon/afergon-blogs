@@ -7,30 +7,25 @@ import {config} from "@/config";
 
 
 export const getStaticProps: GetStaticProps<{}> = async ({locale, ...ctx}) => {
-  if(!ctx.params) throw new Error('Params are not defined')
-
-  try {
-    const [{post, metadata, markdownBody}] = await Promise.all([
-      PostsFactoryRepository.getInstance().getPostFile({locale: locale ?? config.DEFAULT_LOCALE, postName: ctx.params.postName as string}),
-      //TODO: this is a temporary solution for generation RSS
-      generateRssFeed()
-    ])
-    return {
-      props: {
-        post,
-        metadata,
-        markdownBody,
-        ...(await serverSideTranslations(locale ?? config.DEFAULT_LOCALE, [
-          'common'
-        ])),
-      },
-      revalidate: 1
-    }
-  } catch (e) {
-    console.error('Error', e)
-    return {
-      notFound: true
-    }
+  if (!ctx.params) throw new Error('Params are not defined')
+  const [{post, metadata, markdownBody}] = await Promise.all([
+    PostsFactoryRepository.getInstance().getPostFile({
+      locale: locale ?? config.DEFAULT_LOCALE,
+      postName: ctx.params.postName as string
+    }),
+    //TODO: this is a temporary solution for generation RSS
+    generateRssFeed()
+  ])
+  return {
+    props: {
+      post,
+      metadata,
+      markdownBody,
+      ...(await serverSideTranslations(locale ?? config.DEFAULT_LOCALE, [
+        'common'
+      ])),
+    },
+    revalidate: 1
   }
 };
 

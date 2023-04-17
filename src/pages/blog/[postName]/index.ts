@@ -7,26 +7,37 @@ import {GetStaticProps} from "next";
 
 export const getStaticProps: GetStaticProps<{}> = async ({locale, ...ctx}) => {
   if(!ctx.params) throw new Error('Params are not defined')
-  const [{post, metadata, markdownBody}] = await Promise.all([
-    PostsFactoryRepository.getInstance().getPostFile({locale: locale ?? '', postName: ctx.params.postName as string}),
-    //TODO: this is a temporary solution for generation RSS
-    generateRssFeed()
-  ])
-  return {
-    props: {
-      post,
-      metadata,
-      markdownBody,
-      ...(await serverSideTranslations(locale ?? 'en', [
-        'common'
-      ])),
-    },
-    revalidate: 1
+
+  try {
+    const [{post, metadata, markdownBody}] = await Promise.all([
+      PostsFactoryRepository.getInstance().getPostFile({locale: locale ?? '', postName: ctx.params.postName as string}),
+      //TODO: this is a temporary solution for generation RSS
+      generateRssFeed()
+    ])
+    return {
+      props: {
+        post,
+        metadata,
+        markdownBody,
+        ...(await serverSideTranslations(locale ?? 'en', [
+          'common'
+        ])),
+      },
+      revalidate: 1
+    }
+  } catch (e) {
+    console.error('Error', e)
+    return {
+      notFound: true
+    }
   }
 };
 
 export async function getStaticPaths() {
   const paths = await PostsFactoryRepository.getInstance().getAllFilePaths()
+
+  console.log('paths', paths)
+
   return {
     paths,
     fallback: true

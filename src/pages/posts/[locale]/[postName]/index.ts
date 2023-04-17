@@ -1,5 +1,4 @@
 import {PostPage} from '../../../../views/post/post'
-import {PostsFactoryRepository} from "@/lib/posts/infrastructure/posts.factory.repository";
 
 export async function getStaticProps({...ctx}) {
   return {
@@ -11,9 +10,8 @@ export async function getStaticProps({...ctx}) {
 }
 
 export async function getStaticPaths() {
-  const paths = await PostsFactoryRepository.getInstance().getAllFilePaths()
   return {
-    paths,
+    paths: [],
     fallback: true
   }
 }

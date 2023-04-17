@@ -8,7 +8,7 @@ interface CodeBlockProps {
 }
 
 export const CodeBlock: React.FC<CodeBlockProps> = ({ language, value }) => (
-  <SyntaxHighlighter language={language} style={darcula}>
+  <SyntaxHighlighter language={language} style={darcula} customStyle={{maxWidth: '768px'}}>
     {value}
   </SyntaxHighlighter>
 )

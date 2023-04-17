@@ -1,16 +1,6 @@
 import {NextRequest, NextResponse} from "next/server";
 
 export const middleware = (req: NextRequest, _: NextResponse) => {
-    const PUBLIC_FILE = /\.(.*)$/
-
-    if (
-      req.nextUrl.pathname.startsWith('/_next') ||
-      req.nextUrl.pathname.includes('/api/') ||
-      PUBLIC_FILE.test(req.nextUrl.pathname)
-    ) {
-        return
-    }
-
     if (req.nextUrl.locale === 'default') {
         const locale = req.cookies.get('NEXT_LOCALE')?.value || 'en'
         return NextResponse.redirect(

@@ -3,6 +3,7 @@ import {generateRssFeed} from "@/lib/posts/infrastructure/feed.repository";
 import {PostsFactoryRepository} from "@/lib/posts/infrastructure/posts.factory.repository";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {GetStaticProps} from "next";
+import {config} from "@/config";
 
 
 export const getStaticProps: GetStaticProps<{}> = async ({locale, ...ctx}) => {
@@ -10,7 +11,7 @@ export const getStaticProps: GetStaticProps<{}> = async ({locale, ...ctx}) => {
 
   try {
     const [{post, metadata, markdownBody}] = await Promise.all([
-      PostsFactoryRepository.getInstance().getPostFile({locale: locale ?? '', postName: ctx.params.postName as string}),
+      PostsFactoryRepository.getInstance().getPostFile({locale: locale ?? config.DEFAULT_LOCALE, postName: ctx.params.postName as string}),
       //TODO: this is a temporary solution for generation RSS
       generateRssFeed()
     ])
@@ -19,7 +20,7 @@ export const getStaticProps: GetStaticProps<{}> = async ({locale, ...ctx}) => {
         post,
         metadata,
         markdownBody,
-        ...(await serverSideTranslations(locale ?? 'en', [
+        ...(await serverSideTranslations(locale ?? config.DEFAULT_LOCALE, [
           'common'
         ])),
       },

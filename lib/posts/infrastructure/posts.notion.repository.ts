@@ -32,9 +32,9 @@ export class PostsNotionRepository implements PostsRepository {
           params: {
             // @ts-ignore
             postName: item.properties.Path?.rich_text[0]?.plain_text,
-            // @ts-ignore
-            locale: this.locales[item.properties.Locale.select.name]
-          }
+          },
+          // @ts-ignore
+          locale: this.locales[item.properties.Locale.select.name]
         })
       )
   }

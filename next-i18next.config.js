@@ -3,9 +3,8 @@
  */
 module.exports = {
   i18n: {
-    defaultLocale: 'en',
-    locales: ['default', 'en', 'es'],
-    // ignoreRoutes: ['/posts/'],
+    defaultLocale: process.env.DEFAULT_LOCALE ?? 'en',
+    locales: ['en', 'es'],
   },
   /** To avoid issues when deploying to some paas (vercel...) */
   localePath:

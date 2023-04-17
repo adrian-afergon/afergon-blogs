@@ -34,6 +34,7 @@ export const PostPage:React.FC<PostPageProps> = ({ metadata, markdownBody, post 
         <meta name="twitter:title" content={metadata.title} />
         <meta name="twitter:description" content={metadata.description} />
         <meta name="twitter:image" content={metadata.image} />
+        {/* TODO: is necessary to add x-default here */}
         {Object.entries(post.hrefLang).map(([locale, href]) => {
           return <link rel="alternate" href={href} hrefLang={locale} key={locale}/>
         })}

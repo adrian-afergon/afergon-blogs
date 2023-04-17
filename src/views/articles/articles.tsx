@@ -6,15 +6,19 @@ import {ArticleCard} from '@/components/ArticleCard'
 import {Article} from '@/models/article'
 import {Layout} from '@/components/Layout'
 import {useTranslation} from "next-i18next";
+import {calculateHrefLang} from "@/hooks/useHrefLang/useHrefLang";
 
 interface ArticlesProps {
   articles: Article[]
 }
 
 export const Articles: React.FC<ArticlesProps> = ({articles = []}) => {
-  const {t} = useTranslation('articles')
+  const {t, i18n} = useTranslation('articles')
   const [filter, setFilter] = React.useState<string>('')
   const [selectedTypes, setSelectedTypes] = React.useState<string[]>([])
+  const hrefLangs = calculateHrefLang(i18n.language, '/articles');
+  const baseURL = process.env.NEXT_PUBLIC_URL;
+
 
   const handleFilterChange = (value: string) => {
     setFilter(value)
@@ -44,6 +48,8 @@ export const Articles: React.FC<ArticlesProps> = ({articles = []}) => {
       .filter(matchFilters)
     , [articles, filter, selectedTypes])
 
+  console.log(hrefLangs)
+
   return (
     <Layout>
       <Head>
@@ -51,6 +57,10 @@ export const Articles: React.FC<ArticlesProps> = ({articles = []}) => {
         <link rel="icon" href="/favicon.ico"/>
         <meta name="description"
               content={t('meta.description') ?? ''}/>
+        <link rel="alternate" href={`${baseURL}/articles`} hrefLang="x-default"/>
+        {hrefLangs.map((hrefLang) => (
+          <link key={hrefLang.locale} hrefLang={hrefLang.locale} rel="alternate" href={`${baseURL}/${hrefLang.locale}${hrefLang.path}`}/>
+        ))}
         <meta property="og:image" content="/images/profile.jpg"/>
       </Head>
       <SearchBar types={['Post', 'Talk']} onChangeSelectedTypes={setSelectedTypes} onChangeFilter={handleFilterChange}/>

@@ -17,6 +17,7 @@ import {faRss} from "@fortawesome/free-solid-svg-icons";
 import {ExternalRoutes} from "@/ApplicationRoutes";
 import {Podcast} from "@/lib/podcast/domain/podcast";
 import {useTranslation} from "next-i18next";
+import {calculateHrefLang} from "@/hooks/useHrefLang/useHrefLang";
 
 interface PodcastPageProps {
   episodes: Podcast[]
@@ -24,7 +25,9 @@ interface PodcastPageProps {
 
 export const PodcastPage: React.FC<PodcastPageProps> = ({episodes = []}) => {
 
-  const {t} = useTranslation('podcast')
+  const {t, i18n} = useTranslation('podcast')
+  const hrefLangs = calculateHrefLang(i18n.language, '/podcast');
+  const baseURL = process.env.NEXT_PUBLIC_URL;
 
   return (
     <Layout>
@@ -33,6 +36,10 @@ export const PodcastPage: React.FC<PodcastPageProps> = ({episodes = []}) => {
         <link rel="icon" href="/favicon.ico"/>
         <meta name="description"
               content={t('meta.description') ?? ''}/>
+        <link rel="alternate" href={`${baseURL}/podcast`} hrefLang="x-default"/>
+        {hrefLangs.map((hrefLang) => (
+          <link key={hrefLang.locale} hrefLang={hrefLang.locale} rel="alternate" href={`${baseURL}/${hrefLang.locale}${hrefLang.path}`}/>
+        ))}
         <meta property="og:image" content="/images/profile.jpg"/>
       </Head>
 

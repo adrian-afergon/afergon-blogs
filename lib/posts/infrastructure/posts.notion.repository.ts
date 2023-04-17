@@ -4,6 +4,7 @@ import {PostFile} from "@/lib/posts/domain/post-file";
 import * as process from "process";
 import {NotionDatasource} from "@/lib/common/infrastructure/datasource/notion";
 import {PostNotFoundError} from "@/lib/posts/domain/errors";
+import {config} from "@/config";
 
 export class PostsNotionRepository implements PostsRepository {
 
@@ -104,7 +105,7 @@ export class PostsNotionRepository implements PostsRepository {
       tags: item.properties.Tags.multi_select.map((tag: any) => tag.name),
       // split url only by first occurrence of /
       // @ts-ignore
-      hrefLang: this.extractHrefLang(item.properties["href-lang"].rich_text[0]?.planText ?? '')
+      hrefLang: this.extractHrefLang(item.properties["href-lang"].rich_text[0]?.plain_text ?? '')
     }
   }
 
@@ -174,9 +175,12 @@ export class PostsNotionRepository implements PostsRepository {
   }
 
   private createUrl(item: any): string {
+    const locale = this.locales[item.properties.Locale.select.name];
+    const postName = item.properties.Path?.rich_text[0]?.plain_text;
+    const localeSlug = locale === config.DEFAULT_LOCALE ? '' : `/${locale}`
     return Boolean(item.properties.ExternalLink.url)
       ? item.properties.ExternalLink.url
-      : `/${this.locales[item.properties.Locale.select.name]}/blog/${item.properties.Path?.rich_text[0]?.plain_text}`
+      : `${localeSlug}/blog/${postName}`
 
   }
 

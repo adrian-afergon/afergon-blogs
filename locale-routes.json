@@ -1,0 +1,16 @@
+{
+  "en": {
+    "/home": "/home",
+    "/articles": "/articles",
+    "/resources": "/resources",
+    "/podcast": "/podcast",
+    "/blog/functional-operators": "/blog/functional-operators"
+  },
+  "es": {
+    "/home": "/inicio",
+    "/articles": "/publicaciones",
+    "/resources": "/recursos",
+    "/podcast": "/podcast",
+    "/blog/functional-operators": "/blog/operadores-funcionales"
+  }
+}

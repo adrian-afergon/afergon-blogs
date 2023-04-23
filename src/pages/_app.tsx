@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <title>Adrián Ferrera</title>
     </Head>
     <Script async src="https://www.googletagmanager.com/gtag/js?id=UA-171380182-1"/>
-    <Script type="text/javascript" src="/home/afergon/projects/afergon/afergon-blogs/public/gtm.js"/>
+    <Script type="text/javascript" src="/gtm.js"/>
     <Component {...pageProps} />
   </>)
 }

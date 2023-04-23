@@ -16,19 +16,30 @@ import {
 import {faRss} from "@fortawesome/free-solid-svg-icons";
 import {ExternalRoutes} from "@/ApplicationRoutes";
 import {Podcast} from "@/lib/podcast/domain/podcast";
+import {useTranslation} from "next-i18next";
+import {calculateHrefLang} from "@/hooks/useHrefLang/useHrefLang";
 
 interface PodcastPageProps {
   episodes: Podcast[]
 }
 
-export const PodcastPage: React.FC<PodcastPageProps> = ({episodes = []}) =>
-  (
+export const PodcastPage: React.FC<PodcastPageProps> = ({episodes = []}) => {
+
+  const {t, i18n} = useTranslation('podcast')
+  const hrefLangs = calculateHrefLang(i18n.language, '/podcast');
+  const baseURL = process.env.NEXT_PUBLIC_URL;
+
+  return (
     <Layout>
       <Head>
         <title>Devs Lives - Podcast</title>
         <link rel="icon" href="/favicon.ico"/>
         <meta name="description"
-              content="Hello and welcome to my website! My name is Adrián Ferrera, and this is Devs Lives podcast! Here we will talk with different person and their lives as developers."/>
+              content={t('meta.description') ?? ''}/>
+        <link rel="alternate" href={`${baseURL}/podcast`} hrefLang="x-default"/>
+        {hrefLangs.map((hrefLang) => (
+          <link key={hrefLang.locale} hrefLang={hrefLang.locale} rel="alternate" href={`${baseURL}/${hrefLang.locale}${hrefLang.path}`}/>
+        ))}
         <meta property="og:image" content="/images/profile.jpg"/>
       </Head>
 
@@ -44,7 +55,7 @@ export const PodcastPage: React.FC<PodcastPageProps> = ({episodes = []}) =>
         </ul>
       </section>
       <section className={styles.rss}>
-        <h3>Follow Devs Lives at:</h3>
+        <h3>{t('follow', {name: 'Devs Lives'})}</h3>
         <ul>
           <li>
             <a
@@ -133,6 +144,7 @@ export const PodcastPage: React.FC<PodcastPageProps> = ({episodes = []}) =>
         </ul>
       </section>
     </Layout>
-  )
+  );
+}
 
 export default PodcastPage

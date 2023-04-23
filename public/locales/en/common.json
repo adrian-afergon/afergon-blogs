@@ -1,0 +1,38 @@
+{
+  "navbar": {
+    "articles": "Articles",
+    "resources": "Resources",
+    "podcast": "Podcast"
+  },
+  "footer": {
+    "contact": "Contact with me"
+  },
+  "locales": {
+    "spanish": "Spanish",
+    "english": "English",
+    "en": "English",
+    "es": "Spanish"
+  },
+  "types": {
+    "all": "Todos",
+    "article": "Article",
+    "resource": "Resource",
+    "podcast": "Podcast",
+    "video": "Video",
+    "book": "Book",
+    "post": "Post",
+    "talk": "Talk"
+  },
+  "components": {
+    "filter": {
+      "text": "Filter",
+      "label": "Filter by",
+      "description": "Filter by types",
+      "type": "Type"
+    },
+    "search": {
+      "label": "Search",
+      "placeholder": "Search by text..."
+    }
+  }
+}

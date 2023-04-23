@@ -1,4 +1,4 @@
-import { Article } from '../../models/article'
+import { Article } from '@/models/article'
 
 export const buildArticle = ({
   title = 'irrelevant title',
@@ -8,7 +8,9 @@ export const buildArticle = ({
   summary = 'irrelevant intro',
   link = 'irrelevant link',
   type = 'Post',
-  locales = []
+  locales = [],
+  tags = [],
+  hrefLang = {}
 }: Partial<Article> = {}): Article => ({
   title,
   link,
@@ -17,5 +19,7 @@ export const buildArticle = ({
   external,
   date,
   type,
-  locales
+  locales,
+  tags,
+  hrefLang
 })

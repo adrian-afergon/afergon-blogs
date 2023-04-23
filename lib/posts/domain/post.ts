@@ -6,4 +6,6 @@ export interface Post {
   link: string;
   external: boolean;
   handle?: string;
+  tags: string[];
+  hrefLang: Record<string, string>
 }

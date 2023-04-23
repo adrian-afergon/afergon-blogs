@@ -1,0 +1,39 @@
+{
+  "navbar": {
+    "articles": "Publicaciones",
+    "resources": "Recursos",
+    "podcast": "Podcast"
+  },
+  "footer": {
+    "contact": "Contáctame"
+  },
+  "locales": {
+    "spanish": "Español",
+    "english": "Inglés",
+    "en": "Inglés",
+    "es": "Español"
+  },
+  "types": {
+    "all": "Todos",
+    "article": "Artículo",
+    "resource": "Recurso",
+    "podcast": "Podcast",
+    "video": "Video",
+    "book": "Libro",
+    "post": "Artículo",
+    "talk": "Charla"
+  },
+  "components": {
+    "filter": {
+      "text": "Filtrar",
+      "label": "Filter por",
+      "description": "Filtrar por tipos",
+      "type": "Tipo"
+    },
+    "search": {
+      "label": "Buscar",
+      "placeholder": "Buscar por texto..."
+    }
+  }
+}
+

@@ -2,31 +2,48 @@ import * as React from 'react'
 import Head from 'next/head'
 import styles from './home.module.scss'
 import {Layout} from '@/components/Layout'
+import {useTranslation} from "next-i18next";
+import {calculateHrefLang} from "@/hooks/useHrefLang/useHrefLang";
+import {useRouter} from "next/router";
 
-export const Home: React.FC = () => (
-  <Layout>
-    <Head>
-      <title>Adrián Ferrera</title>
-      <link rel="icon" href="/favicon.ico" />
-      <meta name="description"
-            content="Hello and welcome to my website! My name is Adrián Ferrera, I'm a Full Stack Developer that love Typescript and likes to help the developers community. Here you can check my blog, talks, resources or just contact with me."/>
-      <meta property="og:image" content="/images/profile.jpg"/>
-    </Head>
+export const Home: React.FC = () => {
 
-    <section className={styles.intro}>
-      <h2>Hey there<span>!</span></h2>
-    </section>
-    <section className={styles.imageWrapper}>
-      <img src="/images/profile.jpg" alt="Profile picture"/>
-    </section>
-    <section className={styles.adjectives}>
-      <ul>
-        <li><h3>Full Stack</h3></li>
-        <li><h3>Typescript Lover</h3></li>
-        <li><h3>Crafter</h3></li>
-      </ul>
-    </section>
-  </Layout>
-)
+  const {} = useRouter();
+  const {t, i18n} = useTranslation('home');
+  const hrefLangs = calculateHrefLang(i18n.language, '/home');
+  const baseURL = process.env.NEXT_PUBLIC_URL;
+
+  return (
+    <Layout>
+      <Head>
+        <title>Adrián Ferrera</title>
+        <link rel="icon" href="/favicon.ico"/>
+        <meta name="description"
+              content={t('meta.description') ?? ''}/>
+        <meta property="og:image" content="/images/profile.jpg"/>
+        <link rel="alternate" href={`${baseURL}/home`} hrefLang="x-default"/>
+        {hrefLangs.map((hrefLang) => (
+          <link key={hrefLang.locale} hrefLang={hrefLang.locale} rel="alternate" href={`${baseURL}/${hrefLang.locale}${hrefLang.path}`}/>
+        ))}
+
+      </Head>
+
+      <section className={styles.intro}>
+        <h2>{t('h2')}<span>!</span></h2>
+      </section>
+      <section className={styles.imageWrapper}>
+        <img src="/images/profile.jpg" alt="Profile picture"/>
+      </section>
+      <section className={styles.adjectives}>
+        <ul>
+          <li><h3>{t('adjectives.0')}</h3></li>
+          <li><h3>{t('adjectives.1')}</h3></li>
+          <li><h3>{t('adjectives.2')}</h3></li>
+          <li><h3>{t('adjectives.3')}</h3></li>
+        </ul>
+      </section>
+    </Layout>
+  );
+}
 
 export default Home

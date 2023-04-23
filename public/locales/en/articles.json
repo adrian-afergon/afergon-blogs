@@ -1,0 +1,13 @@
+{
+  "meta": {
+    "description": "My name is Adrián Ferrera, I've wrote some articles about web development, programming, and other stuff. Here you can find them."
+  },
+  "title": "Articles",
+  "filter": "Filter",
+  "filterBy": "Filter by",
+  "filterType": "Type",
+  "search": "Search by text...",
+
+  "post": "Post",
+  "talk": "Talk"
+}

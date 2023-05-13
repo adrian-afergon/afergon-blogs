@@ -6,6 +6,7 @@ import Head from "next/head";
 import * as React from "react";
 import { appWithTranslation } from 'next-i18next'
 import Script from "next/script"; // Import the CSS
+
 config.autoAddCss = false // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
 
 function MyApp({ Component, pageProps }: AppProps) {

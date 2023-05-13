@@ -1,15 +1,18 @@
 import {PostPage} from '../../../views/post/post'
-import {generateRssFeed} from "@/lib/posts/infrastructure/feed.repository";
+import {generateRssFeed} from "@/lib/posts/infrastructure/generate-rss-feed";
 import {PostsFactoryRepository} from "@/lib/posts/infrastructure/posts.factory.repository";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {GetStaticProps} from "next";
 import {config} from "@/config";
+import {getPostFile} from "@/lib/posts/application/get-post-file";
+import {getAllFilePaths} from "@/lib/posts/application/get-all-file-path";
 
 
 export const getStaticProps: GetStaticProps<{}> = async ({locale, ...ctx}) => {
   if (!ctx.params) throw new Error('Params are not defined')
+  const postsRepository = PostsFactoryRepository.getInstance(process.env.STORAGE ?? '');
   const [{post, metadata, markdownBody}] = await Promise.all([
-    PostsFactoryRepository.getInstance().getPostFile({
+    getPostFile(postsRepository)({
       locale: locale ?? config.DEFAULT_LOCALE,
       postName: ctx.params.postName as string
     }),
@@ -30,9 +33,8 @@ export const getStaticProps: GetStaticProps<{}> = async ({locale, ...ctx}) => {
 };
 
 export async function getStaticPaths() {
-  const paths = await PostsFactoryRepository.getInstance().getAllFilePaths()
-
-  console.log('paths', paths)
+  const postsRepository = PostsFactoryRepository.getInstance(process.env.STORAGE ?? '');
+  const paths = await getAllFilePaths(postsRepository)()
 
   return {
     paths,

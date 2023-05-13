@@ -1,6 +1,6 @@
 import {Talk} from "../domain/talk";
 import firebase from "../../common/infrastructure/datasource/firebase";
-import {TalksRepository} from "@/lib/talks/domain/talks.repository";
+import {TalksRepository} from "@/lib/talks/application/talks.repository";
 
 const mapTalk = (data: any): Talk => ({
   date: data.date * 1000,

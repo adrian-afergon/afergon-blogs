@@ -1,10 +1,10 @@
 import {podcastFirebaseRepository} from "@/lib/podcast/infrastructure/podcast.firebase.repository";
 import {PodcastNotionRepository} from "@/lib/podcast/infrastructure/podcast.notion.repository";
-import {PodcastRepository} from "@/lib/podcast/domain/podcast.repository";
+import {PodcastRepository} from "@/lib/podcast/application/podcast.repository";
 
 export class PodcastFactoryRepository {
-    static getInstance(): PodcastRepository {
-        switch (process.env.STORAGE) {
+    static getInstance(type: string): PodcastRepository {
+        switch (type) {
             case 'firebase':
                 return podcastFirebaseRepository
             case 'notion':

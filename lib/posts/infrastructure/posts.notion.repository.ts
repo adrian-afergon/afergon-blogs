@@ -1,10 +1,11 @@
-import {MarkdownParams, PostId, PostsRepository} from "@/lib/posts/domain/posts.repository";
+import {PostFileParams, PostsRepository} from "@/lib/posts/application/posts.repository";
 import {Post} from "@/lib/posts/domain/post";
 import {PostFile} from "@/lib/posts/domain/post-file";
 import * as process from "process";
 import {NotionDatasource} from "@/lib/common/infrastructure/datasource/notion";
 import {PostNotFoundError} from "@/lib/posts/domain/errors";
 import {config} from "@/config";
+import {PostId} from "@/lib/posts/domain/postId";
 
 export class PostsNotionRepository implements PostsRepository {
 
@@ -109,7 +110,7 @@ export class PostsNotionRepository implements PostsRepository {
     }
   }
 
-  async getPostFile(params: MarkdownParams): Promise<PostFile> {
+  async getPostFile(params: PostFileParams): Promise<PostFile> {
 
     const post = await this.getPost(params.postName, params.locale)
     // TODO: this is an smell

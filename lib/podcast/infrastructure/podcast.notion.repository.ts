@@ -1,4 +1,4 @@
-import {PodcastRepository} from "@/lib/podcast/domain/podcast.repository";
+import {PodcastRepository} from "@/lib/podcast/application/podcast.repository";
 import {Podcast} from "@/lib/podcast/domain/podcast";
 import {NotionDatasource} from "@/lib/common/infrastructure/datasource/notion";
 

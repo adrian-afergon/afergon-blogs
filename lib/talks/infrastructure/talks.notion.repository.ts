@@ -1,4 +1,4 @@
-import {TalksRepository} from "@/lib/talks/domain/talks.repository";
+import {TalksRepository} from "@/lib/talks/application/talks.repository";
 import {Talk} from "@/lib/talks/domain/talk";
 import process from "process";
 import {NotionDatasource} from "@/lib/common/infrastructure/datasource/notion";

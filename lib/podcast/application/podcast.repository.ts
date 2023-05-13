@@ -1,5 +1,10 @@
 import {Podcast} from "@/lib/podcast/domain/podcast";
 
+export type Params = {
+    numberOfElements: number
+    startAt: number
+}
+
 export interface PodcastRepository {
-    getPublishedEpisodesSorted: () => Promise<Podcast[]>
+    getPublishedEpisodesSorted: (params: Params) => Promise<Podcast[]>
 }

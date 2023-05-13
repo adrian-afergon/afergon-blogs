@@ -11,7 +11,7 @@ export async function getServerSideProps({locale, res}) {
   )
 
   const podcastRepository = PodcastFactoryRepository.getInstance(process.env.STORAGE ?? "");
-  const episodes = await getPublishedEpisodesSorted(podcastRepository)()
+  const episodes = await getPublishedEpisodesSorted(podcastRepository)({startAt: 0, numberOfElements: 10})
 
   return {
     props: {

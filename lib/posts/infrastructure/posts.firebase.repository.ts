@@ -1,7 +1,7 @@
 import firebase, {firebaseInstance} from "../../common/infrastructure/datasource/firebase";
 import matter from "gray-matter";
 import {Post} from "../domain/post";
-import {MarkdownParams, PostsRepository} from "@/lib/posts/domain/posts.repository";
+import {PostFileParams, PostsRepository} from "@/lib/posts/application/posts.repository";
 import {PostFile} from "@/lib/posts/domain/post-file";
 import {PostNotFoundError} from "@/lib/posts/domain/errors";
 
@@ -19,7 +19,7 @@ export class PostsFirebaseRepository implements PostsRepository {
     hrefLang: data.hrefLang ?? {}
   })
 
-  private async getMarkdownFile({locale, postName}: MarkdownParams) {
+  private async getMarkdownFile({locale, postName}: PostFileParams) {
     const file = firebaseInstance.storage.bucket().file(`posts/${locale}/${postName}.md`)
     const [buffer] = await file.download()
     return matter(buffer)
@@ -45,7 +45,7 @@ export class PostsFirebaseRepository implements PostsRepository {
     return this.mapPost(result[0])
   }
 
-  async getPostFile(params: MarkdownParams): Promise<PostFile> {
+  async getPostFile(params: PostFileParams): Promise<PostFile> {
     const [{data, content}, post] = await Promise.all([
       this.getMarkdownFile(params),
       this.getPost(params.postName)

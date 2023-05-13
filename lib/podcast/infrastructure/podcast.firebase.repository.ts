@@ -1,6 +1,6 @@
 import {Podcast} from "../domain/podcast";
 import firebase from "../../common/infrastructure/datasource/firebase";
-import {PodcastRepository} from "@/lib/podcast/domain/podcast.repository";
+import {PodcastRepository} from "@/lib/podcast/application/podcast.repository";
 
 export const getPublishedEpisodesSorted = async (): Promise<Podcast[]> => {
   const snapshot = await firebase

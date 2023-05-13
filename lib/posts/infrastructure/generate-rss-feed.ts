@@ -3,7 +3,7 @@ import * as fs from "fs";
 import {PostsFactoryRepository} from "@/lib/posts/infrastructure/posts.factory.repository";
 
 export const generateRssFeed = async () => {
-  const posts = await PostsFactoryRepository.getInstance().getPosts();
+  const posts = await PostsFactoryRepository.getInstance(process.env.STORAGE ?? '').getPosts();
   const siteURL = process.env.SITE_URL || 'https://adrianferrera.com';
   const date = new Date();
   const author = {

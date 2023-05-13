@@ -2,5 +2,6 @@
   "meta": {
     "description": "Devs Lives es un podcast sobre la vida de los desarrolladores. ¿Te gustaría descubrir nuevos referentes y conocer sus experiencias? Este es el lugar correcto."
   },
-  "follow": "Sigue a {{name}} en:"
+  "follow": "Sigue a {{name}} en:",
+  "loadMore" : "Ver más"
 }

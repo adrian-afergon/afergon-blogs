@@ -18,16 +18,25 @@ import {ExternalRoutes} from "@/ApplicationRoutes";
 import {Podcast} from "@/lib/podcast/domain/podcast";
 import {useTranslation} from "next-i18next";
 import {calculateHrefLang} from "@/hooks/useHrefLang/useHrefLang";
+import {loadMorePodcastEpisodesUseCase} from "@/application/load-more-podcast-episodes";
 
 interface PodcastPageProps {
-  episodes: Podcast[]
+  episodes: Podcast[],
+  onLoadMore: (cursor: number, limit: number) => Promise<Podcast>
 }
 
-export const PodcastPage: React.FC<PodcastPageProps> = ({episodes = []}) => {
+export const PodcastPage: React.FC<PodcastPageProps> = ({episodes = [], onLoadMore = loadMorePodcastEpisodesUseCase}) => {
 
   const {t, i18n} = useTranslation('podcast')
   const hrefLangs = calculateHrefLang(i18n.language, '/podcast');
   const baseURL = process.env.NEXT_PUBLIC_URL;
+
+  const [displayedEpisodes, setDisplayedEpisodes] = React.useState<Podcast[]>(episodes)
+
+  const loadMoreEpisodes = async () => {
+    const moreEpisodes: Podcast[] = await onLoadMore(displayedEpisodes.length, 5)
+    setDisplayedEpisodes([...displayedEpisodes, ...moreEpisodes])
+  }
 
   return (
     <Layout>
@@ -45,7 +54,7 @@ export const PodcastPage: React.FC<PodcastPageProps> = ({episodes = []}) => {
 
       <section className={styles.podcast}>
         <ul>
-          {episodes.map(episode =>
+          {displayedEpisodes.map(episode =>
             <li key={episode.episodeNumber}>
               <h4>{episode.episodeTitle}</h4>
               <iframe src={episode.link}
@@ -53,6 +62,9 @@ export const PodcastPage: React.FC<PodcastPageProps> = ({episodes = []}) => {
             </li>
           )}
         </ul>
+
+        <button onClick={loadMoreEpisodes}>{t('loadMore')}</button>
+
       </section>
       <section className={styles.rss}>
         <h3>{t('follow', {name: 'Devs Lives'})}</h3>

@@ -3,7 +3,7 @@ import {PostsFactoryRepository} from "@/lib/posts/infrastructure/posts.factory.r
 import {getPosts} from "@/lib/posts/application/get-posts";
 
 const posts = (req: NextApiRequest, res: NextApiResponse) => {
-    const postRepository = PostsFactoryRepository.getInstance(process.env.STORAGE)
+    const postRepository = PostsFactoryRepository.getInstance(process.env.STORAGE ?? '')
   getPosts(postRepository)()
         .then(res.json)
         .catch((error) => {

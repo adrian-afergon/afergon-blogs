@@ -11,7 +11,7 @@ const handle = (req: NextApiRequest, res: NextApiResponse) => {
     return
   }
 
-  getPost(PostsFactoryRepository.getInstance(process.env.STORAGE))(handle)
+  getPost(PostsFactoryRepository.getInstance(process.env.STORAGE ?? ''))(handle)
     .then((post) => {
       res.json(post)
     })

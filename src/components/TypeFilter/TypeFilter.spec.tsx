@@ -1,11 +1,12 @@
 import * as React from 'react'
-import { fireEvent, render, RenderResult } from '@testing-library/react'
-import { TypeFilter } from './'
-import { TypeFilterText } from './TypeFilter'
+import {fireEvent, render, RenderResult} from '@testing-library/react'
+import {TypeFilter} from './'
+import {TypeFilterText} from './TypeFilter'
+import {vi} from 'vitest'
 
 describe('TypeFilter', () => {
   let view: RenderResult
-  let modal: HTMLElement|null
+  let modal: HTMLElement | null
   let onChangeTypesMock: (selectedTypes: string[]) => void
   const types: string[] = ['irrelevant type']
 
@@ -15,12 +16,12 @@ describe('TypeFilter', () => {
   }
 
   const toggleCheckbox = (value: string) => {
-    const checkbox = view.getByLabelText(value)
+    const checkbox = view.getByDisplayValue(value)
     fireEvent.click(checkbox)
   }
 
   beforeEach(() => {
-    onChangeTypesMock = jest.fn()
+    onChangeTypesMock = vi.fn()
     view = render(
       <TypeFilter
         types={types}
@@ -36,8 +37,7 @@ describe('TypeFilter', () => {
 
   it('show the menu when is clicked', () => {
     toggleModal()
-    modal = view.queryByLabelText(TypeFilterText.filterModal)
-    expect(modal).toBeInTheDocument()
+    view.getByLabelText('components.filter.description')
   })
 
   it('hides the menu when is clicked again', () => {
@@ -47,7 +47,7 @@ describe('TypeFilter', () => {
     expect(modal).not.toBeInTheDocument()
   })
 
-  xit('hides the menu when is clicked over', () => {
+  it('hides the menu when is clicked over', () => {
     toggleModal() // open
     toggleModal() // close
     modal = view.queryByLabelText(TypeFilterText.filterModal)

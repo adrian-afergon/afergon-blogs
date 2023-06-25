@@ -1,12 +1,15 @@
 import * as React from 'react'
-import { render, RenderResult } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import { Footer } from './index'
 
 describe('Footer', () => {
-  xit('should display the default message', () => {
-    const renderResult: RenderResult = render(
+  it('should display the default message', () => {
+    render(
       <Footer/>
     )
-    expect(renderResult.queryByText('Hello from Footer!')).toBeTruthy()
+    screen.getByRole('link', {name: /github/i})
+    screen.getByRole('link', {name: /twitter/i})
+    screen.getByRole('link', {name: /linkedin/i})
+    screen.getByRole('link', {name: /footer.contact/i})
   })
 })

@@ -2,8 +2,9 @@ import * as React from 'react'
 import { render, RenderResult } from '@testing-library/react'
 import { ToggleLocale } from './'
 import mockRouter from 'next-router-mock'
+import {vi} from "vitest";
 
-jest.mock('next/router', () => require('next-router-mock'))
+vi.mock('next/router', () => require('next-router-mock'))
 
 describe('ToggleLocale', () => {
   beforeEach(() => {

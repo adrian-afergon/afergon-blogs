@@ -22,7 +22,7 @@ import {loadMorePodcastEpisodesUseCase} from "@/application/load-more-podcast-ep
 
 interface PodcastPageProps {
   episodes: Podcast[],
-  onLoadMore: (cursor: number, limit: number) => Promise<Podcast>
+  onLoadMore: (cursor: number, limit: number) => Promise<Podcast[]>
 }
 
 export const PodcastPage: React.FC<PodcastPageProps> = ({episodes = [], onLoadMore = loadMorePodcastEpisodesUseCase}) => {

@@ -1,19 +1,19 @@
 import * as React from 'react'
 import { fireEvent, render, RenderResult } from '@testing-library/react'
 import { TextFilter } from './'
-import { TextFilterText } from './TextFilter'
+import { vi } from "vitest";
 
 describe('TextFilter', () => {
   let view: RenderResult
-  let changeFilterMock = jest.fn()
+  let changeFilterMock = vi.fn()
   let input: HTMLInputElement
 
   beforeEach(() => {
-    changeFilterMock = jest.fn()
+    changeFilterMock = vi.fn()
     view = render(
       <TextFilter onChangeFilter={changeFilterMock}/>
     )
-    input = view.getByPlaceholderText(TextFilterText.inputPlaceHolder) as HTMLInputElement
+    input = view.getByPlaceholderText('components.search.placeholder') as HTMLInputElement
   })
 
   const changeValue = (value: string) => {

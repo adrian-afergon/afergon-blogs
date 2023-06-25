@@ -25,9 +25,22 @@ export class PostsNotionRepository implements PostsRepository {
       property: 'Path',
       rich_text: {
         is_not_empty: true
-      }
+      },
+      and: [
+        {
+          property: 'Status',
+          status: {
+            equals: 'Publish'
+          }
+        },
+        {
+          property: 'Path',
+          rich_text: {
+            is_not_empty: true
+          }
+        }
+      ]
     })
-
     return databaseResponse.results
       .map(item =>
         ({

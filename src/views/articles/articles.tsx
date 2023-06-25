@@ -48,8 +48,6 @@ export const Articles: React.FC<ArticlesProps> = ({articles = []}) => {
       .filter(matchFilters)
     , [articles, filter, selectedTypes])
 
-  console.log(hrefLangs)
-
   return (
     <Layout>
       <Head>

@@ -63,7 +63,7 @@ export const PodcastPage: React.FC<PodcastPageProps> = ({episodes = [], onLoadMo
           )}
         </ul>
 
-        <button onClick={loadMoreEpisodes}>{t('loadMore')}</button>
+        <button className={styles.loadMore} onClick={loadMoreEpisodes}>{t('loadMore')}</button>
 
       </section>
       <section className={styles.rss}>

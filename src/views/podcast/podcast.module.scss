@@ -1,6 +1,11 @@
 @import 'src/pages/variables';
 
 .podcast, .rss {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   ul {
     list-style: none;
     display: flex;
@@ -26,10 +31,31 @@
         }
       }
 
-      h4{
+      h4 {
         margin-top: 0;
         margin-bottom: .5rem;
       }
+    }
+  }
+
+  button {
+    border: 0;
+    outline: none;
+    color: $color-white;
+    padding: .4rem;
+    font-size: inherit;
+    cursor: pointer;
+    width: 100%;
+    background-color: var(--primary-color);
+    transition: background-color .2s ease-in-out;
+    margin: 1rem;
+
+    &:hover {
+      background-color: var(--primary-color-broken);
+    }
+
+    @media (min-width: $size-limit-medium) {
+      max-width: 12rem;
     }
   }
 }

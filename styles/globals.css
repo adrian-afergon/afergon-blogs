@@ -7,6 +7,8 @@
     --color-white-alpha: #FFFFFF99;
     --color-blue: #0070f3;
     --color-blue-broken: #328cf5;
+    --color-green: #37A494;
+    --color-green-broken: #5EB6A9;
     --color-pink: #e3097d;
     --color-pink-broken: #e83a97;
 
@@ -46,8 +48,8 @@ body {
     --font-color: var(--color-white);
     --font-color-broken: var(--color-white-broken);
     --font-color-light: var(--color-white);
-    --primary-color:var(--color-pink);
-    --primary-color-broken:var(--color-pink-broken);
+    --primary-color:var(--color-green);
+    --primary-color-broken:var(--color-green-broken);
     --bg-color: var(--color-black);
     --bg-color-broken: var(--color-black-broken);
     --bg-color-alpha: var(--color-black-alpha);

@@ -63,9 +63,10 @@ export const Articles: React.FC<ArticlesProps> = ({articles = []}) => {
       </Head>
       <SearchBar types={['Post', 'Talk']} onChangeSelectedTypes={setSelectedTypes} onChangeFilter={handleFilterChange}/>
       <section className={styles.articles}>
+        <span className={styles.legend}>{filteredArticles.length}/{articles.length} {t('articles')}</span>
         <ul>
           {filteredArticles.sort(sortArticlesByDate).reverse().map((article) => (
-            <li key={article.title}>
+            <li key={`${article.locales[0]}-${article.title}`} aria-label={`${article.locales[0]} - ${article.title}`}>
               <a
                 href={article.link}
                 target={article.external ? '_blank' : ''}

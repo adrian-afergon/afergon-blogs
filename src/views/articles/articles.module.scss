@@ -1,6 +1,16 @@
 @import 'src/pages/variables';
 
 .articles {
+  .legend {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+    font-size: .7rem;
+    font-style: italic;
+    color: var(--primary-color);
+  }
   ul {
     list-style: none;
     display: flex;
